@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/* FONTS IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+/* font-family */
+/* font-family: 'Montserrat', sans-serif & 'Montserrat Alternates', sans-serif; */
+
+
+/* VARIABLES */
+:root {
+--redLine: #FF0000;
+--black: #000000;
+--grey: #606060;
+--white: #FFFFFF;
+--darkPink: #F8595B;
+--lightPink: #FFBFC3;
+--babyPink: #FFF7F7;
+--primaryFont:'Montserrat', sans-serif;
+--secondaryFont:'Montserrat Alternates', sans-serif;
+/* --fontSize16: 16px;*/
+/* --fontSize20: 20px;*/
+--lineHeight: 1.5;
+}
+
+/* NORMALIZE, BACKGROUND-COLOR, PRIMARYFONT */
+*, body{
+padding: 0;
+margin: 0;
+list-style:none;
+font-family: var(--primaryFont);
+}
+
+button{
+all:unset;
+}
+
+a{
+color:inherit;
+}
