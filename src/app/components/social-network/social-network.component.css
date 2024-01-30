@@ -1,0 +1,44 @@
+.socialNetworkContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 100%; */
+}
+h5{
+    text-transform: uppercase;
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: var(--semiBold);
+    margin-bottom: 35px;
+    text-align: center;
+}
+.socialNetworkIcons {
+    display: flex;
+    justify-content: center;
+}
+.socialNetworkIcons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8595B;
+    fill: var(--black);
+    margin: 0 15px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+}
+.fb, .insta, .x{
+    height:25px;
+}
+.yt, .in , .ausha{
+    width: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .socialNetworkIcons a {
+        width: 45px;
+        height: 45px;
+        margin: 0 10px;
+    }
+}
+
