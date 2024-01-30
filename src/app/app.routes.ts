@@ -15,7 +15,8 @@ import { PasswordSetUpComponent } from './pages/password-set-up/password-set-up.
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SiteMapComponent } from './pages/site-map/site-map.component';
 
-export const routes: Routes = [{
+export const routes: Routes = [
+  {
     path: "",
     component: HomePageComponent
   },
