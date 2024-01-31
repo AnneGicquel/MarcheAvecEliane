@@ -1,1 +1,35 @@
-<p>footer works!</p>
+<footer>
+  <!-- BTN -->
+  <button>parrainner un·e ami·e</button>
+
+  <!-- SOCIAL -->
+  <app-social-network></app-social-network>
+
+  <!-- CONTACT CONTAINER-->
+  <div class="contactContainer">
+    <!-- LOGO -->
+    <a class="logoContainer" routerLink="/"
+      ><img src="assets/images/logo/Marcher avec Eliane Logo 6.png"
+    /></a>
+    <!-- CONTACT -->
+    <div class="contact">
+      <p class="MAE">Marche avec Éliane</p>
+      <p>72, rue de la Folie-Méricourt</p>
+      <p>75011 PARIS</p>
+      <p class="phoneNumber">+ 33 (0)1 49 23 13 00</p>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <nav>
+    <ul class="footerMenu">
+      <!-- déclencher une pop up proposant de démarrer la visite ou annuler -->
+      <li><a>Visiter votre espace</a></li>
+      <li><a routerLink="/legalNotice">Mentions légales</a></li>
+      <li><a routerLink="/privacyPolicy">Politique de confidentialité</a></li>
+      <!-- déclencher la pop up des cookies -->
+      <li><a>Gestion des Cookies</a></li>
+      <li><a routerLink="/SiteMap">Plan du site</a></li>
+    </ul>
+  </nav>
+</footer>

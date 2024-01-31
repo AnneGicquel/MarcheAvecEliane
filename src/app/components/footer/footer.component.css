@@ -1,0 +1,81 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 485px;
+}
+
+/* BTN */
+button {
+    background-color: var(--lightPink);
+    width: 370px;
+    /* BUTTON SIZE TO FIX !!! */
+    height: 70px;
+    text-align: center;
+    /* padding: 20px; */
+    font-size: clamp(25px, 3vw, 30px);
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    margin-bottom: 60px;
+}
+
+/* CONTACT CONTAINER */
+.contactContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 570px;
+    margin-bottom: 70px; 
+}
+.logoContainer img {
+    width: 350px;
+    height: auto;
+}
+.contact{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    color: var(--grey);
+    font-size: clamp(10px, 2vw, 12px);
+    height: 63px;
+}
+.MAE, .phoneNumber{
+    font-size: clamp(12px, 4vw, 14px);
+    font-weight: var(--semiBold);   
+}
+
+/* MENU */
+.footerMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    margin-bottom: 20px;
+}
+.footerMenu li {
+    display: flex;
+    align-items: center;
+}
+nav ul li a{
+    color: var(--grey);
+    font-weight: var(--semiBold);
+    font-size: clamp(12px, 4vw, 14px);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    footer{
+        height: auto;
+    }
+    .footerMenu {
+        flex-direction: column;
+        align-items: center;
+        /* margin: 0; */
+    }
+    .footerMenu li {
+        margin: 5px 0;
+    }
+}
+    
