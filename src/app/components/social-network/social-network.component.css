@@ -14,12 +14,13 @@ h5{
 .socialNetworkIcons {
     display: flex;
     justify-content: center;
+    margin-bottom: 35px;
 }
 .socialNetworkIcons a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F8595B;
+    background-color: var(--darkPink);
     fill: var(--black);
     margin: 0 15px;
     border-radius: 50%;
