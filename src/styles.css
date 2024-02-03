@@ -18,8 +18,6 @@
 --secondaryFont:'Montserrat Alternates', sans-serif;
 --semiBold: 600;
 --fontSize32: 32px;
-/* --fontSize16: 16px;*/
-/* --fontSize20: 20px;*/
 --lineHeight: 1.5;
 }
 
@@ -37,4 +35,9 @@ all:unset;
 
 a{
 color:inherit;
+text-decoration: none;
+}
+
+img{
+    object-fit: cover;
 }
