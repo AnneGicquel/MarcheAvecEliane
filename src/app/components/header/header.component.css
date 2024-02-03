@@ -103,7 +103,6 @@ ul {
 }
 ul li span,
 a {
-  text-decoration: none;
   font-size: 18px;
   color: var(--black);
   text-transform: uppercase;
