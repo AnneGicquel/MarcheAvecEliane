@@ -34,15 +34,13 @@
             />
             <!-- ERRORS -->
             <div class="error-message">
-              @if (validationError.includes('address')) {
-                @if (userForm.get('address')?.errors?.['required']){
-                  <p>L'adresse est requise</p>
-                }
-                @if (userForm.get('address')?.errors?.['pattern']){
-                  <p>L'adresse est invalide</p>
-                }
-              }
-           </div>
+              @if (validationError.includes('address')) { @if
+              (userForm.get('address')?.errors?.['required']){
+              <p>L'adresse est requise</p>
+              } @if (userForm.get('address')?.errors?.['pattern']){
+              <p>L'adresse est invalide</p>
+              } }
+            </div>
           </div>
 
           <!-- CODE POSTAL -->
@@ -55,15 +53,13 @@
             />
             <!-- ERRORS -->
             <div class="error-message">
-              @if (validationError.includes('zip')) {
-                @if (userForm.get('zip')?.errors?.['required']){
-                  <p>Le code postal est requis</p>
-                }
-                @if (userForm.get('zip')?.errors?.['pattern']){
-                  <p>Le code postal est invalide</p>
-                }
-              }
-           </div>
+              @if (validationError.includes('zip')) { @if
+              (userForm.get('zip')?.errors?.['required']){
+              <p>Le code postal est requis</p>
+              } @if (userForm.get('zip')?.errors?.['pattern']){
+              <p>Le code postal est invalide</p>
+              } }
+            </div>
           </div>
 
           <!-- NUMERO DE MOBILE -->
@@ -76,15 +72,13 @@
             />
             <!-- ERRORS -->
             <div class="error-message">
-              @if (validationError.includes('mobile')) {
-                @if (userForm.get('mobile')?.errors?.['required']){
-                  <p>Le numéro de mobile est requis</p>
-                }
-                @if (userForm.get('mobile')?.errors?.['pattern']){
-                  <p>Le numéro de mobile est invalide</p>
-                }
-              }
-           </div>
+              @if (validationError.includes('mobile')) { @if
+              (userForm.get('mobile')?.errors?.['required']){
+              <p>Le numéro de mobile est requis</p>
+              } @if (userForm.get('mobile')?.errors?.['pattern']){
+              <p>Le numéro de mobile est invalide</p>
+              } }
+            </div>
           </div>
 
           <!-- BTN -->
@@ -119,10 +113,7 @@
           <!-- ADRESSE LINE 2 -->
           <div class="cell">
             <label>Complément d’adresse</label>
-            <input
-              type="text"
-              formControlName="addressLine2"
-            />
+            <input type="text" formControlName="addressLine2" />
           </div>
 
           <!-- CITY -->
@@ -151,15 +142,13 @@
             />
             <!-- ERRORS -->
             <div class="error-message">
-              @if (validationError.includes('email')) {
-                @if (userForm.get('email')?.errors?.['required']){
-                  <p>L'email est requis</p>
-                }
-                @if (userForm.get('email')?.errors?.['pattern']){
-                  <p>L'email est invalide</p>
-                }
-              }
-           </div>
+              @if (validationError.includes('email')) { @if
+              (userForm.get('email')?.errors?.['required']){
+              <p>L'email est requis</p>
+              } @if (userForm.get('email')?.errors?.['pattern']){
+              <p>L'email est invalide</p>
+              } }
+            </div>
           </div>
         </div>
         <!-- fin RIGHT PART -->
@@ -167,4 +156,172 @@
     </div>
     <!-- fin DIV formContainer -->
   </section>
+
+  <!-- Partie “CHANGEMENT DE MOT DE PASSE” -->
+  <section>
+    <h1>CHANGEMENT DE MOT DE PASSE</h1>
+    <h2>
+      Votre mot de passe doit contenir au moins 8 caractères <br />
+      ainsi qu'une combinaison de chiffres,<br />
+      de lettres et de caractères spéciaux (!$%).
+    </h2>
+    <form class="pwdForm" [formGroup]="userForm">
+      <!-- OLD PWD -->
+      <div class="cell">
+        <div class="inputPlusEyeContainer">
+          <input
+            class="inputPSW"
+            type="{{ isPasswordVisible.old ? 'text' : 'password' }}"
+            formControlName="password"
+            placeholder="Ancien mot de passe"
+            [class.ifError]="validationError.includes('password')"
+          />
+          <i
+            class="fas"
+            [ngClass]="{
+              'fa-eye': !isPasswordVisible.old,
+              'fa-eye-slash': isPasswordVisible.old
+            }"
+            (click)="togglePasswordVisibility('old')"
+          >
+          </i>
+        </div>
+        <!-- ERRORS -->
+        <div class="error-message">
+          @if (validationError.includes('password')) { @if
+          (userForm.get('password')?.errors?.['required']){
+          <p>L'ancien mot de passe est requis</p>
+          } @if (userForm.get('password')?.errors?.['pattern']){
+          <p>L'ancien mot de passe est invalide</p>
+          } }
+        </div>
+      </div>
+
+      <!-- NEW PWD -->
+      <div class="cell">
+        <div class="inputPlusEyeContainer">
+          <input
+            class="inputPSW"
+            type="{{ isPasswordVisible.new ? 'text' : 'password' }}"
+            formControlName="newPassword"
+            placeholder="Nouveau mot de passe"
+          />
+          <i
+            class="fas"
+            [ngClass]="{
+              'fa-eye': !isPasswordVisible.new,
+              'fa-eye-slash': isPasswordVisible.new
+            }"
+            (click)="togglePasswordVisibility('new')"
+          >
+          </i>
+        </div>
+        <!-- ERRORS -->
+        <div class="error-message">
+          @if (validationError.includes('newPassword')) { @if
+          (userForm.get('newPassword')?.errors?.['required']){
+          <p>Un nouveau mot de passe est requis</p>
+          } @if (userForm.get('newPassword')?.errors?.['pattern']){
+          <p>Le nouveau mot de passe est invalide</p>
+          } }
+        </div>
+      </div>
+      <!-- ROBUST PWD -->
+      <div
+        class="validationContainer"
+        *ngIf="passwordFormField?.dirty && passwordFormField?.value !== ''"
+      >
+        <span
+          class="block"
+          [ngClass]="{
+            valid: passwordFormField?.value?.match('^(?=.*[A-Z])'),
+            invalid: !passwordFormField?.value?.match('^(?=.*[A-Z])')
+          }"
+        >
+          {{ passwordFormField?.value?.match("^(?=.*[A-Z])") ? "✔️" : "❌" }} Au
+          moins 1 lettre majuscule
+        </span>
+        <span
+          class="block"
+          [ngClass]="{
+            valid: passwordFormField?.value?.match('(?=.*[a-z])'),
+            invalid: !passwordFormField?.value?.match('(?=.*[a-z])')
+          }"
+        >
+          {{ passwordFormField?.value?.match("(?=.*[a-z])") ? "✔️" : "❌" }} Au
+          moins 1 lettre minuscule
+        </span>
+        <span
+          class="block"
+          [ngClass]="{
+            valid: passwordFormField?.value?.match('(.*[0-9].*)'),
+            invalid: !passwordFormField?.value?.match('(.*[0-9].*)')
+          }"
+        >
+          {{ passwordFormField?.value?.match("(.*[0-9].*)") ? "✔️" : "❌" }} Au
+          moins 1 chiffre
+        </span>
+        <span
+          class="block"
+          [ngClass]="{
+            valid: passwordFormField?.value?.match('(?=.*[!@#$%^&*])'),
+            invalid: !passwordFormField?.value?.match('(?=.*[!@#$%^&*])')
+          }"
+        >
+          {{ passwordFormField?.value?.match("[^a-zA-Z0-9\s]") ? "✔️" : "❌" }}
+          Au moins 1 caractère spécial
+        </span>
+        <span
+          class="block"
+          [ngClass]="{
+            valid: passwordFormField?.value?.match('.{8,}'),
+            invalid: !passwordFormField?.value?.match('.{8,}')
+          }"
+        >
+          {{ passwordFormField?.value?.match(".{8,}") ? "✔️" : "❌" }} Au moins
+          8 caractères
+        </span>
+      </div>
+
+      <!-- CONFIRM -->
+      <div class="cell">
+        <div class="inputPlusEyeContainer">
+          <input
+            class="inputPSW"
+            type="{{ isPasswordVisible.confirm ? 'text' : 'password' }}"
+            formControlName="newPasswordConfirmation"
+            placeholder="Retapez le nouveau mot de passe"
+          />
+          <i
+            class="fas"
+            [ngClass]="{
+              'fa-eye': !isPasswordVisible.confirm,
+              'fa-eye-slash': isPasswordVisible.confirm
+            }"
+            (click)="togglePasswordVisibility('confirm')"
+          >
+          </i>
+        </div>
+        <div class="error-message">
+          @if (validationError.includes('newPasswordConfirmation')) { @if
+          (userForm.get('newPasswordConfirmation')?.errors?.['required']){
+          <p>La confirmation du nouveau mot de passe est requise</p>
+          } @if (userForm.get('newPasswordConfirmation')?.errors?.['pattern']){
+          <p>Le nouveau mot de passe est invalide</p>
+          } }
+        </div>
+      </div>
+
+      <!-- BTN -->
+      <button
+        class="submitButton"
+        type="submit"
+        (click)="submitModifications()"
+      >
+        Changer le mot de passe
+      </button>
+    </form>
+  </section>
+
+  
 </main>
