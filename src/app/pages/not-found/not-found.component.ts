@@ -13,6 +13,6 @@ export class NotFoundComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Page non trouvée');
+    this.titleService.setTitle('MaÉ ♡ | Page non trouvée');
   }
 }

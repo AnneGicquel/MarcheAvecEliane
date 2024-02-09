@@ -13,6 +13,6 @@ export class PasswordResetInstructionsComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Instructions réinitialisation mot de passe');
+    this.titleService.setTitle('MaÉ ♡ | Instructions réinitialisation mot de passe');
   }
 }

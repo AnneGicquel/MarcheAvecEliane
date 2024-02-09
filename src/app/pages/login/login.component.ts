@@ -13,6 +13,6 @@ export class LoginComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Connexion');
+    this.titleService.setTitle('MaÉ ♡ | Connexion');
   }
 }

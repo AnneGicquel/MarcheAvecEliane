@@ -13,6 +13,6 @@ export class ContentManagementComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Gestion de contenu');
+    this.titleService.setTitle('MaÉ ♡ | Gestion de contenu');
   }
 }

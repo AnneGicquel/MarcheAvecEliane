@@ -1,1 +1,170 @@
-<p>account-settings works!</p>
+<main class="accountSettingsMain">
+  <!-- Partie “MES INFORMATIONS PERSONNELLES” -->
+  <section>
+    <h1>MES INFORMATIONS PERSONNELLES</h1>
+    <h2>Mes informations générales</h2>
+
+    <div class="formContainer">
+      <form class="twoColumnForm" [formGroup]="userForm">
+        <!-- ********** LEFT PART ********** -->
+        <div class="leftFormPart">
+          <!-- PRENOM -->
+          <div class="cell">
+            <label>Prénom *</label>
+            <input
+              type="text"
+              formControlName="firstName"
+              [class.ifError]="validationError.includes('firstName')"
+            />
+            <!-- ERROR -->
+            <div class="error-message">
+              @if (validationError.includes('firstName')) {
+              <p>Le prénom est requis</p>
+              }
+            </div>
+          </div>
+
+          <!-- ADRESSE -->
+          <div class="cell">
+            <label>Adresse *</label>
+            <input
+              type="text"
+              formControlName="address"
+              [class.ifError]="validationError.includes('address')"
+            />
+            <!-- ERRORS -->
+            <div class="error-message">
+              @if (validationError.includes('address')) {
+                @if (userForm.get('address')?.errors?.['required']){
+                  <p>L'adresse est requise</p>
+                }
+                @if (userForm.get('address')?.errors?.['pattern']){
+                  <p>L'adresse est invalide</p>
+                }
+              }
+           </div>
+          </div>
+
+          <!-- CODE POSTAL -->
+          <div class="cell">
+            <label>Code postal *</label>
+            <input
+              type="text"
+              formControlName="zip"
+              [class.ifError]="validationError.includes('zip')"
+            />
+            <!-- ERRORS -->
+            <div class="error-message">
+              @if (validationError.includes('zip')) {
+                @if (userForm.get('zip')?.errors?.['required']){
+                  <p>Le code postal est requis</p>
+                }
+                @if (userForm.get('zip')?.errors?.['pattern']){
+                  <p>Le code postal est invalide</p>
+                }
+              }
+           </div>
+          </div>
+
+          <!-- NUMERO DE MOBILE -->
+          <div class="cell">
+            <label>Numéro de mobile *</label>
+            <input
+              type="tel"
+              formControlName="mobile"
+              [class.ifError]="validationError.includes('mobile')"
+            />
+            <!-- ERRORS -->
+            <div class="error-message">
+              @if (validationError.includes('mobile')) {
+                @if (userForm.get('mobile')?.errors?.['required']){
+                  <p>Le numéro de mobile est requis</p>
+                }
+                @if (userForm.get('mobile')?.errors?.['pattern']){
+                  <p>Le numéro de mobile est invalide</p>
+                }
+              }
+           </div>
+          </div>
+
+          <!-- BTN -->
+          <button
+            class="submitButton"
+            type="submit"
+            (click)="submitModifications()"
+          >
+            Enregistrer les modifications
+          </button>
+        </div>
+        <!-- end LEFT FORM -->
+
+        <!-- ********** RIGHT PART ********** -->
+        <div class="rightFormPart">
+          <!-- NOM -->
+          <div class="cell">
+            <label>Nom *</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              [class.ifError]="validationError.includes('lastName')"
+            />
+            <!-- ERROR -->
+            <div class="error-message">
+              @if (validationError.includes('lastName')) {
+              <p>Le nom de famille est requis</p>
+              }
+            </div>
+          </div>
+
+          <!-- ADRESSE LINE 2 -->
+          <div class="cell">
+            <label>Complément d’adresse</label>
+            <input
+              type="text"
+              formControlName="addressLine2"
+            />
+          </div>
+
+          <!-- CITY -->
+          <div class="cell">
+            <label>Ville *</label>
+            <input
+              type="text"
+              formControlName="city"
+              [class.ifError]="validationError.includes('city')"
+            />
+            <!-- ERROR -->
+            <div class="error-message">
+              @if (validationError.includes('city')) {
+              <p>La ville est requise</p>
+              }
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="cell">
+            <label>Email *</label>
+            <input
+              type="email"
+              formControlName="email"
+              [class.ifError]="validationError.includes('email')"
+            />
+            <!-- ERRORS -->
+            <div class="error-message">
+              @if (validationError.includes('email')) {
+                @if (userForm.get('email')?.errors?.['required']){
+                  <p>L'email est requis</p>
+                }
+                @if (userForm.get('email')?.errors?.['pattern']){
+                  <p>L'email est invalide</p>
+                }
+              }
+           </div>
+          </div>
+        </div>
+        <!-- fin RIGHT PART -->
+      </form>
+    </div>
+    <!-- fin DIV formContainer -->
+  </section>
+</main>

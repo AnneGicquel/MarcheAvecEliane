@@ -13,7 +13,7 @@ export class ConnectionOKComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Connexion réussie');
+    this.titleService.setTitle('MaÉ ♡ | Connexion réussie');
   }
 
 }

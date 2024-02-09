@@ -13,6 +13,6 @@ export class PasswordResetRequestComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Demande réinitialisation mot de passe');
+    this.titleService.setTitle('MaÉ ♡ | Demande réinitialisation mot de passe');
   }
 }

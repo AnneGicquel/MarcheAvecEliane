@@ -13,6 +13,6 @@ export class LegalNoticeComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Mentions légales');
+    this.titleService.setTitle('MaÉ ♡ | Mentions légales');
   }
 }
