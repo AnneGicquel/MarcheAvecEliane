@@ -1,117 +1,136 @@
 /* MAIN */
 .accountSettingsMain {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* GLOBAL */
 section {
-    width: 100%;
-    height: auto;
-    padding: 60px;
-    border-bottom: 1px solid black;
+  width: 100%;
+  height: auto;
+  padding: 60px;
+  border-bottom: 1px solid var(--black);
 }
-  h1 {
-    margin-bottom: 40px;
+h1 {
+  margin-bottom: 40px;
 }
-  h2 {
-    margin-bottom: 50px;
+h2 {
+  margin-bottom: 50px;
 }
-  button {
-    width: auto;
-    padding: 20px;
-    background-color: pink;
-    margin-top: 70px;
-    font-weight: 900;
-    border-radius: 5px;
-    cursor: pointer;
+button {
+  width: auto;
+  padding: 20px;
+  background-color: var(--lightPink);
+  margin-top: 70px;
+  font-weight: 900;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* “MES INFORMATIONS PERSONNELLES” */
 .formContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .twoColumnForm {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .leftFormPart,
 .rightFormPart {
-    flex: 1;
-    width: 550px;
-    height: auto;
+  flex: 1;
+  width: 550px;
+  height: auto;
 }
 .cell {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 label {
-    color: grey;
-    font-style: italic;
-    font-size: 16px;
-    margin: 40px 0;
+  color: var(--grey);
+  font-style: italic;
+  font-size: 16px;
+  margin: 40px 0;
 }
 input {
-    font-size: 16px;
-    margin-right: 150px;
-    border: none;
-    border-bottom: 1px solid black;
-    line-height: 1.5;
+  font-size: 16px;
+  margin-right: 150px;
+  border: none;
+  border-bottom: 1px solid var(--black);
+  line-height: 1.5;
 }
 input:focus {
-      outline: 2px solid  pink;
-      outline-offset: -2px; 
-      /* pour etre pile sur la ligne border bottom */
-      padding-top: 5px;
-      padding-left: 5px;
+  outline: 2px solid var(--lightPink);
+  outline-offset: -2px;
+  /* pour etre pile sur la ligne border bottom */
+  padding-top: 5px;
+  padding-left: 5px;
 }
 /* .submitButton {
     margin-top: 20px;
 } */
-.error-message p{
-    color: #ff0000;
-    font-size: 12px;
-    margin-top: 5px;
+.error-message p {
+  color: var(--redLine);
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 /* CHANGEMENT DE MOT DE PASSE */
-.inputPlusEyeContainer{
-    display: flex;
-    align-items: center;
-    width: 480px; 
-    border-bottom: 1px solid black;
-    margin-top: 40px;
+.inputPlusEyeContainer {
+  display: flex;
+  align-items: center;
+  width: 480px;
+  border-bottom: 1px solid var(--black);
+  margin-top: 40px;
 }
-.inputPSW{
-    width: 450px;
-    margin-right: 10px;
-    border:none;
+.inputPSW {
+  width: 450px;
+  margin-right: 10px;
+  border: none;
 }
-.fas{
-    margin-right: 10px;
+.fas {
+  margin-right: 10px;
 }
 .inputPlusEyeContainer:focus-within {
-    background-color: pink;
+  background-color: var(--lightPink);
 }
 
 /* ROBUST PWD */
-.validationContainer{
-    display: flex;
-    flex-direction: column;
-   align-items: flex-start;
-   margin-top: 10px;
-  }
-  
-.validationContainer .block{
-    margin-bottom: 3px;
-    font-size:8px;
+.validationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.validationContainer .block {
+  margin-bottom: 3px;
+  font-size: 8px;
 }
 .valid {
-    color: grey;
+  color: var(--grey);
 }
-  
+
 .invalid {
-    color: red;
+  color: var(--redLine);
+}
+
+/* “SUPPRESSION” */
+.deleteAccountContainer {
+  display: flex;
+  justify-content: space-between;
+}
+p {
+  width: 570px;
+  font-size: 16px;
+}
+.deleteBTN {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  width: 150px;
+  text-align: center;
+}
+.deleteAccountSection {
+  margin-bottom: 40px;
 }
