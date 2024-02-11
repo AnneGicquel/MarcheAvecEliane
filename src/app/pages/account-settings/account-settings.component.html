@@ -1,6 +1,6 @@
 <main class="accountSettingsMain">
   <!-- Partie “MES INFORMATIONS PERSONNELLES” -->
-  <section>
+  <section id="informationsPersonnelles">
     <h1>MES INFORMATIONS PERSONNELLES</h1>
     <h2>Mes informations générales</h2>
 
@@ -8,6 +8,22 @@
       <form class="twoColumnForm" [formGroup]="userForm">
         <!-- ********** LEFT PART ********** -->
         <div class="leftFormPart">
+          <!-- NOM -->
+          <div class="cell">
+            <label>Nom *</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              [class.ifError]="validationError.includes('lastName')"
+            />
+            <!-- ERROR -->
+            <div class="error-message">
+              @if (validationError.includes('lastName')) {
+              <p>Le nom de famille est requis</p>
+              }
+            </div>
+          </div>
+
           <!-- PRENOM -->
           <div class="cell">
             <label>Prénom *</label>
@@ -40,6 +56,32 @@
               } @if (userForm.get('address')?.errors?.['pattern']){
               <p>L'adresse est invalide</p>
               } }
+            </div>
+          </div>
+
+          <!-- ADRESSE LINE 2 -->
+          <div class="cell">
+            <label>Complément d’adresse</label>
+            <input type="text" formControlName="addressLine2" />
+          </div>
+        </div>
+        <!-- end LEFT FORM -->
+
+        <!-- ********** RIGHT PART ********** -->
+        <div class="rightFormPart">
+          <!-- CITY -->
+          <div class="cell">
+            <label>Ville *</label>
+            <input
+              type="text"
+              formControlName="city"
+              [class.ifError]="validationError.includes('city')"
+            />
+            <!-- ERROR -->
+            <div class="error-message">
+              @if (validationError.includes('city')) {
+              <p>La ville est requise</p>
+              }
             </div>
           </div>
 
@@ -81,57 +123,6 @@
             </div>
           </div>
 
-          <!-- BTN -->
-          <button
-            class="submitButton"
-            type="submit"
-            (click)="submitModifications()"
-          >
-            Enregistrer les modifications
-          </button>
-        </div>
-        <!-- end LEFT FORM -->
-
-        <!-- ********** RIGHT PART ********** -->
-        <div class="rightFormPart">
-          <!-- NOM -->
-          <div class="cell">
-            <label>Nom *</label>
-            <input
-              type="text"
-              formControlName="lastName"
-              [class.ifError]="validationError.includes('lastName')"
-            />
-            <!-- ERROR -->
-            <div class="error-message">
-              @if (validationError.includes('lastName')) {
-              <p>Le nom de famille est requis</p>
-              }
-            </div>
-          </div>
-
-          <!-- ADRESSE LINE 2 -->
-          <div class="cell">
-            <label>Complément d’adresse</label>
-            <input type="text" formControlName="addressLine2" />
-          </div>
-
-          <!-- CITY -->
-          <div class="cell">
-            <label>Ville *</label>
-            <input
-              type="text"
-              formControlName="city"
-              [class.ifError]="validationError.includes('city')"
-            />
-            <!-- ERROR -->
-            <div class="error-message">
-              @if (validationError.includes('city')) {
-              <p>La ville est requise</p>
-              }
-            </div>
-          </div>
-
           <!-- EMAIL -->
           <div class="cell">
             <label>Email *</label>
@@ -154,16 +145,20 @@
         <!-- fin RIGHT PART -->
       </form>
     </div>
+    <!-- BTN -->
+    <button class="submitButton" type="submit" (click)="submitModifications()">
+      Enregistrer les modifications
+    </button>
     <!-- fin DIV formContainer -->
   </section>
 
   <!-- Partie “CHANGEMENT DE MOT DE PASSE” -->
-  <section>
+  <section id="motDePasse">
     <h1>CHANGEMENT DE MOT DE PASSE</h1>
     <h2>
-      Votre mot de passe doit contenir au moins 8 caractères <br />
-      ainsi qu'une combinaison de chiffres,<br />
-      de lettres et de caractères spéciaux (!$%).
+      Votre mot de passe doit contenir<br /> 
+      au moins 8 caractères combinaison <br /> 
+      de chiffres, lettres, caractères spéciaux.
     </h2>
     <form class="pwdForm" [formGroup]="userForm">
       <!-- OLD PWD -->
@@ -324,8 +319,8 @@
   </section>
 
   <!-- Partie “DECONNEXION” -->
-  <section>
-    <h1>DECONNEXION</h1>
+  <section id="deconnexion">
+    <h1 class="deconnexionh1">DECONNEXION</h1>
     <button class="signOutBtn" routerLink="/login">
       <!-- <button (click)="logout()"> -->
       Déconnexion &nbsp;<i class="fas fa-sign-out-alt"></i>
@@ -345,6 +340,4 @@
       <!-- modal -->
     </div>
   </section>
-
-
 </main>

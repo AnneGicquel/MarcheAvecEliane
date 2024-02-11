@@ -2,6 +2,7 @@
 .accountSettingsMain {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 /* GLOBAL */
@@ -10,12 +11,16 @@ section {
   height: auto;
   padding: 60px;
   border-bottom: 1px solid var(--black);
+  /* border: solid red 2px; */
 }
 h1 {
   margin-bottom: 40px;
+  font-size: clamp(20px, 4vw, 24px);
 }
 h2 {
   margin-bottom: 50px;
+  font-size: clamp(16px, 4vw, 24px);
+  
 }
 button {
   width: auto;
@@ -31,11 +36,13 @@ button {
 .formContainer {
   display: flex;
   justify-content: space-between;
+  /* border: solid greenyellow 2px; */
 }
 .twoColumnForm {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  /* border: solid pink 2px; */
 }
 .leftFormPart,
 .rightFormPart {
@@ -67,9 +74,6 @@ input:focus {
   padding-top: 5px;
   padding-left: 5px;
 }
-/* .submitButton {
-    margin-top: 20px;
-} */
 .error-message p {
   color: var(--redLine);
   font-size: 12px;
@@ -106,7 +110,7 @@ input:focus {
 
 .validationContainer .block {
   margin-bottom: 3px;
-  font-size: 8px;
+  font-size: 12px;
 }
 .valid {
   color: var(--grey);
@@ -123,7 +127,7 @@ input:focus {
 }
 p {
   width: 570px;
-  font-size: 16px;
+  font-size: clamp(12px, 4vw, 16px);
 }
 .deleteBTN {
   background-color: var(--white);
@@ -133,4 +137,51 @@ p {
 }
 .deleteAccountSection {
   margin-bottom: 40px;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .twoColumnForm {
+    flex-direction: column;
+  }
+
+  .deleteAccountContainer{
+    flex-direction: column;
+  }
+
+  input{
+    margin-right: 0px;
+    width: 100%;
+    max-width: 400px; 
+  }
+  p {
+    width: 400px;
+}
+.inputPlusEyeContainer {
+  width: 400px;
+  /* margin-top: 30px; */
+}
+.leftFormPart,
+.rightFormPart {
+  width: 400px;
+}
+
+label{
+  margin: 20px 0;
+}
+button {
+  padding: 20px;
+  margin-top: 50px;
+}
+section{
+  padding: 40px 60px;
+}
+.deconnexionh1{
+  margin-bottom: 0;
+}
+h2{
+  margin-bottom: 20px;
+}
 }
