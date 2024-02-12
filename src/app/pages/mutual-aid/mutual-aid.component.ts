@@ -13,6 +13,6 @@ export class MutualAidComponent  implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Entraide');
+    this.titleService.setTitle('MaÉ ♡ | Entraide');
   }
 }

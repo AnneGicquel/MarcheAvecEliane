@@ -13,6 +13,6 @@ export class PrivacyPolicyComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Politique de confidentialité');
+    this.titleService.setTitle('MaÉ ♡ | Politique de confidentialité');
   }
 }

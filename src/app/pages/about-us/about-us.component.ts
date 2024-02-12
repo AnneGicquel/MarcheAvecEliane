@@ -13,7 +13,7 @@ export class AboutUsComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | À propos');
+    this.titleService.setTitle('MaÉ ♡ | À propos');
   }
 
 }

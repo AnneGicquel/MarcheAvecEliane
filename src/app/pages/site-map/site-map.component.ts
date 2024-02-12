@@ -13,6 +13,6 @@ export class SiteMapComponent  implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Plan du site');
+    this.titleService.setTitle('MaÉ ♡ | Plan du site');
   }
 }

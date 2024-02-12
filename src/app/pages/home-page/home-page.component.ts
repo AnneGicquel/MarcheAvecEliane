@@ -14,7 +14,7 @@ export class HomePageComponent    implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Accueil');
+    this.titleService.setTitle('MaÉ ♡ | Accueil');
   }
 
 }

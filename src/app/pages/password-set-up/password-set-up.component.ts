@@ -13,6 +13,6 @@ export class PasswordSetUpComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Configuration mot de passe');
+    this.titleService.setTitle('MaÉ ♡ | Configuration mot de passe');
   }
 }

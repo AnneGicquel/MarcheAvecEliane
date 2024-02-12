@@ -1,0 +1,182 @@
+/* MAIN */
+.accountSettingsMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* GLOBAL */
+section {
+  width: 100%;
+  height: auto;
+  padding: 60px;
+  border-bottom: 1px solid var(--black);
+}
+h1 {
+  margin-bottom: 40px;
+  font-size: clamp(20px, 4vw, 24px);
+}
+h2 {
+  margin-bottom: 50px;
+  font-size: clamp(16px, 4vw, 24px);
+}
+button {
+  width: auto;
+  padding: 20px;
+  background-color: var(--lightPink);
+  margin-top: 70px;
+  font-weight: 900;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* “MES INFORMATIONS PERSONNELLES” */
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.twoColumnForm {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.leftFormPart,
+.rightFormPart {
+  flex: 1;
+  width: 550px;
+  height: auto;
+}
+.cell {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  color: var(--grey);
+  font-style: italic;
+  font-size: 16px;
+  margin: 40px 0;
+}
+input {
+  font-size: 16px;
+  margin-right: 150px;
+  border: none;
+  border-bottom: 1px solid var(--black);
+  line-height: 1.5;
+}
+input:focus {
+  outline: 2px solid var(--lightPink);
+  outline-offset: -2px;
+  /* pour etre pile sur la ligne border bottom */
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.error-message p {
+  color: var(--redLine);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* CHANGEMENT DE MOT DE PASSE */
+.inputPlusEyeContainer {
+  display: flex;
+  align-items: center;
+  width: 480px;
+  border-bottom: 1px solid var(--black);
+  margin-top: 40px;
+}
+.inputPSW {
+  width: 450px;
+  margin-right: 10px;
+  border: none;
+}
+.fas {
+  margin-right: 10px;
+}
+.inputPlusEyeContainer:focus-within {
+  background-color: var(--lightPink);
+}
+
+/* ROBUST PWD */
+.validationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.validationContainer .block {
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+.valid {
+  color: var(--grey);
+}
+
+.invalid {
+  color: var(--redLine);
+}
+
+/* “SUPPRESSION” */
+.deleteAccountContainer {
+  display: flex;
+  justify-content: space-between;
+}
+p {
+  width: 570px;
+  font-size: clamp(12px, 4vw, 16px);
+}
+.deleteBTN {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  width: 150px;
+  text-align: center;
+  margin-right: 150px;
+}
+.deleteAccountSection {
+  margin-bottom: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .twoColumnForm {
+    flex-direction: column;
+  }
+
+  .deleteAccountContainer {
+    flex-direction: column;
+  }
+
+  input {
+    margin-right: 0px;
+    width: 100%;
+    max-width: 400px;
+  }
+  p {
+    width: 400px;
+  }
+  .inputPlusEyeContainer {
+    width: 400px;
+    /* margin-top: 30px; */
+  }
+  .leftFormPart,
+  .rightFormPart {
+    width: 400px;
+  }
+
+  label {
+    margin: 20px 0;
+  }
+  button {
+    padding: 20px;
+    margin-top: 50px;
+  }
+  section {
+    padding: 40px 60px;
+  }
+  .deconnexionh1 {
+    margin-bottom: 0;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+}

@@ -13,7 +13,7 @@ export class CompanionshipSchedulerComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('MAÉ ♡ | Rencontres');
+    this.titleService.setTitle('MaÉ ♡ | Rencontres');
   }
 
 }
