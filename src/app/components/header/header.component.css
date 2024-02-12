@@ -170,6 +170,8 @@ a {
     background-color: var(--white);
     margin-left: -200%;
     transition: all 0.8s ease;
+    z-index: 2; /*pour passer au dessus du hero en z-index 1*/
+
   }
   .mobileMenu {
     margin-left: 0;
