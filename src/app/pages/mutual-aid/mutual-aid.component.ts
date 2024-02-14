@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AccordionComponent } from "../../components/accordion/accordion.component";
 
 @Component({
-  selector: 'app-mutual-aid',
-  standalone: true,
-  imports: [],
-  templateUrl: './mutual-aid.component.html',
-  styleUrl: './mutual-aid.component.css'
+    selector: 'app-mutual-aid',
+    standalone: true,
+    templateUrl: './mutual-aid.component.html',
+    styleUrl: './mutual-aid.component.css',
+    imports: [AccordionComponent]
 })
 export class MutualAidComponent  implements OnInit {
 

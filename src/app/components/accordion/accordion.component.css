@@ -1,0 +1,46 @@
+.sectionAccordion {
+    padding: 40px 60px;
+}
+p {
+    text-align: start;
+    padding-bottom: 30px;
+    margin: 0;
+    line-height: 20px;
+}
+.container {
+    width: 100%;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    border-bottom: none;
+    padding: 20px 30px;
+    color: var(--black);
+    cursor: pointer;
+}
+span {
+    margin-left: 20px;
+}
+.content {
+    padding: 0 20px;
+    border: 1px solid transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: ease 0.5s;
+    line-height: 20px;
+    white-space: pre-line;
+}
+.active .content {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 2px solid var(--redLine);
+    border-top: none;
+    border-bottom: none;
+}
+hr {
+    margin: 0;
+}
+  
