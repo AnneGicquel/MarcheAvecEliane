@@ -1,1 +1,11 @@
-<app-accordion></app-accordion>
+<app-hero
+  [currentPage]="currentPageId"
+  [heroPicture]="currentPageId.heroPicture"
+>
+</app-hero>
+
+<app-accordion
+  [intro]="currentPageId.intro"
+  [items]="currentPageId.accordionItem"
+>
+</app-accordion>

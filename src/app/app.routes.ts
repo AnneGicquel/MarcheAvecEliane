@@ -49,7 +49,7 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "mutualAid",
+    path: 'mutualAid/:id',
     component: MutualAidComponent
   },
   {

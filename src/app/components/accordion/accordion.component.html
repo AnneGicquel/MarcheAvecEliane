@@ -1,29 +1,24 @@
 <section class="sectionAccordion">
-    <p>
-      Ces conseils visent à créer une expérience d'accompagnement enrichissante,
-      centrée sur le respect mutuel et la compréhension. <br>La communication ouverte,
-      la flexibilité et la sensibilité aux besoins individuels sont des éléments
-      clés pour établir des relations positives entre les bénévoles et les
-      personnes âgées.
-    </p>
-    <div class="container">
-      @for (item of items; track item; let $index = $index) {
-      <ul
-        class="item"
-        [ngClass]="{ active: item.active }"
-        (click)="itemClicked($index)"
-      >
-        <li class="heading">
-          <h4>{{ item.title }}</h4>
-          <span>{{ item.active ? 'ｘ' : '＋' }}</span>
-        </li>
-  
-        <li class="content">
-          <article>{{ item.content }}</article>
-        </li>
-      </ul>
-      }
-      <hr />
-    </div>
-  </section>
-  
+  <p>
+    {{ intro }}
+  </p>
+  <div class="container">
+    @for (item of items; track item; let $index = $index) {
+    <ul
+      class="item"
+      [ngClass]="{ active: item.isActive }"
+      (click)="itemClicked($index)"
+    >
+      <li class="heading">
+        <h4>{{ item.heading }}</h4>
+        <span>{{ item.isActive ? "ｘ" : "＋" }}</span>
+      </li>
+
+      <li class="content">
+        <article>{{ item.content }}</article>
+      </li>
+    </ul>
+    }
+    <hr />
+  </div>
+</section>
