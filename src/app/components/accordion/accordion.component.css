@@ -1,11 +1,12 @@
 .sectionAccordion {
     padding: 40px 60px;
+    white-space: pre-line;
+    line-height: 25px;
 }
 p {
     text-align: start;
     padding-bottom: 30px;
     margin: 0;
-    line-height: 20px;
 }
 .container {
     width: 100%;
@@ -16,7 +17,7 @@ p {
     background-color: var(--white);
     border: 1px solid var(--black);
     border-bottom: none;
-    padding: 20px 30px;
+    padding: 40px 30px;
     color: var(--black);
     cursor: pointer;
 }
@@ -29,8 +30,6 @@ span {
     max-height: 0;
     overflow: hidden;
     transition: ease 0.5s;
-    line-height: 20px;
-    white-space: pre-line;
 }
 .active .content {
     padding: 20px;
