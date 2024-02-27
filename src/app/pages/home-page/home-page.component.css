@@ -43,7 +43,7 @@
 /* RED LINE */
 .redLine {
   position: absolute;
-  top: 638px;
+  top: 625px;
   width: 100%;
   height: auto;
 }
@@ -98,6 +98,7 @@ h1 {
 .sectionVolunteers {
   display: flex;
   flex-direction: column;
+  padding: 0 40px;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 110px;
@@ -178,6 +179,12 @@ h1 {
     flex-direction: column;
     height: 846px;
     width: auto;
+  }
+  .sectionVolunteers{
+    align-items: center;
+  }
+  .sectionVolunteers h1{
+    margin-bottom: 50px;
   }
 }
 /* ********************** */
