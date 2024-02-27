@@ -27,7 +27,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "mutualAid",
     subtitle: "communication",
     heroPicture: {
-      src: "assets/images/pictures/MutualAid2/communication.jpg",
+      src: "assets/images/mutualAid/communication.jpeg",
       alt: "test",
     },
     intro:"Ces conseils visent à créer une expérience d'accompagnement enrichissante, centrée sur le respect mutuel et la compréhension. \nLa communication ouverte, la flexibilité et la sensibilité aux besoins individuels sont des éléments clés pour établir des relations positives entre les bénévoles et les personnes âgées.",
@@ -98,7 +98,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "mutualAid",
     subtitle: "santé & sécurité",
     heroPicture: {
-      src: "assets/images/pictures/MutualAid2/sante.png",
+      src: "assets/images/mutualAid/securiteSante.jpg",
       alt: "test",
     },
     intro:
@@ -160,7 +160,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "mutualAid",
     subtitle: "comportement",
     heroPicture: {
-      src: "assets/images/pictures/MutualAid2/comportement.jpg",
+      src: "assets/images/mutualAid/comportement.jpeg",
       alt: "test",
     },
     intro:
@@ -265,7 +265,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "mutualAid",
     subtitle: "besoin d'aide",
     heroPicture: {
-      src: "assets/images/pictures/MutualAid2/aide.jpg",
+      src: "assets/images/mutualAid/aide.jpeg",
       alt: "besoin d'aide test",
     },
     accordionItem: [
@@ -285,7 +285,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "aboutUs",
     subtitle: "à propos",
     heroPicture: {
-      src: "assets/images/pictures/homePage 2/asian-senior-man-sitting-wheelchair-japanese-men-field-31264463.jpeg",
+      src: "assets/images/aboutUs/histoire.jpeg",
       alt: "à propos test",
     },
   },
@@ -294,7 +294,7 @@ export const PAGESDATA: IpagesData[] = [
     category: "aboutUs",
     subtitle: "charte de bienveillance",
     heroPicture: {
-      src: "assets/images/pictures/homePage 2/asian-senior-man-sitting-wheelchair-japanese-men-field-31264463.jpeg",
+      src: "assets/images/aboutUs/charte.jpeg",
       alt: "charte de bienveillance test",
     },
   },
