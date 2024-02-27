@@ -8,16 +8,17 @@ footer{
 
 /* BTN */
 button {
+    width: auto;
+    padding: 25px 50px;
     background-color: var(--lightPink);
-    width: 370px;
-    /* BUTTON SIZE TO FIX !!! */
-    height: 70px;
-    text-align: center;
-    /* padding: 20px; */
+    margin-top: 70px;
+    font-weight: 900;
     font-size: clamp(25px, 3vw, 30px);
-    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
     /* text-transform: uppercase; */
     margin-bottom: 60px;
+    margin-top: 20px;
 }
 
 /* CONTACT CONTAINER */
@@ -51,11 +52,16 @@ button {
     justify-content: space-between;
     align-items: center;
     width: 80vw;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .footerMenu li {
     display: flex;
     align-items: center;
+}
+
+
+.footerMenu li:hover {
+    text-decoration: underline;
 }
 nav ul li a{
     color: var(--grey);
@@ -72,7 +78,7 @@ nav ul li a{
     .footerMenu {
         flex-direction: column;
         align-items: center;
-        /* margin: 0; */
+        margin-bottom: 40px;
     }
     .footerMenu li {
         margin: 5px 0;
