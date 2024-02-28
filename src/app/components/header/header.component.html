@@ -29,11 +29,15 @@
           <div
             class="dropdown"
             *ngIf="isOpenAboutUs"
-            (appOutSideClick)="isOpenAboutUs"
+            (appOutSideClick)="(isOpenAboutUs)"
             (outSideClick)="isOpenAboutUs = false"
           >
-            <div class="menu-item"><a routerLink="/aboutUs">notre histoire</a></div>
-            <div class="menu-item"><a routerLink="/aboutUs">notre charte</a></div>
+            <div class="menu-item">
+              <a routerLink="/aboutUs">notre histoire</a>
+            </div>
+            <div class="menu-item">
+              <a routerLink="/aboutUs">notre charte</a>
+            </div>
           </div>
         </li>
 
@@ -49,11 +53,15 @@
           <div
             class="dropdown"
             *ngIf="isOpenMutualAid"
-            (appOutSideClick)="isOpenMutualAid"
+            (appOutSideClick)="(isOpenMutualAid)"
             (outSideClick)="isOpenMutualAid = false"
           >
-            <div class="menu-item"><a routerLink="/mutualAid/2">nos conseils</a></div>
-            <div class="menu-item"><a routerLink="/mutualAid/1">besoin d'aide</a></div>
+            <div class="menu-item">
+              <a routerLink="/mutualAid/2">nos conseils</a>
+            </div>
+            <div class="menu-item">
+              <a routerLink="/mutualAid/1">besoin d'aide</a>
+            </div>
           </div>
         </li>
       </div>
@@ -66,12 +74,19 @@
         <div
           class="dropdown"
           *ngIf="isOpenAccountSettings"
-          (appOutSideClick)="isOpenAccountSettings"
+          (appOutSideClick)="(isOpenAccountSettings)"
           (outSideClick)="isOpenAccountSettings = false"
         >
-          <div class="menu-item"><a routerLink="/accountSettings">informations</a></div>
-          <div class="menu-item"><a routerLink="/accountSettings">mot de passe</a></div>
-          <div class="menu-item"><a routerLink="/accountSettings">déconnexion</a></div>
+          <div class="menu-item">
+            <a routerLink="/accountSettings">informations</a>
+          </div>
+          <div class="menu-item">
+            <a routerLink="/login"><button class="signOutBtn">
+              <!-- <button (click)="logout()"> -->
+              Déconnexion &nbsp;<i class="fas fa-sign-out-alt"></i>
+            </button>
+          </a>
+          </div>
         </div>
       </li>
     </ul>
