@@ -258,8 +258,8 @@
         <span
           class="block"
           [ngClass]="{
-            valid: passwordFormField?.value?.match('(?=.*[!@#$%^&*])'),
-            invalid: !passwordFormField?.value?.match('(?=.*[!@#$%^&*])')
+            valid: passwordFormField?.value?.match('[^a-zA-Z0-9\s]'),
+            invalid: !passwordFormField?.value?.match('[^a-zA-Z0-9\s]')
           }"
         >
           {{ passwordFormField?.value?.match("[^a-zA-Z0-9\s]") ? "✔️" : "❌" }}
