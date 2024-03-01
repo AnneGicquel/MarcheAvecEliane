@@ -3,8 +3,7 @@ header {
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 }
 
 nav {
@@ -80,9 +79,9 @@ input[type="checkbox"]:checked ~ .animatedBurgerIcon > .diagonal.part-2 {
 
 /* LOGO */
 .logoContainer img {
-  margin-top: 15px;
-  width: 300px;
+  width: 270px;
   height: auto;
+  margin-bottom: 20px;
 }
 
 /* NAV TO SIDEBAR */
@@ -156,9 +155,6 @@ a {
   background-color: var(--white);
   border-bottom: 1px solid var(--black);
 }
-.dropdown .signOutBtn {
-
-}
 
 /* RESPONSIVE */
 @media (max-width: 1085px) {
@@ -194,8 +190,7 @@ a {
   }
   .logoContainer img {
     margin-left: 80px;
-    /* ? ⬇️ ⬆ TO FIX WITH THE RIGHT LOGO ? */
-    /* **** LOGO TO CENTER ? **** */
+    margin-bottom: 10px;
   }
   ul {
     width: 100px;
