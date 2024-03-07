@@ -1,12 +1,12 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { OutSideClickDirective } from '../../directives/outside-click.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule, OutSideClickDirective],
+  imports: [RouterLink, CommonModule, OutSideClickDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

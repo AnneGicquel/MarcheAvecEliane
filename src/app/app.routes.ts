@@ -22,6 +22,7 @@ export const routes: Routes = [
   },
   {
     path: "aboutUs",
+    title:'À propos | MaÉ',
     component: AboutUsComponent
   },
   {
@@ -49,7 +50,8 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'mutualAid/:id',
+    path: 'mutualAid/:subtitle',
+    title:'Entraide | MaÉ',
     component: MutualAidComponent
   },
   {

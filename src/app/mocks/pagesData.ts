@@ -96,7 +96,7 @@ export const PAGESDATA: IpagesData[] = [
   {
     id: 2,
     category: "mutualAid",
-    subtitle: "santé & sécurité",
+    subtitle: "bien-etre",
     heroPicture: {
       src: "assets/images/mutualAid/securiteSante.jpg",
       alt: "test",
@@ -263,7 +263,7 @@ export const PAGESDATA: IpagesData[] = [
   {
     id: 4,
     category: "mutualAid",
-    subtitle: "besoin d'aide",
+    subtitle: "aide",
     heroPicture: {
       src: "assets/images/mutualAid/aide.jpeg",
       alt: "besoin d'aide test",

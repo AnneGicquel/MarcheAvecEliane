@@ -8,12 +8,14 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css'
 })
-export class AboutUsComponent implements OnInit {
+export class AboutUsComponent{
+  
+// export class AboutUsComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  // constructor(private titleService: Title) { }
 
-  ngOnInit(): void {
-    this.titleService.setTitle('MaÉ ♡ | À propos');
-  }
+  // ngOnInit(): void {
+  //   this.titleService.setTitle('MaÉ ♡ | À propos');
+  // }
 
 }
