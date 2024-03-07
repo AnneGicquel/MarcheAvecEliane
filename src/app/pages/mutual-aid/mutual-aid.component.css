@@ -1,0 +1,23 @@
+/* NAV */
+nav {
+    padding: 20px 70px;
+    display: flex;
+    justify-content: center;
+  }
+ul {
+    width: 100%;
+    display: flex;
+  justify-content: space-around;
+}
+a {
+    /* a retravailler !!  */
+  font-size: clamp(12px, 3vw, 18px);
+  color: var(--black);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.active{
+    border-bottom: 2px solid red;
+    transform: scale(1.1);
+    transition: border-bottom 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}

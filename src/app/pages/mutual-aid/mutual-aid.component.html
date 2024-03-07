@@ -1,11 +1,46 @@
+<!-- HERO -->
 <app-hero
-  [currentPage]="currentPageId"
-  [heroPicture]="currentPageId.heroPicture"
+  [currentPage]="currentPageSubtitle"
+  [heroPicture]="currentPageSubtitle.heroPicture"
 >
 </app-hero>
 
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <!-- COMMUNICATION -->
+    <li>
+      <a routerLink="/mutualAid/communication" 
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page">communication</a>
+    </li>
+    <!-- SANTE & SECURITE  -->
+    <li>
+      <a routerLink="/mutualAid/bien-etre" 
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page">bien-être</a>
+    </li>
+
+    <!-- COMPORTEMENT  -->
+    <li>
+      <a routerLink="/mutualAid/comportement" 
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page">comportement</a>
+    </li>
+
+    <!-- BESOIN D AIDE -->
+    <li>
+      <a routerLink="/mutualAid/aide" 
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page">aide</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ACCORDION -->
 <app-accordion
-  [intro]="currentPageId.intro"
-  [items]="currentPageId.accordionItem"
+  [intro]="currentPageSubtitle.intro"
+  [items]="currentPageSubtitle.accordionItem"
 >
 </app-accordion>
