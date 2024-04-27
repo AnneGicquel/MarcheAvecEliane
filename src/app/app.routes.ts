@@ -18,19 +18,22 @@ import { SiteMapComponent } from './pages/site-map/site-map.component';
 export const routes: Routes = [
   {
     path: "",
+    title:'Accueil | MaÉ ♡',
     component: HomePageComponent
   },
   {
-    path: "aboutUs",
-    title:'À propos | MaÉ',
+    path: "a_propos/:subtitle",
+    title:'À propos | MaÉ ♡',
     component: AboutUsComponent
   },
   {
-    path: "accountSettings",
+    path: "mes_informations",
+    title:'Mes informations | MaÉ ♡',
     component: AccountSettingsComponent
   },
   {
-    path: "companionshipScheduler",
+    path: "rencontres",
+    title:'Rencontres | MaÉ ♡',
     component: CompanionshipSchedulerComponent
   },
   {
@@ -50,8 +53,8 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'mutualAid/:subtitle',
-    title:'Entraide | MaÉ',
+    path: 'entraide/:subtitle',
+    title:'Entraide | MaÉ ♡',
     component: MutualAidComponent
   },
   {

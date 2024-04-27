@@ -11,7 +11,7 @@
     >
       <li class="heading">
         <h4>{{ item.heading }}</h4>
-        <span>{{ item.isActive ? "ｘ" : "＋" }}</span>
+        <span><i class="{{ item.isActive ? 'fas fa-times close' : 'fas fa-plus' }}"></i></span>
       </li>
 
       <li class="content">

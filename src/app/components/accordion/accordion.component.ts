@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { IaccordionItem, IpagesData, PAGESDATA } from '../../mocks/pagesData';
+import { IaccordionItem, IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
 
 @Component({
   selector: 'app-accordion',

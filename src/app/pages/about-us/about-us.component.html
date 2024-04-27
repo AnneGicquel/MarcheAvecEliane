@@ -1,1 +1,126 @@
-<p>about-us works!</p>
+<!-- HERO -->
+<app-hero
+  [currentPage]="currentAboutPageSubtitle"
+  [heroPicture]="currentAboutPageSubtitle.heroPicture"
+>
+</app-hero>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <!-- NOTRE HISTOIRE -->
+    <li>
+      <a
+        routerLink="/a_propos/histoire"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >notre histoire</a
+      >
+    </li>
+    <!-- NOTRE CHARTE -->
+    <li>
+      <a
+        routerLink="/a_propos/charte"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >notre charte</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<!-- TEXT HISTOIRE-->
+@if (router.url.endsWith('/histoire')) {
+<div class="text">
+  <p>
+    Le projet "Marche avec Eliane" tire son nom d'une rencontre que j'ai faite
+    un jour avec Eliane qui m'a profondément chahuté.
+  </p>
+  <p>
+    Alors que je me promenais, j'ai croisé une dame en déambulateur se faisant
+    agresser par un individu dans une rue déserte. Je l’ai rejointe et nous
+    sommes restées ensemble jusqu'à ce que l'agresseur soit parti, puis je l'ai
+    raccompagnée chez elle.
+  </p>
+  <p>
+    Au cours de cette rencontre, elle m'a confié avoir été agressée à plusieurs
+    reprises et parfois avoir été abandonnée par les passants sans défense. Elle
+    m'a confié qu'elle ne sortait plus aussi souvent par peur d'être à nouveau
+    agressée. Cette révélation m'a profondément troublée, car je n'avais jamais
+    imaginé à quel point les personnes âgées pouvaient être vulnérables et se
+    sentir en danger dans les rues. 
+  </p>
+  <p>
+    C'est à partir de cette expérience marquante qu'est née l'idée du projet
+    "Marche avec Eliane". J'ai ressenti le besoin de créer une solution pour
+    protéger les personnes âgées, leur offrir un sentiment de sécurité
+    lorsqu'elles se déplacent à l'extérieur. De retrouver cette liberté qui leur
+    appartient.
+  </p>
+  <p>Anne Gicquel</p>
+</div>
+}
+
+<!-- ou TEXT CHARTE -->
+@if (router.url.endsWith('/charte')) {
+<div class="text">
+  <p>
+    Les 10 principes fondamentaux de "Marche avec Eliane" s'adressent à tous
+    les acteur·rices engagé·es dans l'accompagnement bienveillant des personnes
+    âgées. Cette charte vise à orienter les pratiques quotidiennes, garantissant
+    un soutien optimal et respectueux. Voici les principes clés :</p> 
+    <p class="strongPoint">1 -
+    Reconnaître chaque personne dans son humanité et sa citoyenneté, préservant
+    sa dignité inaliénable et son identité unique.</p> 
+    <p>Témoigner solidarité et
+    sollicitude, indépendamment de l'âge, de l'état de santé, des capacités ou
+    du mode de vie. </p>
+    <p class="strongPoint">2 - Favoriser le plein exercice des potentialités de chaque
+    individu, tout en veillant à la préservation de ses droits.</p> 
+    <p>Maintenir son
+    intégrité, son bien-être et ses intérêts, en limitant les restrictions à
+    l'exercice de ses libertés.</p> 
+    <p class="strongPoint">3 - Être à l'écoute des savoirs et des
+    expressions de la personne.Fournir des informations honnêtes et adaptées,
+    respectant ses décisions.</p> 
+    <p>Obtention du consentement ou assentiment et prise
+    en compte de son histoire, de sa culture et de ses valeurs.</p> 
+    <p class="strongPoint">4 - Garantir un
+    accès équitable à des soins et à des aides appropriés.</p> 
+    <p>Assurer une
+    évaluation régulière des besoins, évaluant l'impact des interventions sur le
+    bien-être global de la personne.</p> 
+    <p class="strongPoint">5 - Protéger le droit de chaque personne à
+    une vie sociale, familiale, affective et intime.</p>
+    <p>Respecter sa vie privée et
+    préserver son intimité, ainsi que la confidentialité des informations la
+    concernant.</p> 
+    <p class="strongPoint">6 - Accompagner de manière globale et individualisée, même
+    lorsque des aides ou des soins importants sont nécessaires.</p> 
+    <p>Considérer tous
+    les besoins physiques, psychiques et sociaux. Favoriser l'autonomie de vie
+    et l'inclusion dans la société.</p> 
+    <p class="strongPoint">7 - Assurer une qualité de vie optimale
+    jusqu'au terme de l'existence.</p> 
+    <p>Permettre l'expression préalable des
+    préférences et des volontés. Prendre soin des mourants et honorer les
+    défunts.</p> 
+    <p class="strongPoint">8 - Respecter la diversité des savoirs, compétences, rôles et
+    droits des familles et des proches.</p> 
+    <p>Soutenir les aidants familiaux et les
+    proches aidants, en construisant des liens de coopération si la personne
+    accompagnée le souhaite.</p> 
+    <p class="strongPoint">9 - Prendre soin des professionnels et des
+    bénévoles, les considérer et les soutenir dans leur engagement.</p> 
+    <p>Favoriser un
+    environnement où ils se sentent écoutés et reconnus dans leurs compétences.
+    Sensibiliser à la prévention des maltraitances.</p> 
+    <p class="strongPoint">10 - Prendre des décisions
+    informées, réfléchies et concertées dans l'intérêt de toustes.</p> 
+    <p>Encourager la
+    production de savoirs et la remontée d'informations. Favoriser le
+    questionnement, la réflexion et la collégialité des décisions en consultant
+    toutes les personnes concernées.
+  </p>
+</div>
+}

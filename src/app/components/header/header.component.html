@@ -24,7 +24,7 @@
       <!-- ABOUT US -->
       <div class="navbarToSidebar">
         <li class="navItem">
-          <span (click)="toggleAboutUs()"> a propos ▿</span>
+          <span (click)="toggleAboutUs()">à propos <i class="fas fa-chevron-down"></i></span> 
           <!-- DROPDOWN -->
           <div
             class="dropdown"
@@ -33,22 +33,22 @@
             (outSideClick)="isOpenAboutUs = false"
           >
             <div class="menu-item">
-              <a routerLink="/aboutUs">notre histoire</a>
+              <a routerLink="/a_propos/histoire">notre histoire</a>
             </div>
             <div class="menu-item">
-              <a routerLink="/aboutUs">notre charte</a>
+              <a routerLink="/a_propos/charte">notre charte</a>
             </div>
           </div>
         </li>
 
         <!-- COMPANION SHIP SCHEDULER -->
         <li class="navItem">
-          <a routerLink="/companionshipScheduler">rencontres</a>
+          <a routerLink="/rencontres">rencontres</a>
         </li>
 
         <!-- MUTUAL AID -->
         <li class="navItem">
-          <span (click)="toggleMutualAid()">entraide ▿</span>
+          <span (click)="toggleMutualAid()">entraide <i class="fas fa-chevron-down"></i></span>
           <!-- DROPDOWN -->
           <div
             class="dropdown"
@@ -57,10 +57,10 @@
             (outSideClick)="isOpenMutualAid = false"
           >
             <div class="menu-item">
-              <a routerLink="/mutualAid/communication">nos conseils</a>
+              <a routerLink="/entraide/communication">nos conseils</a>
             </div>
             <div class="menu-item">
-              <a routerLink="/mutualAid/aide">notre aide</a>
+              <a routerLink="/entraide/aide">notre aide</a>
             </div>
           </div>
         </li>
@@ -78,7 +78,7 @@
           (outSideClick)="isOpenAccountSettings = false"
         >
           <div class="menu-item">
-            <a routerLink="/accountSettings">informations</a>
+            <a routerLink="/mes_informations">informations</a>
           </div>
           <div class="menu-item">
             <a routerLink="/login"><button class="signOutBtn">

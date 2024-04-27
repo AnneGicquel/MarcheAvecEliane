@@ -9,12 +9,20 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent    implements OnInit {
 
-  constructor(private titleService: Title) { }
-
-  ngOnInit(): void {
-    this.titleService.setTitle('MaÉ ♡ | Accueil');
-  }
+export class HomePageComponent {
 
 }
+
+
+// REMPLACÉ POUR UNE SIMPLE LIGNE DS ROUTES.TS
+
+// export class HomePageComponent implements OnInit {
+
+  // constructor(private titleService: Title) { }
+
+  // ngOnInit(): void {
+  //   this.titleService.setTitle('MaÉ ♡ | Accueil');
+  // }
+
+// }
