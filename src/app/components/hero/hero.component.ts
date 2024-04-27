@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IheroPicture, IpagesData, PAGESDATA } from '../../mocks/pagesData';
+import { IheroPicture, IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
 
 @Component({
   selector: 'app-hero',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccordionComponent } from '../../components/accordion/accordion.component';
-import { IpagesData, PAGESDATA } from '../../mocks/pagesData';
+import { IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
 import {
   ActivatedRoute,
   Params,

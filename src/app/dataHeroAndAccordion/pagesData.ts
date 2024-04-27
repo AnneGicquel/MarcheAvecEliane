@@ -283,7 +283,7 @@ export const PAGESDATA: IpagesData[] = [
   {
     id: 5,
     category: "aboutUs",
-    subtitle: "à propos",
+    subtitle: "histoire",
     heroPicture: {
       src: "assets/images/aboutUs/histoire.jpeg",
       alt: "à propos test",
@@ -292,7 +292,7 @@ export const PAGESDATA: IpagesData[] = [
   {
     id: 6,
     category: "aboutUs",
-    subtitle: "charte de bienveillance",
+    subtitle: "charte",
     heroPicture: {
       src: "assets/images/aboutUs/charte.jpeg",
       alt: "charte de bienveillance test",

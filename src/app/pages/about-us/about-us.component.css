@@ -1,0 +1,45 @@
+/* NAV */
+nav {
+  padding: 30px 20%;
+  display: flex;
+  justify-content: center;
+  /* border: black solid 2px; */
+}
+ul {
+  width: 100%;
+  /* width: 1050px; */
+  display: flex;
+  justify-content: space-around;
+  /* border: lightblue solid 2px; */
+}
+a {
+  /* a retravailler !!  */
+  font-size: clamp(12px, 3vw, 18px);
+  color: var(--black);
+  text-transform: uppercase;
+  cursor: pointer;
+  /* border: red solid 2px; */
+}
+.active {
+  border-bottom: 2px solid var(--redLine);
+  transform: scale(1.1);
+  transition: border-bottom 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* TEXT */
+.text {
+  /* padding: 20px 250px; */
+  /* a retravailler !!  */
+  font-size: clamp(12px, 3vw, 18px);
+  padding: 0 20%;
+  white-space: pre-line;
+  line-height: 25px;
+}
+p{
+  padding-bottom: 25px;
+}
+.strongPoint{
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
