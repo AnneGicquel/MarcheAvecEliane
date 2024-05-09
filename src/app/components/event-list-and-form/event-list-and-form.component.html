@@ -1,0 +1,97 @@
+<section class="eventListAndFormSection">
+    <div class="blackUnderline">
+      <h2 class="underlinedTitle">{{ title }}</h2>
+    </div>
+  
+    <!-- LIST OF EVENTS -->
+    <div class="allTheEvents">
+      <!-- ONE EVENT -->
+      @for (event of events ; track events){
+      <div class="event">
+        <!-- DATE - TIME -->
+        <div class="eventInfo">
+          <i class="fas fa-circle"></i>
+          <span class="eventDate">{{ event.date }} &nbsp; {{ event.time }}</span>
+        </div>
+  
+        <!-- NAME AND MANAGEMENT -->
+        <div class="namePlusIcon">
+          <span class="eventPersonRelated">{{ event.name }}</span>
+          <div class="mngmtIcon">  <!-- 🟢 ????? -->
+            <!-- Buttons for management -->
+            <!-- ADD -->
+            @if (showAddButton) {
+            <button class="add-event" (click)="toggleForm('add')">
+              <i class="fas fa-plus"></i>
+            </button>
+            }
+            <!-- EDIT -->
+            @if (showEditButton) {
+            <button class="add-event" (click)="toggleForm('edit')" (click)="onEditClick()">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            }
+            <!-- DELETE -->
+            @if (showDeleteButton) {
+            <button class="add-event" (click)="toggleForm('delete')" (click)="onDeleteClick()">
+            <!-- <button class="add-event"(click)="onDeleteClick()"> -->
+  <!-- ::::::::::::::::::::::::::::::: -->
+              <i class="fas fa-trash"></i>
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  
+    <!-- FORM -->
+    <div class="add-event-wrapper" [class.active]="isFormOpen">
+      <!-- HEADER -->
+      <div class="add-event-header">
+        <p class="title">{{ formTitle }}</p>
+        <i class="fas fa-times close" (click)="toggleForm('close')"></i>
+      </div>
+      <!-- BODY -->
+      <div class="add-event-body">
+  
+        <div class="add-event-info">
+          <span class="info">Éliane Sanchez</span>
+          <!-- <span class="info">{{pseudoSuivies}}</span> -->
+        </div>
+  
+        <div class="add-event-info">
+          <span class="info">10:00</span>
+          <!-- <span class="info">{{appointementTime}}</span> -->
+        </div>
+  
+        @if (showFormInfo) {
+        <div class="add-event-info">
+          <span class="info">Mar 16/05</span>
+          <!-- <span class="info">{{appointementDate}}</span> -->
+        </div>
+        } 
+        
+        @if (showFormDropdownInfo) {
+        <div class="add-event-info">
+          <label for="dateSelect">Ici :</label>
+          <select id="dateSelect" class="info">
+            <option value="Mar 16/05">Mar 16/05</option>
+            <option value="Mer 17/05">Mer 17/05</option>
+            <option value="Jeu 18/05">Jeu 18/05</option>
+            <option value="Ven 19/05">Ven 19/05</option>
+            <option value="null">Il n'y a pas de prochaine date</option>
+          </select>
+        </div>
+        }
+      </div>
+      <!-- FOOTER -->
+      <div class="add-event-footer">
+        <!-- Button for form action -->
+        <button class="add-event-btn">{{ formButtonLabel }}</button>
+      </div>
+    </div>
+  </section>
+  
+  
+  

@@ -1,0 +1,41 @@
+main {
+  display: flex;
+  justify-content: center;
+  /* min-height: 50vh; */
+  max-height: 88vh; /*<----------***************************************/
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.15);
+  /* no need in MaE*/
+  /* margin: 0;
+    padding: 0;
+    box-sizing: border-box; */
+}
+
+.calendarPart {
+  width: calc(100% / 2);
+  /* border: blue 2px solid; */
+}
+
+.eventListAndFormPart {
+  width: calc(100% / 3);
+  /* border: red 2px solid; */
+}
+
+/* RESPONSIVE */
+@media (max-width:1120px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    max-height: 300vh;
+  }
+    
+  .calendarPart {
+    order: 0;/* TO THE TOP */
+    min-width: 100%;
+  }
+
+  .eventListAndFormPart {
+    order: 1; /* TO THE BOTTOM */
+  min-width: 450px;
+
+  }
+}
