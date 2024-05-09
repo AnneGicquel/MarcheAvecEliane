@@ -1,1 +1,38 @@
-<p>companionship-scheduler works!</p>
+<main>
+    <!-- OUTINGS EVENT PART -->
+    <app-event-list-and-form
+      class="eventListAndFormPart"
+      [title]="'Sorties - ' + activeDate"
+      [events]="outings"
+      [formTitle]="'Souhaitez-vous accompagner :'"
+      [showFormInfo]="true"
+      [showFormDropdownInfo]="false"
+      [formButtonLabel]="'J\'aimerais lui tenir compagnie'"
+      [showAddButton]="true"
+      [showEditButton]="false"
+      [showDeleteButton]="false"
+    >
+    </app-event-list-and-form>
+  
+    <!-- CALENDAR PART -->
+    <app-calendar
+      class="calendarPart"
+      (activeDateChange)="activeDate = $event"
+    ></app-calendar>
+  
+  <!-- UPCOMINGS EVENT PART -->
+  <app-event-list-and-form
+  class="eventListAndFormPart"
+  [title]="'Vos rendez-vous à venir'"
+  [events]="upcomings"
+  [formTitle]="formTitle"
+  [showFormInfo]="showFormInfoIfEdit"
+  [showFormDropdownInfo]="showFormDropdownInfo"
+  [formButtonLabel]="label"
+  [showAddButton]="false"
+  [showEditButton]="true"
+  [showDeleteButton]="true"
+  (actionClicked)="onActionClicked($event)"
+  ></app-event-list-and-form>
+  </main>
+  

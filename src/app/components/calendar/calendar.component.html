@@ -1,0 +1,52 @@
+<section class="calendarSection">
+  
+    <div class="wrapper">
+      <!-- HEADER -->
+      <header>
+        <div class="currDate">
+          <i
+            class="fa fa-angle-left"
+            (click)="getPREVMonthAndDays()"
+          ></i>
+          <p class="currentDate">{{ currMonth }}&nbsp;{{ currYear }}</p>
+          <i
+            class="fa fa-angle-right"
+            (click)="getNEXTMonthAndDays()"
+          ></i>
+        </div>
+      </header>
+  
+      <!-- CALENDAR -->
+      <div class="calendar">
+        <!-- WEEKS -->
+        <ul class="weeks">
+          @for (dayW of daysOfWeek; track dayW){
+          <li class="dayLi">{{ dayW }}</li>
+          }
+        </ul>
+        <!-- DAYS -->
+        <ul class="days">
+          @for (day of days; track day){
+          <li class="dayLi" [ngClass]="{ active: isActive(day), nonActive : isNonActive(day)}" (click)="updateActiveDate(day)">{{ day }}</li> <!-- Appeler updateActiveDate() au clic -->
+          }
+        </ul>
+      </div>
+    </div>
+    
+    <!-- DIRECTION -->
+    <div class="direction">
+      <button class="goToTodayBtn" (click)="goToToday()">
+        aujourd'hui
+      </button>
+    </div>
+  
+    <!-- SEARCH -->
+    <div class="searchBar">
+        Recherche de sortie par nom de suivi.e<i class="fas fa-search"></i>
+    </div>
+    <div class="instructionCalendar">
+      Recherche par date - Cliquez sur le calendrier<i class="fas fa-arrow-up"></i>
+    </div>
+  
+  </section>
+  
