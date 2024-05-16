@@ -18,7 +18,7 @@ h1 {
 }
 h2 {
   margin-bottom: 50px;
-  font-size: clamp(16px, 4vw, 24px);
+  font-size: clamp(16px, 4vw, 20px);
 }
 button {
   width: auto;
@@ -30,7 +30,7 @@ button {
   cursor: pointer;
 }
 
-/* “MES INFORMATIONS PERSONNELLES” */
+/* “MES INFORMATIONS” */
 .formContainer {
   display: flex;
   justify-content: space-between;
@@ -51,7 +51,7 @@ button {
   flex-direction: column;
 }
 label {
-  color: var(--grey);
+  color: var(--mediumGrey);
   font-style: italic;
   font-size: 16px;
   margin: 40px 0;
@@ -77,6 +77,9 @@ input:focus {
 }
 
 /* CHANGEMENT DE MOT DE PASSE */
+.pwdInstructions{
+  font-weight: var(--semiBold);
+}
 .inputPlusEyeContainer {
   display: flex;
   align-items: center;
@@ -109,7 +112,7 @@ input:focus {
   font-size: 12px;
 }
 .valid {
-  color: var(--grey);
+  color: var(--mediumGrey);
 }
 
 .invalid {
