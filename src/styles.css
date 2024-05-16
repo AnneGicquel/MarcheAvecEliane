@@ -7,13 +7,15 @@
 
 /* VARIABLES */
 :root {
---redLine: #FF0000;
 --black: #000000;
---grey: #606060;
+--mediumGrey: #808080;
+--lightGrey: #CAC7C7;
+--clay:#f2f2f2;
 --white: #FFFFFF;
+--redLine: #FF001F;
 --darkPink: #F8595B;
 --lightPink: #FFBFC3;
---babyPink: #FFF7F7;
+/* --babyPink: #FFF7F7; */
 --primaryFont:'Montserrat', sans-serif;
 --secondaryFont:'Montserrat Alternates', sans-serif;
 --semiBold: 600;
