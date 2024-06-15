@@ -16,8 +16,17 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { SiteMapComponent } from './pages/site-map/site-map.component';
 
 export const routes: Routes = [
+  { path: "", 
+    redirectTo: '/connexion',
+    pathMatch: 'full' 
+  },
   {
-    path: "",
+    path: "connexion",
+    // title:'Connexion | MaÉ ♡',
+    component: LoginComponent
+  },
+  {
+    path: "accueil",
     title:'Accueil | MaÉ ♡',
     component: HomePageComponent
   },
@@ -49,17 +58,18 @@ export const routes: Routes = [
     component: LegalNoticeComponent
   },
   {
-    path: "login",
-    component: LoginComponent
-  },
-  {
     path: 'entraide/:subtitle',
     title:'Entraide | MaÉ ♡',
     component: MutualAidComponent
   },
   {
     path: "notFound",
+    // title:'404 | MaÉ ♡',
     component: NotFoundComponent
+  },
+  { 
+    path: '**', 
+    redirectTo: '/notFound' 
   },
   {
     path: "passwordResetInstructions",

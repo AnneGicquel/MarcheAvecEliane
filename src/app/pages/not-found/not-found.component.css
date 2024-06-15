@@ -1,0 +1,31 @@
+section{
+    display: flex;
+    justify-content: center;
+}
+img   
+{
+    width: 65%;
+    /* height: auto; */
+    object-fit: cover;
+}
+
+/* Centered text */
+.text {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+@media (max-width: 1350px) {
+    img {
+        width: 80%;
+    }
+}
+@media (max-width: 900px) {
+    img {
+        width: 100%;
+    }
+}
+

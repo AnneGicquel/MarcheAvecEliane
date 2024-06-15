@@ -1,9 +1,10 @@
 <main class="appMain">
-
+@if(!isLoginPage()){
   <app-header class="header"></app-header>
- 
+}
   <router-outlet></router-outlet>
 
+@if(!isLoginPage()){
   <app-footer class="footer"></app-footer>
-
+}
 </main>
