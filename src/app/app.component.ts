@@ -16,6 +16,11 @@ export class AppComponent {
   title = 'Marche Avec Éliane';
   // url:string = "";
 
+ // LoginPage without header & footer
+  isLoginPage(): boolean {
+    return this.router.url === '/connexion';
+  }
+
   // SCROLL TO TOP
   constructor ( 
     private router: Router, 
