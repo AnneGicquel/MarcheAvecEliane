@@ -31,6 +31,8 @@
   font-size: 18px;
   font-weight: bold;
   padding: 18px 41px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .heroImg {
   height: 100%;

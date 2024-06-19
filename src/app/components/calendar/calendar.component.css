@@ -86,7 +86,7 @@ header i {
 }
 .nonActive {
   color: var(--lightGrey);
-  pointer-events: none; /* Désactiver les événements de souris pour empêcher le survol */
+  pointer-events: none; /* Désactiver les événements de souris pour empêcher le hover */
 }
 
 /* DIRECTION */
