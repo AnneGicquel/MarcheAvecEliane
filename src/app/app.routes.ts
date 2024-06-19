@@ -50,7 +50,8 @@ export const routes: Routes = [
     component: ConnectionOKComponent
   },
   {
-    path: "contentManagement",
+    path: "gestion_des_demandes",
+    title:'Gestion des demandes | MaÉ ♡',
     component: ContentManagementComponent
   },
   {
