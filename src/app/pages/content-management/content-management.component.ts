@@ -54,6 +54,10 @@ export class ContentManagementComponent implements OnInit {
   selectedElderly: Elderly | null = null;
   // 🟡 OUTING PART
   outings: Outing[] = [];
+  // 🟢 MOBILE PART
+  activeTab: string = 'calendarArticle'; // tab par défaut
+  isMobile: boolean = false;
+  // this.isMobile = window.innerWidth <= 950; 
 
   constructor(
     private schedulerService: SchedulerService,
@@ -68,6 +72,10 @@ export class ContentManagementComponent implements OnInit {
     this.initializeHours();
     // 🟣 ELDERLY PART
     this.fetchElderlies();
+    // 🟢 MOBILE PART
+    this.setupTabButtons(); // gestion des tabs
+    // this.checkScreenSize();
+    // window.addEventListener('resize', () => {this.checkScreenSize();});
   }
 
   //////////////////////////////////////// CALENDAR PART ////////////////////////////////////////
@@ -244,28 +252,22 @@ export class ContentManagementComponent implements OnInit {
   //////////////////////////////////////// 🟣 ELDERLY PART ////////////////////////////////////////
 
   fetchElderlies(): void {
-    this.elderlyService.getAllElderlies().subscribe(
-      (data: Elderly[]) => {
-        this.elderlies = data;
-        console.log('Elderlies fetched successfully', this.elderlies); // CHECK IN CONSOLE
-      }
-      // ,
-      // (error) => {
-      //   console.error('Error fetching elderlies', error);
-      // }
-    );
+    this.elderlyService.getAllElderlies().subscribe((data: Elderly[]) => {
+      this.elderlies = data;
+      //console.log('ELDERLIES FETCHED !!!!!! : ', this.elderlies); // CHECK IN CONSOLE
+    });
   }
 
+  // if (this.selectedDate) {
+  //   const selectedDateTime = `${this.selectedDate} ${elderly.pseudo}`;
+  //   // 🚨 🚨 🚨 DECOMMENTER this.saveSelectedDateTime(selectedDateTime); 🚨 🚨 🚨
+  //   //this.saveSelectedDateTime(selectedDateTime, this.selectedElderly );
+  //   this.selectedDate = null;
+  //   console.log('alors !! : ');
+  // }
+
   selectElderly(elderly: Elderly): void {
-    // 💎 Sauvegarde de la personne sélectionnée dans localStorage
     localStorage.setItem('selectedElderly', JSON.stringify(elderly));
-    if (this.selectedDate) {
-      const selectedDateTime = `${this.selectedDate} ${elderly.pseudo}`;
-      // 🚨 🚨 🚨 DECOMMENTER this.saveSelectedDateTime(selectedDateTime); 🚨 🚨 🚨
-      //this.saveSelectedDateTime(selectedDateTime, this.selectedElderly );
-      this.selectedDate = null;
-      console.log('alors !! : ');
-    }
   }
 
   onSelected(event: Event): void {
@@ -273,15 +275,12 @@ export class ContentManagementComponent implements OnInit {
     const selectedId = selectElement.value;
     this.selectedElderly =
       this.elderlies.find((elderly) => elderly.id === selectedId) || null;
-
     if (this.selectedElderly) {
       localStorage.setItem(
         'selectedElderly',
         JSON.stringify({ Elderly: this.selectedElderly })
       );
     }
-
-    // Vérification que l'elderly est bien stocké
     const storedElderly = localStorage.getItem('selectedElderly');
     if (storedElderly) {
       const elderly = JSON.parse(storedElderly);
@@ -380,5 +379,61 @@ export class ContentManagementComponent implements OnInit {
     } else {
       console.error('selectedDate or selectedElderly is null');
     }
+  }
+
+  /////////////////////// 🟢 MOBILE PART ///////////////////////
+  // checkScreenSize(): void {
+  //       this.isMobile = window.innerWidth <= 950; 
+  //     }
+      
+  
+  setActiveTab(
+    tabName: 'firstStepsArticle' | 'calendarArticle' | 'managementArticle'
+  ): void {
+    this.isMobile = true; 
+    this.activeTab = tabName;
+    console.log('tabName is : ' + tabName);
+    this.toggleTabsDisplay(this.activeTab);
+    this.updateActiveTabButton(this.activeTab); //tablinks.active
+  }
+
+  toggleTabsDisplay(activeTab: string): void {
+    this.isMobile = true; 
+    const sections = document.querySelectorAll<HTMLElement>('.tabcontent');
+    sections.forEach((section) => {
+      section.style.display = section.id === activeTab ? 'block' : 'none';
+    });
+  }
+
+  setupTabButtons(): void {
+    this.isMobile = true; 
+    const buttons = document.querySelectorAll('.tablinks');
+    buttons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const sectionId = (event.target as HTMLElement).getAttribute(
+          'data-section-id'
+        );
+        if (sectionId) {
+          this.setActiveTab(
+            sectionId as
+              | 'firstStepsArticle'
+              | 'calendarArticle'
+              | 'managementArticle'
+          );
+        }
+      });
+    });
+  }
+  updateActiveTabButton(activeTab: string): void {
+    this.isMobile = true; 
+    const buttons = document.querySelectorAll('.tablinks');
+    buttons.forEach((button) => {
+      const sectionId = button.getAttribute('data-section-id');
+      if (sectionId === activeTab) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    });
   }
 }
