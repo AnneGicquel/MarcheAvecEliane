@@ -16,11 +16,6 @@ export class OutingService {
   createNewOuting(outing: Outing): Observable<Outing> {
     return this.http.post<Outing>(`${this.apiUrl}/createNewOuting`, outing);
   }
-// ❌
-saveOuting(outing: Outing): Observable<any> {
-  return this.http.post<any>(`${this.apiUrl}/createNewOuting`, outing);
-}
-
 
   // GET ALL OUTINGS
   getAllOutings(selectedElderly: Elderly | null): Observable<Outing[]> {

@@ -13,7 +13,7 @@ button {
     background-color: var(--lightPink);
     margin-top: 70px;
     font-weight: 900;
-    font-size: clamp(25px, 3vw, 30px);
+    font-size: clamp(20px, 3vw, 30px);
     border-radius: 5px;
     cursor: pointer;
     /* text-transform: uppercase; */
@@ -66,7 +66,7 @@ button {
 nav ul li a{
     color: var(--mediumGrey);
     font-weight: var(--semiBold);
-    font-size: clamp(12px, 4vw, 14px);
+    font-size: 14px;
 }
 
 
@@ -74,6 +74,7 @@ nav ul li a{
 @media (max-width: 900px) {
     footer{
         height: auto;
+        border:2px solid red;
     }
     .footerMenu {
         flex-direction: column;
@@ -83,5 +84,20 @@ nav ul li a{
     .footerMenu li {
         margin: 5px 0;
     }
+    button {
+        padding: 15px 30px;
+        background-color: var(--lightPink);
+        margin:30px 0;
+    }
+    .logoContainer img {
+        width:220px;
+    }
+.contactContainer{
+    width: 400px;
+    margin-bottom: 20px; 
+}
+nav ul li a{
+    font-size: 10px;
+}
 }
     

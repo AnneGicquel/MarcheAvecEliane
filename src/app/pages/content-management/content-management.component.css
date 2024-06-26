@@ -1,454 +1,551 @@
 /* ********************* MAIN ********************* */
 main {
-    display: flex;
-    justify-content: center;
-    max-height: 88vh;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-  }
-  /* SECTIONS DISPATCHING */
-  .managementSection, .SectionOneAndTwo{
-    width: calc(100%/4);
-  }
-  
-  /* ********************* SECTION 1 & 2 ********************* */
-  /* SECTION 1 & 2 */
-  .SectionOneAndTwo {
-    /* position: relative; */
-    min-height: 100vh;
-  }
-  
-  /* TITLE */
-  .SectionOneAndTwo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  h2 {
-    /* font-size: clamp to do; */
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    flex-wrap: wrap;
-    border-bottom: 2px solid black;
-    margin-bottom: 50px;
-  }
-  .number-circle {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 50%;
-    background-color: black;
-    border: 2px solid black;
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
-    margin: 5px;
-    color: white;
-  
-  }
-  .blackUnderline {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* SEARCH BY */
-  .searchBar{
-    /* border: 2px solid red; */
-    padding: 15px;
-    color: black;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    margin-bottom: 30px;
-    border-radius: 10px;
-  }
-  .selectElderly{
-    font-size: 20px; 
-  }
-  select {
-    width: 100%;
-    height: 100%;
-    /* font-weight: 600; */
-    font-size: 16px;
-    padding: 15px 15px;
-    border: none;
-    /* border: 2px solid red; */
-    outline: none; /* bordure après clic */
-    border-radius: 10px;
-    /* margin: 17px 0;     */
-  }
-  .selectedElderly{
-    font-size: 30px;
-    margin-bottom: 30px;
-  }
-  .youChooseselectedElderlyP{
-    margin-bottom: 30px;
-  }
-  .fa-plus{
-    font-size:20px;
-  }
-  /* INSTRUCTION only DESKTOP */
-  .instructionGestionRDV{
-    margin-bottom: 30px;
-    width: 100%;
-    text-align: center;
-  }
-  .instruction3, .noNeedYet{
-    padding: 10px;
-    text-align: center;
-  }
-  
-p{
-  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100vh;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  padding: 20px;
 }
-  
-  /* ********************* CALENDAR ********************* */
-  .calendarSection {
-    width: calc(100%/2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  /* H1 */
-  h1{
-    margin-bottom: 100px;
-    font-size: 36px;
-  }
-  /* HEADER & CALENDAR WRAPPER */
-  .wrapper {
-    width: 450px;
-    background-color: white;
-    border-radius: 10px;
-    border: black 1px solid;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    margin-bottom: 30px;
-  }
-  /* HEADER */
-  header .currDate {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    font-size: 25px;
-    font-weight: bold;
-    /* border: red solid 2px; */
-  }
-  .currentDate{
-    align-self: center;
-  }
-  /* HEADER ARROWS */
-  header i {
-    cursor: pointer;
-    text-align: center;
-    align-self: center;
-    color: grey;
-    padding: 20px 60px; /* pour un meilleur access au clic*/
-  }
-  /* CALENDAR */
-  .wrapper .calendar {
-    padding: 20px;
-  }
-  .calendar ul {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-  .calendar .days {
-    margin-bottom: 20px;
-  }
-  /* each <li> occupera 1/7 du <ul> (wrap) */
-  .calendar ul li {
-    position: relative;
-    width: calc(100% / 7);
-  }
-  .dayLi {
-    z-index: 1;
-    cursor: pointer;
-    margin-top: 30px;
-  }
-  .days .dayLi::before {
-    position: absolute;
-    content: "";  /* pour le background color de l'active */
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .days .dayLi:hover::before {
-    background-color: #f2f2f2;
-  }
-  .days .dayLi.active::before {
-    background-color: #ffbfc3;
-  }
-  .nonActive {
-    color: var(--lightGrey);
-    pointer-events: none; /* Désactiver les événements de souris pour empêcher le hover */
-  }
-  /* DIRECTION */
-  .direction {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  button {
-    width: auto;
-    padding: 5px 10px;
-    background-color: var(--lightPink);
-    font-size: clamp(10px, 3vw, 15px);
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    border: 1px solid black;
-    margin-bottom: 40px;
-  }
-  /* HOURS Dropdown menu */
-  .dropdown {
-    position: absolute;
-    background-color: white;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    z-index: 1;
-  }
-  .dropdown p {
-    margin: 0 0 10px;
-  }
-  .dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .dropdown ul li {
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    text-align: center;
-  }
-  .dropdown ul li:hover {
-    background-color: #f0f0f0;
-    font-weight: 600;
-  }
-  .activeDate{
-    font-weight:600;
-    padding: 5px;
-  }
-  .headerDropdownHour{
-    background-color: #ffbfc3;
-    border-radius: 5px;
-    padding: 12px;
-  }
-  .close{
-    margin-left: 15px;
-    cursor: pointer;
-  }
-  
-  .outingCreation{
-    /* border: 1px solid black; */
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    /* padding: 5px 150px ; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 150px;
-    width: 350px;
-  }
-  
-  /* ********************* SECTION 3  ********************* */
-  /* SECTION 3  */
-  .managementSection {
-    position: relative;
-    max-height: 88vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5); */
-  }
-  
-  /* TITLE */
-  /* .managementSection h2 {
+.needMngmtSection {
+  display: flex;
+}
+/* ARTICLES DISPATCHING */
+#managementArticle,
+#firstStepsArticle {
+  width: calc(100% / 4);
+}
+
+/* ********************* ARTICLE 1 & 2 ********************* */
+/* ARTICLE 1 & 2 */
+#firstStepsArticle {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* TITLE */
+#firstStepsArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  /* font-size: clamp to do; */
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
+}
+.number-circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 23px;
+  font-weight: bold;
+  margin: 5px;
+  color: white;
+}
+.blackUnderline {
+  display: flex;
+  justify-content: center;
+}
+
+/* SEARCH BY */
+.searchBar {
+  padding: 15px;
+  color: black;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.selectElderly {
+  font-size: 20px;
+}
+select {
+  width: 100%;
+  height: 100%;
+  /* font-weight: 600; */
+  font-size: 16px;
+  padding: 15px 15px;
+  border: none;
+  outline: none; /* bordure après clic */
+  border-radius: 10px;
+}
+.selectedElderly {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.searchPART{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.youChooseselectedElderlyP {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.fa-plus {
+  font-size: 20px;
+}
+/* INSTRUCTION only DESKTOP */
+.instructionGestionRDV {
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+.instruction3,
+.noNeedYet {
+  padding: 10px;
+  text-align: center;
+}
+
+p {
+  line-height: 20px;
+}
+
+/* ********************* CALENDAR ********************* */
+#calendarArticle {
+  /* position: relative; */
+  width: calc(100% / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+/* H1 */
+h1 {
+  font-size: clamp(24px, 3vw, 28px);
+  margin-bottom: 100px;
+}
+/* HEADER & CALENDAR WRAPPER */
+.wrapper {
+  width: 450px;
+  background-color: white;
+  border-radius: 10px;
+  border: black 1px solid;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+/* HEADER */
+header .currDate {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  font-weight: bold;
+  /* border: red solid 2px; */
+}
+.currentDate {
+  align-self: center;
+}
+/* HEADER ARROWS */
+header i {
+  cursor: pointer;
+  text-align: center;
+  align-self: center;
+  color: grey;
+  padding: 20px 60px; /* pour un meilleur access au clic*/
+}
+/* CALENDAR */
+.wrapper .calendar {
+  padding: 20px;
+}
+.calendar ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.calendar .days {
+  margin-bottom: 20px;
+}
+/* each <li> occupera 1/7 du <ul> (wrap) */
+.calendar ul li {
+  position: relative;
+  width: calc(100% / 7);
+}
+.dayLi {
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.days .dayLi::before {
+  position: absolute;
+  content: ""; /* pour le background color de l'active */
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days .dayLi:hover::before {
+  background-color: #f2f2f2;
+}
+.days .dayLi.active::before {
+  background-color: #ffbfc3;
+}
+.nonActive {
+  color: var(--lightGrey);
+  pointer-events: none; /* Désactiver les événements de souris pour empêcher le hover */
+}
+/* DIRECTION */
+.direction {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  width: auto;
+  padding: 5px 10px;
+  background-color: var(--lightPink);
+  font-size: clamp(10px, 3vw, 15px);
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 10px;
+  border: 1px solid black;
+  /* margin-bottom: 10px; */
+}
+.createBTN{
+  background-color: var(--darkPink);
+  margin-bottom: 10px;
+}
+
+/* HOURS Dropdown menu */
+.dropdown {
+  position: absolute;
+  background-color: white;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  z-index: 1;
+}
+.dropdown p {
+  margin: 0 0 10px;
+}
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+.dropdown ul li:hover {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+.activeDate {
+  font-weight: 600;
+  padding: 5px;
+}
+.headerDropdownHour {
+  background-color: #ffbfc3;
+  border-radius: 5px;
+  padding: 12px;
+}
+.close {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.outingCreation {
+  /* border: 1px solid black; */
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+  width: 350px;
+  padding: 10px;
+}
+
+/* ********************* ARTICLE 3  ********************* */
+/* ARTICLE 3  */
+#managementArticle {
+  position: relative;
+  max-height: 88vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5); */
+}
+
+/* TITLE */
+/* #managementArticle h2 {
     /* font-size: clamp to do; */
-    /* position: fixed; */
-  /* }  */ 
-  
-  /* LIST OF OUTINGS */
-  .allRequiredOutings {
-    width: 100%;
-    /* max-height: 150px;  */
-    overflow-x: hidden;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  /* OUTING */
-  .allRequiredOutings .outing {
-    /* position: relative; */
-    padding-left: 50px;
-    border-top: 0.1px solid lightgray;
-    /* background: linear-gradient(0deg, #f2f2f2 23.8%, #FFFfFf 92%); */
-    padding-top: 20px;
-    /* padding-bottom: 20px; */
-  }
-  
-  /* OUTING INFO */
-  .allRequiredOutings .outing .outingInfo {
-    margin-bottom: 15px;
-  }
-  .allRequiredOutings .outing .outingInfo .fa-circle {
-    font-size: x-small;
-  }
-  .allRequiredOutings .outing .outingInfo .outingDateHour {
-    margin-left: 20px;
-  }
-  
-  /* NAME & MNGMT */
-  .outingPersonRelated {
-    font-weight: 400;
-    color: #878895;
-    margin-left: 30px;
-    pointer-events: none;
-  }
-  .add-outing{
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  .fa-pencil-alt,
-  .fa-trash {
-    font-size: medium;
-    padding-right: 20px;
-  }
-  .personAndMngmt {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* FORM */
-  /* PORTE AU BAS DE PAGE + CACHE */
-  .add-outing-wrapper {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    width: 98%;
-    max-height: 0;
-    overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
-    transform: translate(-50%);
-    transition: max-height 0.5s;
-  }
-  
-  /* ACTIVE */
-  .add-outing-wrapper.active {
-    max-height: 290px;
-    border: 2px solid black;
-  }
-  /* HEADER */
-  .add-outing-wrapper .add-outing-header {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    color: #373c4f;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .add-outing-wrapper  .add-outing-header .title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  /* CLOSE */
-  .add-outing-wrapper .add-outing-header .close {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  /* BODY */
-  .add-outing-wrapper  .add-outing-body {
-    /* width: 100%;  */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 20px;
-  }
-  .add-outing-wrapper  .add-outing-body .add-outing-info {
-    border-bottom: 1px solid #f5f5f5;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .add-outing-wrapper .add-outing-body .add-outing-info .info {
-    color: grey;
-  }
-  /* DROPDOWN MENU */
-  .add-outing-info select {
-    outline: 2px solid pink;
-    /* pour être pile sur la ligne border bottom */
-    padding-top: 5px;
-    padding-left: 5px;
-  }
-  
-  /* FOOTER */
-  .add-outing-wrapper .add-outing-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .add-outing-wrapper .add-outing-footer .add-outing-btn {
-    height: 40px;
-    font-size: 12px;
-    font-weight: bold;
-    outline: none;
-    border: none;
-    background-color: pink;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid rgb(234, 158, 171);
-  }
-  
-  /* ANIMATION */
-  
-  /* even -> pair; 
+/* position: fixed; */
+/* }  */
+
+/* LIST OF OUTINGS */
+.allRequiredOutings {
+  width: 100%;
+  /* max-height: 150px;  */
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+/* OUTING */
+.allRequiredOutings .outing {
+  /* position: relative; */
+  padding-left: 50px;
+  border-top: 0.1px solid lightgray;
+  /* background: linear-gradient(0deg, #f2f2f2 23.8%, #FFFfFf 92%); */
+  padding-top: 20px;
+  /* padding-bottom: 20px; */
+}
+
+/* OUTING INFO */
+.allRequiredOutings .outing .outingInfo {
+  margin-bottom: 15px;
+}
+.allRequiredOutings .outing .outingInfo .fa-circle {
+  font-size: x-small;
+}
+.allRequiredOutings .outing .outingInfo .outingDateHour {
+  margin-left: 20px;
+}
+
+/* NAME & MNGMT */
+.outingPersonRelated {
+  font-weight: 400;
+  color: #878895;
+  margin-left: 30px;
+  pointer-events: none;
+}
+.add-outing {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.fa-pencil-alt,
+.fa-trash {
+  font-size: medium;
+  padding-right: 20px;
+}
+.personAndMngmt {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* FORM */
+/* PORTE AU BAS DE PAGE + CACHE */
+.add-outing-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 98%;
+  max-height: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  border: none;
+  /* box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5); */
+  background-color: #fff;
+  transform: translate(-50%);
+  transition: max-height 0.5s;
+}
+
+/* ACTIVE */
+.add-outing-wrapper.active {
+  max-height: 290px;
+  border: 2px solid black;
+}
+/* HEADER */
+.add-outing-wrapper .add-outing-header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #373c4f;
+  border-bottom: 1px solid #f5f5f5;
+}
+.add-outing-wrapper .add-outing-header .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* CLOSE */
+.add-outing-wrapper .add-outing-header .close {
+  font-size: 20px;
+  cursor: pointer;
+}
+/* BODY */
+.add-outing-wrapper .add-outing-body {
+  /* width: 100%;  */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+.add-outing-wrapper .add-outing-body .add-outing-info {
+  border-bottom: 1px solid #f5f5f5;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.add-outing-wrapper .add-outing-body .add-outing-info .info {
+  color: grey;
+}
+/* DROPDOWN MENU */
+.add-outing-info select {
+  outline: 2px solid pink;
+  /* pour être pile sur la ligne border bottom */
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+/* FOOTER */
+.add-outing-wrapper .add-outing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.add-outing-wrapper .add-outing-footer .add-outing-btn {
+  height: 40px;
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: pink;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid rgb(234, 158, 171);
+}
+
+/* ANIMATION */
+
+/* even -> pair; 
      nth -> n-ième
      -> tt les 2 child du parent */
-  .allRequiredOutings .outing:nth-child(even) {
-    background: white;
+.allRequiredOutings .outing:nth-child(even) {
+  background: white;
+}
+.allRequiredOutings .outing {
+  transition: border 0.3s ease;
+}
+.allRequiredOutings .outing:hover {
+  background: linear-gradient(0deg, #f2f2f2 23.8%, #ffffff 92%);
+}
+/* ICON */
+.fa-pencil-alt:hover,
+.fa-trash:hover {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.add-outing-wrapper .add-outing-header .close:hover {
+  color: #ffbfc3;
+  text-shadow: 1px 1px 2px black;
+}
+.add-outing-wrapper .add-outing-footer .add-outing-btn:hover {
+  color: blue;
+  background-color: transparent;
+}
+
+/* SECTION TAB MOBILE */
+.tabMobileSection {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-around;
+}
+.tablinks {
+  background-color: var(--clay);
+  margin: 5px;
+}
+.tablinks.active {
+  background-color: var(--lightPink);
+}
+
+/* ********************* RESPONSIVE ********************* */
+@media (max-width: 950px) {
+  /* TAB */
+  .tabMobileSection {
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: space-around;
   }
-  .allRequiredOutings .outing {
-    transition: border 0.3s ease;
+  /* MAIN */
+  main {
+    height: 90vh;
+    justify-content: flex-start;
   }
-  .allRequiredOutings .outing:hover {
-    background: linear-gradient(0deg, #f2f2f2 23.8%, #FFFfFf 92%);
+  /* CALENDAR BY DEFAULT */
+  #firstStepsArticle,
+  #managementArticle {
+    display: none;
+    /* border: 2px solid red; */
+    width: 100%;
+    min-height: 80vh;
   }
-  /* ICON */
-  .fa-pencil-alt:hover,
-  .fa-trash:hover {
-    color: white;
-    text-shadow: 1px 1px 2px black;
+  /* FIRST STEPS ARTICLE */
+  .searchPART {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .add-outing-wrapper .add-outing-header .close:hover {
-    color: #FFBFC3;
-    text-shadow: 1px 1px 2px black;
+  .selectedElderly {
+    font-size: 20px;
+    margin-bottom: 15px;
   }
-  .add-outing-wrapper .add-outing-footer .add-outing-btn:hover {
-    color: blue;
-    background-color: transparent;
+  .youChooseselectedElderlyP {
+    margin-bottom: 15px;
   }
-  
-  
+
+  /* CALENDAR ARTICLE */
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .wrapper {
+    margin-bottom: 10px;
+  }
+  button {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  #calendarArticle {
+    width: 100%;
+    min-height: 80vh;
+  }
+  .outingCreation {
+    text-align: center;
+    box-shadow: none;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  /* .createBTN {
+    font-weight: 600;
+  } */
+  /* HOUR */
+  .dropdown {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

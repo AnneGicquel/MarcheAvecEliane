@@ -1,7 +1,10 @@
 <main>
-  <!-- 🟢 SECTION 1 & 2 TO THE LEFT -->
 
-  <section class="SectionOneAndTwo">
+  <!-- 🟡 SECTION NEED MANAGEMENT -->
+   <section class="needMngmtSection">
+
+  <!-- 🟢 ARTICLE 1 & 2 TO THE LEFT -->
+  <article id="firstStepsArticle" class="tabcontent">
     <!-- TITLE 1 -->
     <div class="blackUnderline">
       <h2>
@@ -10,7 +13,8 @@
       </h2>
     </div>
 
-    <!-- SEARCH -->
+    <!-- SEARCH PART-->
+     <div class="searchPART">
     <div class="searchBar">
       <label class="selectElderly" for="elderly-select"> </label>
       <select name="elderly" id="elderly" (change)="onSelected($event)">
@@ -22,38 +26,40 @@
         }
       </select>
     </div>
-
     @if (selectedElderly) {
-     <p class="youChooseselectedElderlyP">Vous avez choisi de gérer les demandes de sorties de</p>
-     <p class="selectedElderly">{{ selectedElderly.pseudo }}</p>
-    <button class="addbutton" (click)="confirmSelection()" type="submit">
-      CONFIRMER
-    </button>
-    }
+    
+      <p class="youChooseselectedElderlyP">Vous avez choisi de gérer les demandes de sorties de</p>
+      <p class="selectedElderly">{{ selectedElderly.pseudo }}</p>
+     <button class="addbutton" (click)="confirmSelection()" type="submit">
+       CONFIRMER
+     </button>
+     
+     }
+    </div>
 
     <!-- TITLE 2 -->
     <h2>
       <div class="number-circle">2</div>
       Cliquer sur un horaire du calendrier <i class="fas fa-plus"></i>
     </h2>
-    <!-- INSTRUCTION slmt version DESKTOP -->
-    @if (selectedTime && selectedElderly){  
+    <!-- INSTRUCTION -->
+    @if (selectedTime && selectedElderly && !isMobile){  
       <div class="outingCreation">
         <p>{{ selectedElderly.pseudo }}</p>
     <p>{{ selectedDate | date: 'mediumDate' }}</p>
     <p>{{ selectedTime }}</p>
-    <button (click)="createOuting()">Créer</button>
+    <button class="createBTN" (click)="createOuting()">Créer</button>
       </div>}
       @else {
-
     <div class="instructionGestionRDV">
       <p>Pour ajouter une demande, rien de plus simple !</p>
-      <p>Cliquer sur la date et l'horaire de son besoin</p>
+      <p>Rendez-vous sur le calendrier !</p>
+      <p>Cliquer sur la date puis l'horaire de son besoin</p>
     </div>}
-  </section>
+  </article>
 
   <!-- 🟢 CALENDAR TO THE CENTER -->
-  <section class="calendarSection">
+  <article id="calendarArticle" class="tabcontent">
     <h1>GESTION des DEMANDES</h1>
     <div class="wrapper">
       <!-- HEADER -->
@@ -77,8 +83,6 @@
         <ul class="days">
           @for (day of days; track day){
           <li class="dayLi" (click)="updateActiveDate(day); selectDate(day)" [ngClass]="{ active: isActive(day), nonActive : isNonActive(day)}"  >
-            <!-- ⬆️([ngClass]="{ active: isActive(day) }" -->
-            <!--/*⬆️(click)="updateActiveDate(day); selectDate(day)"*/  -->
             {{ day }}
           </li>
           }
@@ -104,14 +108,22 @@
     }
 
       <!-- DIRECTION -->
+      @if(!isMobile){  
     <div class="direction">
       <button class="goToTodayBtn" (click)="goToToday()">aujourd'hui</button>
     </div>
-   
-  </section>
+  }
 
-  <!-- 🟢 SECTION 3 TO THE RIGHT -->
-  <section class="managementSection">
+    @if (selectedTime && selectedElderly && isMobile){  
+      <div class="outingCreation">
+        <p>RDV : {{ selectedElderly.pseudo }}&nbsp; le {{ selectedDate | date: 'mediumDate' }}&nbsp; à {{ selectedTime }}</p>
+    <button class="createBTN"  (click)="createOuting()">Créer</button>
+      </div>}
+   
+  </article>
+
+  <!-- 🟢 ARTICLE 3 TO THE RIGHT -->
+  <article id="managementArticle" class="tabcontent">
     <div class="blackUnderline">
       <h2 class="titleSection">
         <div class="number-circle">3</div>
@@ -142,10 +154,7 @@
         <div class="outingInfo">
           <i class="fas fa-circle"></i>
           <span class="outingDateHour">
-            <!-- {{ outing.outingDates[0] | date : "EEE MM-dd" }} - -->
-            {{ outing.outingDates[0]  }} -
-
-            <!-- {{ outing.outingDates[0] | date : "h:mm" }} -->
+            {{ outing.outingDates[0] | date : "EEE MM-dd" }} -
             {{ outing.outingDates[0] | date : "h:mm"}}
           </span>
         </div>
@@ -214,12 +223,10 @@
           </div>
 
           <div class="add-outing-info">
-            <!-- <span class="info">{{ selectedOutingForDelete?.outingDates| date : "h:mm"}}</span> -->
             <span class="info">{{ selectedOutingForDelete?.outingDates | date : "h:mm" }}</span>
           </div>
 
           <div class="add-outing-info">
-            <!-- <span class="info">{{ selectedOutingForDelete?.outingDates | date : "EEE MM-dd" }}</span> -->
             <span class="info">{{ selectedOutingForDelete?.outingDates | date : "EEE MM-dd" }}</span>
           </div>
 
@@ -242,5 +249,15 @@
         } -->
       }
     </div>
+  </article>
+</section>
+
+  <!-- 🟡 SECTION TAB MOBILE --> 
+ 
+  <section class="tabMobileSection">
+    <button class="tablinks" data-section-id="firstStepsArticle">RENSEIGNER PSEUDO</button>
+    <button class="tablinks" data-section-id="calendarArticle">RDV CALENDRIER</button>
+    <button class="tablinks" data-section-id="managementArticle">GÉRER RDV SUIVI·E</button>
   </section>
+
 </main>
