@@ -1,244 +1,262 @@
 <main>
-
   <!-- 🟡 SECTION NEED MANAGEMENT -->
-   <section class="needMngmtSection">
+  <section class="needMngmtSection">
+    <!-- 🟢 ARTICLE 1 & 2 TO THE LEFT -->
+    <article id="firstStepsArticle" class="tabcontent">
+      <!-- TITLE 1 -->
+      <div class="blackUnderline">
+        <h2>
+          <div class="number-circle">1</div>
+          Renseigner le pseudo de la personne concernée
+        </h2>
+      </div>
 
-  <!-- 🟢 ARTICLE 1 & 2 TO THE LEFT -->
-  <article id="firstStepsArticle" class="tabcontent">
-    <!-- TITLE 1 -->
-    <div class="blackUnderline">
-      <h2>
-        <div class="number-circle">1</div>
-        Renseigner le pseudo de la personne concernée
-      </h2>
-    </div>
-
-    <!-- SEARCH PART-->
-     <div class="searchPART">
-    <div class="searchBar">
-      <label class="selectElderly" for="elderly-select"> </label>
-      <select name="elderly" id="elderly" (change)="onSelected($event)">
-        <option value="">Sélectionner une personne</option>
-        @for (elderly of elderlies ; track elderlies){
-        <option (click)="selectElderly(elderly)" value="{{ elderly.id }}">
-          {{ elderly.pseudo }}
-        </option>
-        }
-      </select>
-    </div>
-    @if (selectedElderly) {
-    
-      <p class="youChooseselectedElderlyP">Vous avez choisi de gérer les demandes de sorties de</p>
-      <p class="selectedElderly">{{ selectedElderly.pseudo }}</p>
-     <button class="addbutton" (click)="confirmSelection()" type="submit">
-       CONFIRMER
-     </button>
-     
-     }
-    </div>
-
-    <!-- TITLE 2 -->
-    <h2>
-      <div class="number-circle">2</div>
-      Cliquer sur un horaire du calendrier <i class="fas fa-plus"></i>
-    </h2>
-    <!-- INSTRUCTION -->
-    @if (selectedTime && selectedElderly && !isMobile){  
-      <div class="outingCreation">
-        <p>{{ selectedElderly.pseudo }}</p>
-    <p>{{ selectedDate | date: 'mediumDate' }}</p>
-    <p>{{ selectedTime }}</p>
-    <button class="createBTN" (click)="createOuting()">Créer</button>
-      </div>}
-      @else {
-    <div class="instructionGestionRDV">
-      <p>Pour ajouter une demande, rien de plus simple !</p>
-      <p>Rendez-vous sur le calendrier !</p>
-      <p>Cliquer sur la date puis l'horaire de son besoin</p>
-    </div>}
-  </article>
-
-  <!-- 🟢 CALENDAR TO THE CENTER -->
-  <article id="calendarArticle" class="tabcontent">
-    <h1>GESTION des DEMANDES</h1>
-    <div class="wrapper">
-      <!-- HEADER -->
-      <header>
-        <div class="currDate">
-          <i class="fa fa-angle-left" (click)="getPREVMonthAndDays()"></i>
-          <p class="currentDate">{{ currMonth }}&nbsp;{{ currYear }}</p>
-          <i class="fa fa-angle-right" (click)="getNEXTMonthAndDays()"></i>
+      <!-- SEARCH PART-->
+      <div class="searchPART">
+        <div class="searchBar">
+          <label class="selectElderly" for="elderly-select"> </label>
+          <select name="elderly" id="elderly" (change)="onSelected($event)">
+            <option value="">Sélectionner un pseudo</option>
+            @for (elderly of elderlies ; track elderlies){
+            <option 
+              (click)="selectElderly(elderly)" 
+              value="{{ elderly.id }}"
+              >
+              {{ elderly.pseudo }}
+            </option>
+            }
+          </select>
         </div>
-      </header>
+        @if (selectedElderly) {
 
-      <!-- CALENDAR -->
-      <div class="calendar">
-        <!-- WEEKS -->
-        <ul class="weeks">
-          @for (dayW of daysOfWeek; track dayW){
-          <li class="dayLi">{{ dayW }}</li>
-          }
-        </ul>
-        <!-- DAYS -->
-        <ul class="days">
-          @for (day of days; track day){
-          <li class="dayLi" (click)="updateActiveDate(day); selectDate(day)" [ngClass]="{ active: isActive(day), nonActive : isNonActive(day)}"  >
-            {{ day }}
-          </li>
-          }
-        </ul>
-      </div>
-    </div>
+        <p class="youChooseselectedElderlyP">
+          Vous avez choisi de gérer les demandes de sorties de
+        </p>
+        <p class="selectedElderly">{{ selectedElderly.pseudo }}</p>
+        <button class="addbutton" (click)="confirmSelection()" type="submit">
+          CONFIRMER
+        </button>
 
-    <!-- 📜 MENU DÉROULANT DES HEURES -->
-    @if (selectedDate  && selectedElderly && isDropdownOpen) {
-    <div class="dropdown">
-      <div class="headerDropdownHour">
-        <span class="activeDate">{{ activeDate }}</span>
-        <span class="close-btn" (click)="closeDropdown()"
-          ><i class="fas fa-times close"></i
-        ></span>
-      </div>
-      <ul>
-        @for (hour of hours ; track hours){
-        <li (click)="selectTime(hour)">{{ hour }}</li>
         }
-      </ul> 
-    </div>
-    }
+      </div>
+
+      <!-- TITLE 2 -->
+      <h2>
+        <div class="number-circle">2</div>
+        Cliquer sur un horaire du calendrier <i class="fas fa-plus"></i>
+      </h2>
+      <!-- INSTRUCTION -->
+      <div class="instructionGestionRDV">
+        <p>Pour ajouter une demande, rien de plus simple !</p>
+        <p>Rendez-vous sur le calendrier !</p>
+        <p>Cliquer sur la date puis l'horaire de son besoin</p>
+      </div>
+    </article>
+
+    <!-- 🟢 CALENDAR TO THE CENTER -->
+    <article id="calendarArticle" class="tabcontent">
+      <h1>GESTION des DEMANDES</h1>
+      <div class="wrapper">
+        <!-- HEADER -->
+        <header>
+          <div class="currDate">
+            <i class="fa fa-angle-left" (click)="getPREVMonthAndDays()"></i>
+            <p class="currentDate">{{ currMonth }}&nbsp;{{ currYear }}</p>
+            <i class="fa fa-angle-right" (click)="getNEXTMonthAndDays()"></i>
+          </div>
+        </header>
+
+        <!-- CALENDAR -->
+        <div class="calendar">
+          <!-- WEEKS -->
+          <ul class="weeks">
+            @for (dayW of daysOfWeek; track dayW){
+            <li class="dayLi">{{ dayW }}</li>
+            }
+          </ul>
+          <!-- DAYS -->
+          <ul class="days">
+            @for (day of days; track day){
+            <li
+              class="dayLi"
+              (click)="updateActiveDate(day); selectDate(day)"
+              [ngClass]="{ active: isActive(day), nonActive: isNonActive(day) }"
+            >
+              {{ day }}
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- 📜 MENU DÉROULANT DES HEURES -->
+      @if (selectedDate && selectedElderly && isDropdownOpen) {
+      <div class="dropdown">
+        <div class="headerDropdownHour">
+          <span class="activeDate">{{ activeDate }}</span>
+          <span class="close-btn" (click)="closeDropdown()"
+            ><i class="fas fa-times close"></i
+          ></span>
+        </div>
+        <ul>
+          @for (hour of hours ; track hours){
+          <li (click)="selectTime(hour)">{{ hour }}</li>
+          }
+        </ul>
+      </div>
+      }
 
       <!-- DIRECTION -->
-      @if(!isMobile){  
-    <div class="direction">
-      <button class="goToTodayBtn" (click)="goToToday()">aujourd'hui</button>
-    </div>
-  }
-
-    @if (selectedTime && selectedElderly && isMobile){  
+      @if(!selectedTime && !selectedElderly){
+      <div class="direction">
+        <button class="goToTodayBtn" (click)="goToToday()">aujourd'hui</button>
+      </div>
+    } 
+      <!-- CREATE OUTING -->
+     @if (selectedTime && selectedElderly && !isFormOpenEDIT && !isFormOpenDELETE){
       <div class="outingCreation">
-        <p>RDV : {{ selectedElderly.pseudo }}&nbsp; le {{ selectedDate | date: 'mediumDate' }}&nbsp; à {{ selectedTime }}</p>
-    <button class="createBTN"  (click)="createOuting()">Créer</button>
-      </div>}
-   
-  </article>
-
-  <!-- 🟢 ARTICLE 3 TO THE RIGHT -->
-  <article id="managementArticle" class="tabcontent">
-    <div class="blackUnderline">
-      <h2 class="titleSection">
-        <div class="number-circle">3</div>
-        Voir, modifier ou supprimer les demandes
-      </h2>
-    </div>
-    <!-- LIST OF OUTINGS -->
-    <div class="allRequiredOutings">
-      <!-- NO SELECTED ELDERLY -->
-      @if(!selectedElderly){
-      <p class="instruction3">
-        Renseigner le pseudo de la personne concernée afin de voir et gérer ses
-        demandes de sorties
-      </p>
-      <!-- 🚨 -->
-      <p class="noNeedYet">
-        Si la personne n'a pas de demande de sorties prévues, cliquer sur le
-        calendrier afin de rentrer une nouvelle demande
-      </p>
-      }
-
-      <!-- ONE OUTING -->
-      @if (selectedElderly && confirmClicked) { @for (outing of outings; track
-      outing) { @if (outing.elderly.id === selectedElderly.id) {
-
-      <div class="outing">
-        <!-- DATE - TIME -->
-        <div class="outingInfo">
-          <i class="fas fa-circle"></i>
-          <span class="outingDateHour">
-            {{ outing.outingDates[0] | date : "EEE MM-dd" }} -
-            {{ outing.outingDates[0] | date : "h:mm"}}
-          </span>
-        </div>
-        <!-- NAME - MNGMT -->
-        <div class="personAndMngmt">
-          <span class="outingPersonRelated">{{ selectedElderly.pseudo }}</span>
-          <!-- EDIT - DELETE -->
-          <div class="mngmtIcon">
-            <button class="add-outing">
-              <i class="fas fa-pencil-alt" (click)="toggleFormEDIT(outing)"></i>
-            </button>
-            <button class="add-outing">
-              <i class="fas fa-trash" (click)="toggleFormDELETE(outing)"></i>
-            </button>
-          </div>
-        </div>
+        <p>
+          {{ selectedElderly.pseudo }}&nbsp; le
+          {{ selectedDate | date : "mediumDate" }}&nbsp; à {{ selectedTime }}
+        <i class="fas fa-times close" (click)="closeOutingCreation()"></i></p>
+        <button class="createBTN" (click)="createOuting()">Créer</button>
+        
       </div>
       }
+    </article>
 
-      <!-- **** FORM EDIT **** -->
-      <div class="add-outing-wrapper" [class.active]="isFormOpenEDIT">
-        <!-- HEADER -->
-        <div class="add-outing-header">
-          <div class="title">Modifier l'heure de demande :</div>
-          <i class="fas fa-times close" (click)="toggleFormEDIT(outing)"></i>
-        </div>
-        <!-- BODY -->
-        <div class="add-outing-body">
-          <div class="add-outing-info">
-            <span class="info">{{ selectedElderly.pseudo }}</span>
-          </div>
-
-          <div class="add-outing-info">
-            <span class="info">{{ selectedOutingForEdit?.outingDates }}</span>
-          </div>
-
-          <div class="add-outing-info">
-            <label for="dateSelect">Ici :</label>
-            <select id="dateSelect" class="info">
-              @for (hour of hours ; track hours){
-              <option value="hour">{{ hour }}</option>
-              }
-            </select>
-          </div>
-
-          <!-- FOOTER -->
-          <div class="add-outing-footer">
-            <button class="add-outing-btn">MODIFIER</button>
-          </div>
-        </div>
+    <!-- 🟢 ARTICLE 3 TO THE RIGHT -->
+    <article id="managementArticle" class="tabcontent">
+      <div class="blackUnderline">
+        <h2 class="titleSection">
+          <div class="number-circle">3</div>
+          Voir, modifier ou supprimer les demandes
+        </h2>
       </div>
+      <!-- LIST OF OUTINGS -->
+      <div class="allRequiredOutings">
+        <!-- NO SELECTED ELDERLY -->
+        @if(!selectedElderly){
+        <p class="instruction3">
+          Renseigner le pseudo de la personne concernée afin de voir et gérer
+          ses demandes de sorties
+        </p>
+        <!-- 🚨 -->
+        <p class="noNeedYet">
+          Si la personne n'a pas de demande de sorties prévues, cliquer sur le
+          calendrier afin de rentrer une nouvelle demande
+        </p>
+        }
 
-      <!-- **** FORM DELETE **** -->
-      <div class="add-outing-wrapper" [class.active]="isFormOpenDELETE">
-        <!-- HEADER -->
-        <div class="add-outing-header">
-          <div class="title">
-            Voulez-vous supprimer cette demande de sortie ?
+        <!-- ONE OUTING -->
+        @if (selectedElderly && confirmClicked) { @for (outing of outings; track
+        outing) { @if (outing.elderly.id === selectedElderly.id) {
+
+        <div class="outing">
+          <!-- DATE - TIME -->
+          <div class="outingInfo">
+            <i class="fas fa-circle"></i>
+            <span class="outingDateHour">
+              {{ outing.outingDates[0] | date : "'EEE d MMMM" }} -
+              {{ outing.outingDates[0] | date : "HH:mm" }}
+            </span>
           </div>
-          <i class="fas fa-times close" (click)="toggleFormDELETE(null)"></i>
+          <!-- NAME - MNGMT -->
+          <div class="personAndMngmt">
+            <span class="outingPersonRelated">{{
+              selectedElderly.pseudo
+            }}</span>
+            <!-- EDIT - DELETE -->
+            <div class="mngmtIcon">
+              <button class="add-outing">
+                <i
+                  class="fas fa-pencil-alt"
+                  (click)="toggleFormEDIT(outing)"
+                ></i>
+              </button>
+              <button class="add-outing">
+                <i class="fas fa-trash" (click)="toggleFormDELETE(outing)"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <!-- BODY -->
-        <div class="add-outing-body">
-          <div class="add-outing-info">
-            <span class="info">{{ selectedElderly.pseudo }}</span>
-          </div>
+          }
 
-          <div class="add-outing-info">
-            <span class="info">{{ selectedOutingForDelete?.outingDates | date : "h:mm" }}</span>
+        <!-- **** FORM EDIT **** -->
+        <div class="add-outing-wrapper" [class.active]="isFormOpenEDIT">
+          <!-- HEADER -->
+          <div class="add-outing-header">
+            <div class="title">Modifier l'heure :</div>
+            <i class="fas fa-times close" (click)="toggleFormEDIT(outing)"></i>
           </div>
+          <!-- BODY -->
+          <div class="add-outing-body">
+            <div class="add-outing-info">
+              <span class="info">{{ selectedElderly.pseudo }}</span>
+            </div>
 
-          <div class="add-outing-info">
-            <span class="info">{{ selectedOutingForDelete?.outingDates | date : "EEE MM-dd" }}</span>
-          </div>
+            <div class="add-outing-info">
+              <span class="info">{{
+                selectedOutingLineForEdit?.outingDates[0] | date : "'EEE d MMMM" 
+              }}</span>
+            </div>
 
-          <!-- FOOTER -->
-          <div class="add-outing-footer">
-            <button class="add-outing-btn">SUPPRIMER</button>
+            <div class="add-outing-info">
+              <label class="label-outing-info" for="dateSelect">Ici :</label>
+              <select
+                id="dateSelect"
+                class="info"
+                [(ngModel)]="selectedTime" (change)="onTimeChange($event)">
+                <option [value]=""disabled>Choisissez le nouvel horaire</option>
+                @for (hour of hours ; track hours){
+                <option [value]="hour">{{ hour }}</option>
+                }
+              </select>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="add-outing-footer">
+                <button class="updateBTN" (click)="updateOuting()">
+                MODIFIER
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      }
-      <!-- 🚨 A CORRIGER -->
-      <!-- @if( outings.length === 0){
+
+        <!-- **** FORM DELETE **** -->
+        <div class="add-outing-wrapper" [class.active]="isFormOpenDELETE">
+          <!-- HEADER -->
+          <div class="add-outing-header">
+            <div class="title">Supprimer la demande ?</div>
+            <i class="fas fa-times close" (click)="toggleFormDELETE(null)"></i>
+          </div>
+          <!-- BODY -->
+          <div class="add-outing-body">
+            <div class="add-outing-info">
+              <span class="info">{{ selectedElderly.pseudo }}</span>
+            </div>
+
+            <div class="add-outing-info">
+              <span class="info">{{
+                selectedOutingForDelete?.outingDates | date : "h:mm"
+              }}</span>
+            </div>
+
+            <div class="add-outing-info">
+              <span class="info">{{
+                selectedOutingForDelete?.outingDates | date : "EEE MM-dd"
+              }}</span>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="add-outing-footer">
+              <button class="deleteBTN" (click)="deleteOuting(selectedElderly.id, selectedOutingForDelete?.id)">SUPPRIMER</button>
+            </div>
+          </div>
+        </div>
+        }
+        <!-- 🚨 A CORRIGER -->
+        <!-- @if( outings.length === 0){
       <p class="noNeedYet">
           Cette personne n'a pas de demande de sorties prévues.
         </p>
@@ -247,17 +265,22 @@
           demande
         </p>
         } -->
-      }
-    </div>
-  </article>
-</section>
-
-  <!-- 🟡 SECTION TAB MOBILE --> 
- 
-  <section class="tabMobileSection">
-    <button class="tablinks" data-section-id="firstStepsArticle">RENSEIGNER PSEUDO</button>
-    <button class="tablinks" data-section-id="calendarArticle">RDV CALENDRIER</button>
-    <button class="tablinks" data-section-id="managementArticle">GÉRER RDV SUIVI·E</button>
+        }
+      </div>
+    </article>
   </section>
 
+  <!-- 🟡 SECTION TAB MOBILE -->
+
+  <section class="tabMobileSection">
+    <button class="tablinks" data-section-id="firstStepsArticle">
+      RENSEIGNER PSEUDO
+    </button>
+    <button class="tablinks" data-section-id="calendarArticle">
+      RDV CALENDRIER
+    </button>
+    <button class="tablinks" data-section-id="managementArticle">
+      GÉRER RDV SUIVI·E
+    </button>
+  </section>
 </main>

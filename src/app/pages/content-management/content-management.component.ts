@@ -5,12 +5,13 @@ import { SchedulerService } from '../../services/schedulerService/scheduler.serv
 import { ElderlyService } from '../../services/elderly/elderly.service';
 import { OutingService } from '../../services/outing/outing.service';
 import { ContentManagementService } from '../../services/contentManagement/content-management.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-content-management',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe, FormsModule],
   templateUrl: './content-management.component.html',
   styleUrl: './content-management.component.css',
 })
@@ -36,19 +37,19 @@ export class ContentManagementComponent implements OnInit {
   currMonth!: string;
   currYear!: number;
   days!: number[];
-  activeDate!: string; // Variable pour stocker la date active
+  activeDate!: string;
   firstDayofMonth!: number;
   lastDateofMonth!: number;
   lastDayofPrevMonth!: number;
   lastDayofMonth!: number;
   isFormOpenEDIT = false;
-  selectedOutingForEdit: any = null;
+  selectedOutingLineForEdit: any = null;
   isFormOpenDELETE = false;
   selectedOutingForDelete: any = null;
   // HOURS DROPDOWN
   selectedDate: Date | null = null;
   hours: string[] = [];
-  selectedTime: string | null = null; // 🙏
+  selectedTime!: string;
   // 🟣 ELDERLY PART
   elderlies: Elderly[] = [];
   selectedElderly: Elderly | null = null;
@@ -57,11 +58,10 @@ export class ContentManagementComponent implements OnInit {
   // 🟢 MOBILE PART
   activeTab: string = 'calendarArticle'; // tab par défaut
   isMobile: boolean = false;
-  // this.isMobile = window.innerWidth <= 950; 
 
   constructor(
     private schedulerService: SchedulerService,
-    private contentManagementservice: ContentManagementService,
+    // private contentManagementservice: ContentManagementService,
     private elderlyService: ElderlyService,
     private outingService: OutingService
   ) {}
@@ -73,9 +73,33 @@ export class ContentManagementComponent implements OnInit {
     // 🟣 ELDERLY PART
     this.fetchElderlies();
     // 🟢 MOBILE PART
-    this.setupTabButtons(); // gestion des tabs
-    // this.checkScreenSize();
-    // window.addEventListener('resize', () => {this.checkScreenSize();});
+    this.setupTabButtons(); // tabs mngmt
+    // 🟦 PERSISTENCE LS
+    this.loadStoredData(); // ALL DATA
+    this.fetchOutings(this.selectedElderly!.id); // OUTINGS
+    const confirmClicked = localStorage.getItem('confirmClicked'); // CLIC ON CONFIRM BTN
+    if (confirmClicked === 'true') {
+      this.confirmClicked = true;
+    } else {
+      this.confirmClicked = false;
+    }
+  }
+
+  //////////////////////////////////////// 🟦 PERSISTENCE /////////////////////////////////////////
+  // load all data from LS
+  loadStoredData(): void {
+    const storedElderly = localStorage.getItem('selectedElderly');
+    if (storedElderly) {
+      this.selectedElderly = JSON.parse(storedElderly);
+    }
+    const storedOutings = localStorage.getItem('outings');
+    if (storedOutings) {
+      this.outings = JSON.parse(storedOutings);
+    }
+  }
+
+  storeOutings(): void {
+    localStorage.setItem('outings', JSON.stringify(this.outings));
   }
 
   //////////////////////////////////////// CALENDAR PART ////////////////////////////////////////
@@ -87,10 +111,9 @@ export class ContentManagementComponent implements OnInit {
     this.currMonth = this.months[this.currMonthNumber];
     this.currYear = this.schedulerService.getCurrYear();
     this.days = this.renderCalendar();
-    this.activeDate = this.formatDate(this.date); // Initialiser la date active avec la date actuelle
+    this.activeDate = this.formatDate(this.date); // Initialise active date with actual date
   }
 
-  // Fonction pour mettre à jour la date active lors du clic sur un jour du calendrier
   updateActiveDate(day: number): void {
     // pour ne pas avoir undefined à cause du '-' (qui est de type string)
     if (Number.isInteger(day)) {
@@ -104,7 +127,7 @@ export class ContentManagementComponent implements OnInit {
     }
   }
 
-  // // Fonction utilitaire pour formater la date dans le format souhaité
+  // date in rigth format
   formatDate(date: Date): string {
     return `${this.daysOfWeek[date.getDay()]} ${
       date.getDate() < 10 ? '0' : ''
@@ -138,13 +161,12 @@ export class ContentManagementComponent implements OnInit {
     ).getDate();
     let daysArray: any[] = [];
 
-    // 🛑 Nettoyer le tableau
+    // Nettoyer le tableau
     daysArray.length = 0;
 
     // Last DAY ON PREV MONTH
     for (let i = this.firstDayofMonth; i > 0; i--) {
       daysArray.push((this.lastDayofPrevMonth - i + 1).toString());
-      // 🛑
     } //cette boucle ajoute les jours du mois précédent à daysArray dans l'ordre décroissant, en commençant par le dernier jour du mois précédent et en remontant jusqu'au premier jour de la semaine du mois actuel. Cela permet de remplir les cases du calendrier qui correspondent aux jours du mois précédent avant le premier jour du mois actuel.
 
     // ALL DAYS OF CURRENT MONTH
@@ -154,7 +176,6 @@ export class ContentManagementComponent implements OnInit {
 
     // FIRST DAY ON NEXT MONTH
     for (let i = this.lastDayofMonth; i < 6; i++) {
-      // 🛑
       daysArray.push((i - this.lastDayofMonth + 1).toString());
     }
     return daysArray;
@@ -192,7 +213,6 @@ export class ContentManagementComponent implements OnInit {
       this.currYear === currentDate.getFullYear()
     );
   }
-  // 🛑
   isNonActive(day: number): boolean {
     return typeof day == 'string';
   }
@@ -209,11 +229,13 @@ export class ContentManagementComponent implements OnInit {
   // que les forment s'ouvre avec les data correspondants à la sortie
   toggleFormEDIT(outing: any) {
     //console.log('??' + this.isFormOpenEDIT);
-    this.selectedOutingForEdit = outing;
+    this.isFormOpenDELETE = false; // closing DELETE
+    this.selectedOutingLineForEdit = outing;
     this.isFormOpenEDIT = !this.isFormOpenEDIT;
   }
   toggleFormDELETE(outing: any) {
     //console.log('??' + this.isFormOpenDELETE);
+    this.isFormOpenEDIT = false; // closing EDITform
     this.selectedOutingForDelete = outing;
     this.isFormOpenDELETE = !this.isFormOpenDELETE;
   }
@@ -239,6 +261,9 @@ export class ContentManagementComponent implements OnInit {
   selectDate(day: number): void {
     this.selectedDate = new Date(this.currYear, this.currMonthNumber, day);
     this.isDropdownOpen = true;
+    // close edit,delete forms !
+    this.isFormOpenEDIT = false;
+    this.isFormOpenDELETE = false;
     console.log('SELECT DATE : ' + this.selectedDate);
   }
   dropdownPosition: { top: number; left: number } = { top: 0, left: 0 };
@@ -252,22 +277,25 @@ export class ContentManagementComponent implements OnInit {
   //////////////////////////////////////// 🟣 ELDERLY PART ////////////////////////////////////////
 
   fetchElderlies(): void {
-    this.elderlyService.getAllElderlies().subscribe((data: Elderly[]) => {
-      this.elderlies = data;
-      //console.log('ELDERLIES FETCHED !!!!!! : ', this.elderlies); // CHECK IN CONSOLE
+    // 🟦 LS
+    this.elderlyService.getAllElderlies().subscribe((elderlies) => {
+      this.elderlies = elderlies;
+      if (this.elderlies.length > 0) {
+        this.selectedElderly = this.elderlies[0];
+        this.storeSelectedElderly(); // Sauvegarder le premier personne âgée par défaut sélectionnée
+      }
     });
   }
 
-  // if (this.selectedDate) {
-  //   const selectedDateTime = `${this.selectedDate} ${elderly.pseudo}`;
-  //   // 🚨 🚨 🚨 DECOMMENTER this.saveSelectedDateTime(selectedDateTime); 🚨 🚨 🚨
-  //   //this.saveSelectedDateTime(selectedDateTime, this.selectedElderly );
-  //   this.selectedDate = null;
-  //   console.log('alors !! : ');
-  // }
-
   selectElderly(elderly: Elderly): void {
     localStorage.setItem('selectedElderly', JSON.stringify(elderly));
+  }
+  // 🟦 LS
+  storeSelectedElderly(): void {
+    localStorage.setItem(
+      'selectedElderly',
+      JSON.stringify(this.selectedElderly)
+    );
   }
 
   onSelected(event: Event): void {
@@ -290,37 +318,68 @@ export class ContentManagementComponent implements OnInit {
 
   confirmClicked = false; // sinon le outings se déclenchent avec la condition "outing.elderly.id === selectedElderly.id"
 
+  // 🟦 LS
   confirmSelection(): void {
     if (this.selectedElderly) {
       this.fetchOutings(this.selectedElderly.id);
-      // déclenchement !
       this.confirmClicked = true;
+      localStorage.setItem('confirmClicked', 'true');
     }
+  }
+  // 🟦 LS
+  cancelConfirmation(): void {
+    this.confirmClicked = false;
+    localStorage.setItem('confirmClicked', 'false');
   }
 
   //////////////////////////////////////// 🟡 OUTING PART  ////////////////////////////////////////
+  // GET ALL OUTINGS
+  // fetchOutings(elderlyId: string): void {
+  //   //setTimeout(() => {
+  //   this.outingService
+  //     .getAllOutings(this.selectedElderly)
+  //     .subscribe((data: Outing[]) => {
+  //       this.outings = data.sort((a, b) => {
+  //         const dateA =
+  //           a.outingDates[0] instanceof Date
+  //             ? a.outingDates[0]
+  //             : new Date(a.outingDates[0]);
+  //         console.log('a.outingDates[0]' + a.outingDates[0]);
+  //         const dateB =
+  //           b.outingDates[0] instanceof Date
+  //             ? b.outingDates[0]
+  //             : new Date(b.outingDates[0]);
 
+  //         console.log('RDV ', data);
+
+  //         return dateA.getTime() - dateB.getTime();
+  //       });
+  //       this.storeOutings(); // 🟦 LS
+  //     });
+  //   //}, 60000); // Simule un délai (1 MIN ) POUR L AFFICHAGE DU MESSAGE SI AUCUN OUTINGS !!!!
+  // }
   fetchOutings(elderlyId: string): void {
-    //setTimeout(() => {
-    this.outingService
-      .getAllOutings(this.selectedElderly)
-      .subscribe((data: Outing[]) => {
-        this.outings = data.sort((a, b) => {
-          const dateA =
-            a.outingDates[0] instanceof Date
-              ? a.outingDates[0]
-              : new Date(a.outingDates[0]);
-          const dateB =
-            b.outingDates[0] instanceof Date
-              ? b.outingDates[0]
-              : new Date(b.outingDates[0]);
-
+    this.outingService.getAllOutings(this.selectedElderly).subscribe((data: Outing[]) => {
+      this.outings = data
+        .map(outing => ({
+          ...outing,
+          outingDates: outing.outingDates.map(date => new Date(date))
+        }))
+        .filter(outing => {
+          const outingDate = outing.outingDates[0];
+          const currentDate = new Date();
+          return outingDate > currentDate;
+        })
+        .sort((a, b) => {
+          const dateA = a.outingDates[0];
+          const dateB = b.outingDates[0];
           return dateA.getTime() - dateB.getTime();
         });
-      });
-    //}, 60000); // Simule un délai (1 MIN ) POUR L AFFICHAGE DU MESSAGE SI AUCUN OUTINGS !!!!
+  
+      this.storeOutings(); // Sauvegarde des sorties en local storage
+    });
   }
-
+  
   // FROM HOURS DROPDOWN
 
   // Définition de la fonction toISOStringWithoutTimezone
@@ -351,7 +410,6 @@ export class ContentManagementComponent implements OnInit {
       const selectedElderly = localStorage.getItem('selectedElderly');
       if (selectedElderly) {
         const elderly = JSON.parse(selectedElderly);
-        //this.saveSelectedDateTime(selectedDateTime, elderly.id);
       }
 
       //this.selectedDate = null;
@@ -363,8 +421,35 @@ export class ContentManagementComponent implements OnInit {
       );
     }
   }
+
+  // CREATE OUTING
+
+  // CONDITIONS
+  // 🚨
+  isDuplicateOuting(newOuting: Outing): boolean {
+    return this.outings.some((outing) => {
+      // Convertir les dates en instances de Date si nécessaire
+      const outingDate = new Date(outing.outingDates[0]);
+      const newOutingDate = new Date(newOuting.outingDates[0]);
+
+      return (
+        outingDate.getTime() === newOutingDate.getTime() &&
+        outing.elderly.id === newOuting.elderly.id
+      );
+    });
+  }
+  isDateValid(selectedDate: Date): boolean {
+    const currentDate = new Date(); // today
+    return selectedDate >= currentDate; // true if sup ou = currentDate
+  }
+
   createOuting(): void {
     if (this.selectedDate !== null && this.selectedElderly) {
+      if (!this.isDateValid(this.selectedDate)) {
+        alert('🚨 La date de sortie ne peut pas être antérieure à la date du jour.');
+        return; // quit
+      }
+      if (this.selectedDate !== null && this.selectedElderly) {
       const selectedDateTime = this.toTimestampFormat(this.selectedDate);
       const newOuting: Outing = {
         id: '123e4567-e89b-12d3-a456-426614174000', // histoire de ... sera override par le BACK
@@ -372,25 +457,123 @@ export class ContentManagementComponent implements OnInit {
         elderly: this.selectedElderly as Elderly,
       };
 
+      // is duplicate ???
+      if (this.isDuplicateOuting(newOuting)) {
+        alert('🚨 Cette demande existe déjà. Création en doublon impossible');
+        return;
+      }
+
+      // reset conditions to close div after click
+      this.selectedTime = '';
+      this.selectedDate = null;
+
       this.outingService.createNewOuting(newOuting).subscribe({
-        next: (createdOuting) => console.log('Outing created:', createdOuting),
+        next: (createdOuting) => {
+          console.log('Outing created:', createdOuting);
+          this.storeOutings(); // 🟦 LS
+          if (this.selectedElderly) {
+            this.fetchOutings(this.selectedElderly.id); // refresh list
+          } else {
+            console.error('selectedElderly is null');
+          }
+        },
         error: (error) => console.error('Error creating outing:', error),
       });
     } else {
       console.error('selectedDate or selectedElderly is null');
     }
+  }}
+  
+  closeOutingCreation(): void {
+    // reset conditions to close div after click
+    this.selectedTime = '';
+    this.selectedDate = null;
+  }
+  
+
+  // DELETE OUTING
+  deleteOuting(elderlyId: string, outingId: string): void {
+    this.outingService.deleteOutingByElderlyId(elderlyId, outingId).subscribe({
+      next: (response) => {
+        console.log('✅ Response deleteOuting:', response);
+        this.fetchOutings(elderlyId); // refresh outing list !
+        this.storeOutings(); // 🟦 LS
+        this.isFormOpenDELETE = false; // closing form
+      },
+      error: (error) => {
+        console.error('🛑 Error deletingOuting:', error);
+      },
+    });
+  }
+  // UPDATE OUTING
+
+  onTimeChange(event: any) {
+    this.selectedTime = event.target.value;
+    console.log('Selected time:', this.selectedTime);
+  }
+
+  updateOuting(): void {
+    console.log('Update called ✅ ');
+    console.log(
+      'selectedOutingLineForEdit ✅ ',
+      this.selectedOutingLineForEdit
+    );
+    console.log('selectedTime:', this.selectedTime);
+
+    if (this.selectedOutingLineForEdit && this.selectedTime) {
+      const [hourPart, minutePart] = this.selectedTime
+        .split(':')
+        .map((part) => parseInt(part, 10));
+      const updatedDate = new Date(
+        this.selectedOutingLineForEdit.outingDates[0]
+      );
+      updatedDate.setHours(hourPart, minutePart);
+
+      const updatedOuting: Outing = {
+        ...this.selectedOutingLineForEdit,
+        outingDates: [updatedDate],
+      };
+
+      // is duplicated?
+      if (this.isDuplicateOuting(updatedOuting)) {
+        alert('🚨 Cet horaire existe déjà. Modification impossible');
+        return;
+      }
+
+      this.outingService
+        .updateOutingByElderlyId(
+          updatedOuting.elderly.id,
+          updatedOuting.id,
+          updatedOuting
+        )
+        .subscribe({
+          next: (updatedOutingResponse) => {
+            console.log('Outing updated successfully:', updatedOutingResponse);
+            this.fetchOutings(this.selectedOutingLineForEdit.elderly.id); // refresh list
+            this.storeOutings(); // 🟦 LS
+            this.isFormOpenEDIT = false; // closing EDITform
+            // reset conditions to not open outing creation div
+            this.selectedTime = '';
+            this.selectedDate = null;
+          },
+          error: (error) => {
+            console.error('Error updating outing:', error);
+          },
+        });
+    } else {
+      console.error('selectedOutingLineForEdit or selectedTime is null');
+    }
   }
 
   /////////////////////// 🟢 MOBILE PART ///////////////////////
   // checkScreenSize(): void {
-  //       this.isMobile = window.innerWidth <= 950; 
+  //       this.isMobile = window.innerWidth <= 950;
   //     }
-      
-  
+
   setActiveTab(
     tabName: 'firstStepsArticle' | 'calendarArticle' | 'managementArticle'
   ): void {
-    this.isMobile = true; 
+    this.isMobile = true;
     this.activeTab = tabName;
     console.log('tabName is : ' + tabName);
     this.toggleTabsDisplay(this.activeTab);
@@ -398,42 +581,54 @@ export class ContentManagementComponent implements OnInit {
   }
 
   toggleTabsDisplay(activeTab: string): void {
-    this.isMobile = true; 
+    this.isMobile = true;
     const sections = document.querySelectorAll<HTMLElement>('.tabcontent');
-    sections.forEach((section) => {
+    sections.forEach((section: { style: { display: string }; id: any }) => {
       section.style.display = section.id === activeTab ? 'block' : 'none';
     });
   }
 
   setupTabButtons(): void {
-    this.isMobile = true; 
+    this.isMobile = true;
     const buttons = document.querySelectorAll('.tablinks');
-    buttons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-        const sectionId = (event.target as HTMLElement).getAttribute(
-          'data-section-id'
-        );
-        if (sectionId) {
-          this.setActiveTab(
-            sectionId as
-              | 'firstStepsArticle'
-              | 'calendarArticle'
-              | 'managementArticle'
+    buttons.forEach(
+      (button: {
+        addEventListener: (arg0: string, arg1: (event: any) => void) => void;
+      }) => {
+        button.addEventListener('click', (event: { target: HTMLElement }) => {
+          const sectionId = (event.target as HTMLElement).getAttribute(
+            'data-section-id'
           );
-        }
-      });
-    });
+          if (sectionId) {
+            this.setActiveTab(
+              sectionId as
+                | 'firstStepsArticle'
+                | 'calendarArticle'
+                | 'managementArticle'
+            );
+          }
+        });
+      }
+    );
   }
   updateActiveTabButton(activeTab: string): void {
-    this.isMobile = true; 
+    this.isMobile = true;
     const buttons = document.querySelectorAll('.tablinks');
-    buttons.forEach((button) => {
-      const sectionId = button.getAttribute('data-section-id');
-      if (sectionId === activeTab) {
-        button.classList.add('active');
-      } else {
-        button.classList.remove('active');
+    buttons.forEach(
+      (button: {
+        getAttribute: (arg0: string) => any;
+        classList: {
+          add: (arg0: string) => void;
+          remove: (arg0: string) => void;
+        };
+      }) => {
+        const sectionId = button.getAttribute('data-section-id');
+        if (sectionId === activeTab) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
       }
-    });
+    );
   }
 }

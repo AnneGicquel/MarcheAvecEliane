@@ -12,12 +12,12 @@ export class OutingService {
 
   constructor(private http: HttpClient) {}
 
-  // CREATE NEW OUTING
+  // ✅ CREATE NEW OUTING
   createNewOuting(outing: Outing): Observable<Outing> {
     return this.http.post<Outing>(`${this.apiUrl}/createNewOuting`, outing);
   }
 
-  // GET ALL OUTINGS
+  // ✅ GET ALL OUTINGS
   getAllOutings(selectedElderly: Elderly | null): Observable<Outing[]> {
   return this.http.get<Outing[]>(`${this.apiUrl}/getAllOutings`);
 }
@@ -51,13 +51,13 @@ export class OutingService {
     );
   }
 
-  // DELETE ONE OUTING BY ELDERLY ID
-  deleteOutingByElderlyId(
-    elderlyId: string,
-    outingId: string
-  ): Observable<any> {
+  // ✅ DELETE ONE OUTING BY ELDERLY ID
+  deleteOutingByElderlyId(elderlyId: string, outingId: string): Observable<any> {
     return this.http.delete(
-      `${this.apiUrl}/deleteOutingByElderlyId/${elderlyId}/outing/${outingId}`
+      `${this.apiUrl}/deleteOutingByElderlyId/${elderlyId}/outing/${outingId}`,
+      { responseType: 'text' } 
+      // type text because of error:
+      // {error: SyntaxError: Unexpected token 'T', "The outing"... is not valid JSON at JSON.parse (<anonymous>…, text: 'The outing705beab7-b1fa-44de-906a-782892250990of t…6d7-55e8f180cc44has been successfully deleted 🧽 '}
     );
   }
 }
