@@ -62,7 +62,7 @@ h2 {
 .searchBar {
   padding: 15px;
   color: black;
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -224,8 +224,7 @@ button {
   /* margin-bottom: 10px; */
 }
 .createBTN{
-  background-color: var(--darkPink);
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 /* HOURS Dropdown menu */
@@ -275,7 +274,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100px;
+  height: 70px;
   width: 350px;
   padding: 10px;
 }
@@ -289,12 +288,6 @@ button {
   overflow-y: auto;
   /* box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5); */
 }
-
-/* TITLE */
-/* #managementArticle h2 {
-    /* font-size: clamp to do; */
-/* position: fixed; */
-/* }  */
 
 /* LIST OF OUTINGS */
 .allRequiredOutings {
@@ -424,8 +417,9 @@ button {
   justify-content: center;
   padding: 20px;
 }
-.add-outing-wrapper .add-outing-footer .add-outing-btn {
-  height: 40px;
+.add-outing-wrapper .add-outing-footer .add-outing-btn ,
+.add-outing-wrapper .add-outing-footer .updateBTN{
+  height: 20px;
   font-size: 12px;
   font-weight: bold;
   outline: none;
@@ -435,6 +429,13 @@ button {
   cursor: pointer;
   padding: 5px 10px;
   border: 1px solid rgb(234, 158, 171);
+}
+
+#dateSelect{
+  width: 70%;
+}
+.label-outing-info{
+  font-weight: var(--semiBold);
 }
 
 /* ANIMATION */
@@ -461,12 +462,37 @@ button {
   color: #ffbfc3;
   text-shadow: 1px 1px 2px black;
 }
-.add-outing-wrapper .add-outing-footer .add-outing-btn:hover {
-  color: blue;
+.add-outing-wrapper .add-outing-footer .add-outing-btn:hover , 
+.add-outing-wrapper .add-outing-footer .updateBTN:hover,
+.outingCreation .createBTN:hover,
+.deleteBTN:hover,
+.searchPART .addbutton:hover {
+  font-weight: var(--semiBold);
   background-color: transparent;
+  box-shadow: 0 0 0 2px var(--darkPink);
+}
+.add-outing-wrapper .add-outing-footer .add-outing-btn:active, 
+.add-outing-wrapper .add-outing-footer .updateBTN:active,
+.outingCreation .createBTN:active,
+.deleteBTN:active,
+.searchPART .addbutton:active {
+  background-color: var(--); 
+  box-shadow: 2px 2px 5px var(--darkPink); 
 }
 
-/* SECTION TAB MOBILE */
+.tabMobileSection {
+  display: none;
+}
+
+/* ********************* RESPONSIVE ********************* */
+@media (max-width: 950px) {
+  /* TAB */
+  .tabMobileSection {
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: space-around;
+  }
+  /* SECTION TAB MOBILE */
 .tabMobileSection {
   /* border: 2px solid red; */
   display: flex;
@@ -479,15 +505,6 @@ button {
 .tablinks.active {
   background-color: var(--lightPink);
 }
-
-/* ********************* RESPONSIVE ********************* */
-@media (max-width: 950px) {
-  /* TAB */
-  .tabMobileSection {
-    /* border: 2px solid blue; */
-    display: flex;
-    justify-content: space-around;
-  }
   /* MAIN */
   main {
     height: 90vh;
@@ -531,17 +548,6 @@ button {
     width: 100%;
     min-height: 80vh;
   }
-  .outingCreation {
-    text-align: center;
-    box-shadow: none;
-    display: flex;
-    height: 50px;
-    width: 100%;
-    margin-top: 20px;
-  }
-  /* .createBTN {
-    font-weight: 600;
-  } */
   /* HOUR */
   .dropdown {
     left: 50%;
