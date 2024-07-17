@@ -1,0 +1,83 @@
+main {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+section {
+  width: calc(100% / 2);
+}
+
+.welcomeInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.infoContainer {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 150px;
+}
+.infoContainer img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 50px;
+}
+h1 {
+  margin-bottom: 20px;
+  font-size: clamp(20px, 3vw, 30px);
+}
+p{
+  font-size: clamp(14px, 3vw, 18px);
+  flex-wrap: wrap;
+  text-align: center;
+}
+button{
+  font-size: clamp(12px, 3vw, 18px);
+  border-radius: 10px;
+  padding: 10px 30px;
+  margin-top: 30px;
+  font-weight: var(--semiBold);
+}
+.connexionBTN {
+  background-color: var(--mediumGrey);
+  color: var(--white);
+  text-shadow: 1px 1px 5px var(--black);
+
+}
+.learnMoreBTN {
+  background-color: var(--lightPink);
+  color: var(--black);
+}
+.learnMoreBTN :hover {
+  color: white;
+  text-shadow: 1px 1px 5px var(--black);
+}
+.connexionBTN:hover {
+  color: black;
+  text-shadow: none;
+}
+
+.linkToPFDP img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    main{
+        flex-direction: column;
+        height: auto;
+    }
+    section{
+        width: 100%;
+        /* padding: 0 5px; */
+    }
+
+    .welcomeInfo{
+        margin-top: 10px;
+    }
+}

@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-password-reset-instructions',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './password-reset-instructions.component.html',
   styleUrl: './password-reset-instructions.component.css'
 })
-export class PasswordResetInstructionsComponent implements OnInit {
+export class PasswordResetInstructionsComponent {
+  email: string = '';
 
-  constructor(private titleService: Title) { }
-
-  ngOnInit(): void {
-    this.titleService.setTitle('MaÉ ♡ | Instructions réinitialisation mot de passe');
+  sendPasswordResetLink() {
+    if (this.email) {
+      
+          alert('Rendez-vous dans votre boîte mail ! 📥 \nSi un compte bénévole est associé à votre mail vous recevrez un lien dans votre boîte de réception pour réinitialiser votre mot de passe.  \n \nMail non reçu?  \nVérifiez que l’adresse email saisie est bien la bonne, ou que le mail ne s’est pas glissé dans vos indésirables. 👀 ');
+        }}
+  
   }
-}

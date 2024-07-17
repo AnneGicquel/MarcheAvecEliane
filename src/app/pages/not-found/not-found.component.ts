@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -8,11 +7,5 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.css'
 })
-export class NotFoundComponent implements OnInit {
-
-  constructor(private titleService: Title) { }
-
-  ngOnInit(): void {
-    this.titleService.setTitle('MaÉ ♡ | Page non trouvée');
-  }
+export class NotFoundComponent  {
 }

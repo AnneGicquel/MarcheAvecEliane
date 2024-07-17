@@ -1,32 +1,118 @@
 .homeMain {
   display: flex;
+  /* width: 100%; */
   flex-direction: column;
 }
 
+
+.cookie-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.cookie-warning {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  color: var(--black);
+  z-index: 100;
+  background: linear-gradient(
+    0deg,
+    var(--lightPink) 23.8%,
+    var(--white) 92%
+  );
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+
+  z-index: 100;
+}
+.cookie-title {
+  font-size: clamp(18px, 2.5vw, 20px);
+  margin-bottom: 12px;
+}
+
+.cookie-text {
+  font-size: clamp(12px, 2vw, 16px);
+  margin-bottom: 20px;
+  line-height: 1.8em;
+  width: 70%;
+
+}
+.policyPrivacy{
+  font-weight: var(--semiBold);
+  text-decoration: underline;
+}
+.cookie-btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+.cookie-btn {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 16px 24px;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: clamp(12px, 1vw, 16px);
+  transition: 0.15s ease;
+  border-radius: 15px;
+  border: 1px solid var(--lightGrey);
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+}
+.cookie-btn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 /* HERO */
+h1{
+  font-weight:400;
+  font-size: clamp(16px, 2.5vw + 2rem, 23px);
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px var(--white);
+}
 .heroContainer {
   background-color: var(--black);
   height: 645px;
-  width: 99.7vw;
+  /* height: 100%; */
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .heroContent {
   position: absolute;
-  top: 300px;
-  left: 830px;
+  top: 30%;
+  left: 60%;
   z-index: 1;
-  width: 490px;
+  padding: 20px;
+  /* border-radius: 10px; */
+  /* background-color: rgba(242, 242, 242, 0.20);  */
   text-align: center;
 }
 .heroContent p {
   font-size: clamp(16px, 2.5vw + 2rem, 20px);
   text-align: center;
   margin-bottom: 35px;
+  text-shadow: 1px 1px 5px var(--white);
+
 }
 .heroContent button {
   background-color: var(--lightPink);
+  border: 2px solid black;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
@@ -37,6 +123,7 @@
 .heroImg {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .overlay {
   opacity: 0.78;
@@ -93,7 +180,7 @@ img {
 }
 
 /* VOLUNTEERS */
-h1 {
+.unitedVolunteer{
   font-size: 30px;
   font-weight: var(--semiBold);
 }
@@ -102,25 +189,29 @@ h1 {
   flex-direction: column;
   padding: 0 40px;
   justify-content: space-between;
-  /* width: 100%; */
+  width: 100%;
   margin-bottom: 110px;
 }
 .volunteersGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  /* border: 2px solid green; */
+  gap: 62px;
+  border: 2px solid green;
 }
 .volunteersGridItem {
   border: 1px solid var(--black);
   text-align: center;
   width: 300px;
   height: 420px;
+  /* border: 2px solid green; */
+  
 }
 .volunteersGridContent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid green; */
+
 }
 .volunteersGridPortrait {
   width: 300px;
@@ -151,48 +242,51 @@ h1 {
 }
 
 /* RESPONSIVE */
-@media (max-width: 1310px) {
-  .heroContent {
-    left: 700px;
-  }
-}
-@media (max-width: 1200px) {
-  .heroContent {
-    left: 600px;
-  }
-}
-@media (max-width: 1100px) {
-  .heroContent {
-    left: 500px;
-  }
-}
-@media (max-width: 1020px) {
-  .heroContent {
-    left: 400px;
-  }
-}
+
 @media (max-width: 900px) {
   .homeMain {
     align-items: center;
   }
-  /* .redLine{
-        display: none; ?
-    } */
   .sectionCards {
     flex-direction: column;
     height: 846px;
     width: auto;
   }
+.heroContent, .redLine{
+display: none;
+}
+
+.heroContainer{
+  height: 350px;
+}
+
+.sectionCards{
+  margin: 15px 0;
+}
+  
   .sectionVolunteers{
     align-items: center;
   }
   .sectionVolunteers h1{
     margin-bottom: 50px;
   }
+  .card {
+    height: 380px;
+    width: 350px;
+  }
+  img {
+    height: 270px;
+    width: 295px;
+  }
+  .cardContent {
+    height: 68px;
+    width: 70px;
+  }
+  .cardTitle {
+    font-size: 16px;
+  }
+  .cardDescription {
+    font-size: 16px
+  }
+
 }
-/* ********************** */
-/* TO FIX => RESPONSIVE:
-  => heroContent
-  => only redLine (no hands)
-  => gridItem to Center */
-/* ********************** */

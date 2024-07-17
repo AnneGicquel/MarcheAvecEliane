@@ -10,5 +10,14 @@ import { RouterModule } from '@angular/router';
     imports: [RouterModule, SocialNetworkComponent]
 })
 export class FooterComponent {
+    showCookieOverlay = false;
+
+    openCookieWarning(){
+        this.showCookieOverlay = true;
+    }  
+  
+    handleCookieChoice(accepted: boolean): void {
+      this.showCookieOverlay = false;
+    }
 
 }

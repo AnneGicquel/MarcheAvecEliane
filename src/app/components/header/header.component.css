@@ -124,6 +124,7 @@ a {
   font-size: 32px;
   border: none;
   cursor: pointer;
+  padding: 4px;
 }
 .profilButton + .dropdown {
   margin-left: -160px;
@@ -155,6 +156,10 @@ a {
   background-color: var(--white);
   border-bottom: 1px solid var(--black);
 }
+  /* CUSTOM MNGMT HEADER */
+  .hidden{
+    display: none;
+  }
 
 /* RESPONSIVE */
 @media (max-width: 1085px) {
@@ -205,6 +210,5 @@ a {
     height: 36px;
     font-size: 29px;
     margin-bottom: 11px;
-  }
-  
+  }  
 }

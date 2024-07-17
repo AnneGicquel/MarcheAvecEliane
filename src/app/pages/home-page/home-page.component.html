@@ -1,10 +1,14 @@
 <main class="homeMain">
+  @if(showCookieOverlay){
+  <div class="cookie-overlay"></div>
+  }
   <div class="heroContainer">
     <div class="heroContent">
+      <h1>Explorez notre engagement envers nos aîné·es :</h1>
       <p>
-        Explorez notre engagement envers nos aîné·es :<br />
-        <strong>Découvrir notre Charte de Bienveillance</strong>
-      </p>
+        <strong>
+        Découvrir notre Charte de Bienveillance
+      </strong></p>
       <button routerLink="/a_propos/charte" >découvrir</button>
     </div>
     <img
@@ -27,7 +31,7 @@
           alt=""
         />
         <div class="cardContent">
-          <h5 class="cardTitle">rencontres</h5>
+          <h2 class="cardTitle">rencontres</h2>
           <p class="cardDescription">calendrier de demande de sorties</p>
         </div>
       </div>
@@ -39,7 +43,7 @@
           alt=""
         />
         <div class="cardContent">
-          <h5 class="cardTitle">entraide</h5>
+          <h2 class="cardTitle">entraide</h2>
           <p class="cardDescription">conseils et recommandations</p>
         </div>
       </div>
@@ -48,8 +52,9 @@
 
   <!-- VOLUNTEERS -->
   <section class="sectionVolunteers">
-    <h1>Bénévoles Uni·es</h1>
-    <a href="https://www.linkedin.com/in/marche-avec-eliane-paris">
+    <h2 class="unitedVolunteer">Bénévoles Uni·es</h2>
+    <a href="https://www.linkedin.com/in/marche-avec-eliane-paris"
+      target="_blank">
       <div class="volunteersGrid">
         <div class="volunteersGridItem">
           <div class="volunteersGridContent">
@@ -110,4 +115,15 @@
       </div>
     </a>
   </section>
+
+  @if(showCookieOverlay){
+  <div class="cookie-warning">
+    <h3 class="cookie-title">Nous utilisons des cookies 🍪🍪🍪</h3>
+    <div class="cookie-text">Nous utilisons des cookies pour vous garantir la meilleure expérience de navigation sur notre site. En utilisant notre site, vous reconnaissez avoir lu et compris notre <a class="policyPrivacy" routerLink="/privacyPolicy">Politique en matière de cookies & Politique de confidentialité.</a></div>
+    <div class="cookie-btn-wrapper">
+      <button class="cookie-btn" (click)="handleCookieChoice(true)">Accepter</button>
+      <button class="cookie-btn" (click)="handleCookieChoice(false)">Décliner</button>
+    </div>
+  </div>}
+
 </main>

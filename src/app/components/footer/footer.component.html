@@ -8,7 +8,7 @@
   <!-- CONTACT CONTAINER-->
   <div class="contactContainer">
     <!-- LOGO -->
-    <a class="logoContainer" routerLink="/"
+    <a class="logoContainer" routerLink="/accueil"
       ><img src="assets/images/logo/Marche_avec_Eliane_Logo.png"
     /></a>
     <!-- CONTACT -->
@@ -24,12 +24,25 @@
   <nav>
     <ul class="footerMenu">
       <!-- déclencher une pop up proposant de démarrer la visite ou annuler -->
-      <li><a>Visiter votre espace</a></li>
-      <li><a routerLink="/legalNotice">Mentions légales</a></li>
-      <li><a routerLink="/privacyPolicy">Politique de confidentialité</a></li>
+      <!-- <li><a>Visiter votre espace</a></li> -->
+      <li><a routerLink="/mentions_legales/mentions legales">Mentions légales</a></li>
+      <li><a routerLink="/politique_de_confidentialite/politique de confidentialite">Politique de confidentialité</a></li>
       <!-- déclencher la pop up des cookies -->
-      <li><a>Gestion des Cookies</a></li>
-      <li><a routerLink="/siteMap">Plan du site</a></li>
+      <li><a (click)="openCookieWarning()">Gestion des Cookies</a></li>
+
+      @if(showCookieOverlay){
+        <div class="cookie-warning">
+          <h3 class="cookie-title">Nous utilisons des cookies 🍪🍪🍪</h3>
+          <div class="cookie-text">Nous utilisons des cookies pour vous garantir la meilleure expérience de navigation sur notre site. En utilisant notre site, vous reconnaissez avoir lu et compris notre <a class="policyPrivacy" routerLink="/privacyPolicy">Politique en matière de cookies & Politique de confidentialité.</a></div>
+          <div class="cookie-btn-wrapper">
+            <button class="cookie-btn" (click)="handleCookieChoice(true)">Accepter</button>
+            <button class="cookie-btn" (click)="handleCookieChoice(false)">Décliner</button>
+          </div>
+        </div>}
+
+
+
+      <li><a routerLink="/plan_du_site/plan du site">Plan du site</a></li>
     </ul>
   </nav>
 </footer>

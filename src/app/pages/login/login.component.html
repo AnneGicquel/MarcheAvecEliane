@@ -1,17 +1,26 @@
 <section>
     <img class="logo" src="assets/images/logo/Marche_avec_Eliane_Logo.png" alt="">
     <div class="login-container">
-        
         <h2>Accès à votre espace bénévole</h2>
-        <form action="login.php" method="POST">
+        <form (ngSubmit)="login()">
             <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="e-mail" required>
+                <input type="email" [(ngModel)]="email" name="email" placeholder="e-mail" required>
             </div>
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="mot de passe" required>
+            <div class="form-group inputPlusEyeContainer">
+                <input 
+          [type]="isPasswordVisible ? 'text' : 'password'" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="mot de passe" 
+          required>
+        <i 
+          class="fas" 
+          [ngClass]="{'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible}" 
+          (click)="togglePasswordVisibility()">
+        </i>
             </div>
-            <div class="form-group">
-                <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+            <div>
+                <a routerLink="/mot_de_passe_oublie" class="forgot-password">Mot de passe oublié ?</a>
             </div>
             <button type="submit">SE CONNECTER</button>
         </form>
