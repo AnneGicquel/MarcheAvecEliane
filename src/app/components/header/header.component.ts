@@ -1,18 +1,32 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { OutSideClickDirective } from '../../directives/outside-click.directive';
+import { AuthService } from '../../services/auth/auth.service';
+import { VolunteerService } from '../../services/volunteer/volunteer.service';
+import { Volunteer } from '../../models/volunteer.model';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, OutSideClickDirective],
+  imports: [RouterLink, CommonModule, OutSideClickDirective ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+
+  // INITIAL ACCOUNT SETTING BTN
+  userInitial: string = '';
+
+
   // TOGGLE MOBILE MENU
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(
+    private renderer: Renderer2, 
+    private el: ElementRef,
+    private authService: AuthService, 
+    private router: Router,
+    private volunteerService: VolunteerService) {}
+
 
   ngOnInit(): void {
     // Détection du clic sur un lien dans le menu
@@ -31,12 +45,26 @@ export class HeaderComponent {
               targetElement.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start',
-              }); // Faire défiler la page vers la section cible
+              }); 
             }
           });
         }
       );
-  }
+
+  // INITIAL ACCOUNT
+  const userEmail = 'vaEtreOverride@example.com'; 
+  this.volunteerService.getVolunteerByEmail(userEmail).subscribe(
+    volunteer => {
+      this.userInitial = volunteer.firstName.charAt(0).toUpperCase();
+      console.log('userInitial', this.userInitial);
+    },
+    error => {
+      console.error('Erreur:', error);
+    }
+  );
+}
+    
+
 
   ngAfterViewInit() {
     const menuBurger = this.el.nativeElement.querySelector('.menuBurger');
@@ -80,4 +108,19 @@ export class HeaderComponent {
     this.isOpenAboutUs = false;
     this.isOpenMutualAid = false;
   };
+
+  // LOGOUT
+  logout() {
+    this.authService.logout();
+  }
+
+  // CUSTOM HEADER FOR MNGMT PAGE  
+  isMNGMTPage(): boolean {
+    return this.router.url.includes('/gestion_des_demandes');
+  }
+
+  // // INITIAL CONDITION
+  // isLoggedIn(): boolean {
+  //   return this.authService.isLoggedIn();
+  // }
 }

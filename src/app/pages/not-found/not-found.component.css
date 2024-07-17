@@ -10,13 +10,31 @@ img
 }
 
 /* Centered text */
-.text {
+.message{
     position: absolute;
-    top: 20%;
-    left: 40%;
+    top: 25%;
+    left: 38%;
     transform: translate(-50%, -50%);
+}
+.oups{
+    margin-bottom: 5px;
+}
+.text {
+    font-style:italic;
+    font-weight: var(--semiBold);
+    font-size: clamp(18px, 3vw, 24px);
   }
-  
+  button {
+    width: auto;
+    padding: 5px 10px;
+    background-color: var(--lightPink);
+    font-size: clamp(8px, 3vw, 15px);
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+    border: 1px solid var(--black);
+  } 
 
 @media (max-width: 1350px) {
     img {

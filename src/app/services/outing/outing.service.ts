@@ -12,6 +12,8 @@ export class OutingService {
 
   constructor(private http: HttpClient) {}
 
+
+  ////////////////////////////////// 🟡 COORDINATOR PART 🟡 ///////////////////////////////
   // ✅ CREATE NEW OUTING
   createNewOuting(outing: Outing): Observable<Outing> {
     return this.http.post<Outing>(`${this.apiUrl}/createNewOuting`, outing);
@@ -22,24 +24,24 @@ export class OutingService {
   return this.http.get<Outing[]>(`${this.apiUrl}/getAllOutings`);
 }
 
-  // ALL OUTINGS BY ELDERLY ID
-  getOutingsByElderlyId(elderlyId: string): Observable<Outing[]> {
-    return this.http.get<Outing[]>(
-      `${this.apiUrl}/getOutingsByElderlyId/${elderlyId}`
-    );
-  }
+  // // ALL OUTINGS BY ELDERLY ID
+  // getOutingsByElderlyId(elderlyId: string): Observable<Outing[]> {
+  //   return this.http.get<Outing[]>(
+  //     `${this.apiUrl}/getOutingsByElderlyId/${elderlyId}`
+  //   );
+  // }
 
-  // ONE OUTING BY ELDERLY ID
-  getOutingByElderlyIdAndOutingId(
-    elderlyId: string,
-    outingId: string
-  ): Observable<Outing> {
-    return this.http.get<Outing>(
-      `${this.apiUrl}/getOutingByElderlyId/${elderlyId}/outing/${outingId}`
-    );
-  }
+  // // ONE OUTING BY ELDERLY ID
+  // getOutingByElderlyIdAndOutingId(
+  //   elderlyId: string,
+  //   outingId: string
+  // ): Observable<Outing> {
+  //   return this.http.get<Outing>(
+  //     `${this.apiUrl}/getOutingByElderlyId/${elderlyId}/outing/${outingId}`
+  //   );
+  // }
 
-  //UPDATE OUTING BY ELDERLY ID
+  // ✅ UPDATE OUTING BY ELDERLY ID
   updateOutingByElderlyId(
     elderlyId: string,
     outingId: string,

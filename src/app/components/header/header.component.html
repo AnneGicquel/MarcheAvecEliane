@@ -16,15 +16,22 @@
     </label>
 
     <!-- LOGO -->
-    <a class="logoContainer" routerLink="/"
-      ><img src="assets/images/logo/Marche_avec_Eliane_Logo.png"
-    /></a>
+    @if (!isMNGMTPage()) {<a class="logoContainer" routerLink="/accueil">
+      <img src="assets/images/logo/Marche_avec_Eliane_Logo.png" /></a
+    >} 
+    @else{
+      <a class="logoContainer" >
+        <img src="assets/images/logo/Marche_avec_Eliane_Logo.png" /></a
+      >
+    }
 
     <ul>
       <!-- ABOUT US -->
       <div class="navbarToSidebar">
         <li class="navItem">
-          <span (click)="toggleAboutUs()">à propos <i class="fas fa-chevron-down"></i></span> 
+          <span (click)="toggleAboutUs()" [ngClass]="{ hidden: isMNGMTPage() }"
+            >à propos <i class="fas fa-chevron-down"></i
+          ></span>
           <!-- DROPDOWN -->
           <div
             class="dropdown"
@@ -43,12 +50,18 @@
 
         <!-- COMPANION SHIP SCHEDULER -->
         <li class="navItem">
-          <a routerLink="/rencontres">rencontres</a>
+          <a routerLink="/rencontres" [ngClass]="{ hidden: isMNGMTPage() }"
+            >rencontres</a
+          >
         </li>
 
         <!-- MUTUAL AID -->
         <li class="navItem">
-          <span (click)="toggleMutualAid()">entraide <i class="fas fa-chevron-down"></i></span>
+          <span
+            (click)="toggleMutualAid()"
+            [ngClass]="{ hidden: isMNGMTPage() }"
+            >entraide <i class="fas fa-chevron-down"></i
+          ></span>
           <!-- DROPDOWN -->
           <div
             class="dropdown"
@@ -68,7 +81,8 @@
       <!-- ACCOUNT SETTINGS -->
       <li class="navItem">
         <button class="profilButton" (click)="toggleAccountSettings()">
-          A
+          {{ isMNGMTPage() ? "🔚" : "" }}
+          {{ !isMNGMTPage() ? userInitial : "" }}
         </button>
         <!-- DROPDOWN -->
         <div
@@ -77,15 +91,15 @@
           (appOutSideClick)="(isOpenAccountSettings)"
           (outSideClick)="isOpenAccountSettings = false"
         >
-          <div class="menu-item">
+          <div class="menu-item" [ngClass]="{ hidden: isMNGMTPage() }">
             <a routerLink="/mes_informations">informations</a>
           </div>
           <div class="menu-item">
-            <a routerLink="/login"><button class="signOutBtn">
-              <!-- <button (click)="logout()"> -->
-              Déconnexion &nbsp;<i class="fas fa-sign-out-alt"></i>
-            </button>
-          </a>
+            <a routerLink="/connexion" (click)="logout()"
+              ><button class="signOutBtn">
+                Déconnexion &nbsp;<i class="fas fa-sign-out-alt"></i>
+              </button>
+            </a>
           </div>
         </div>
       </li>

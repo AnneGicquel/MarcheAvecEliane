@@ -16,11 +16,22 @@ export class AppComponent {
   title = 'Marche Avec Éliane';
   // url:string = "";
 
- // LoginPage without header & footer
+ // Pages without header & footer
   isLoginPage(): boolean {
     return this.router.url === '/connexion';
   }
-
+  isWelcomePage():boolean{
+    return this.router.url === '/bienvenue';
+  }
+  isManagementPage():boolean{
+    return this.router.url === '/gestion_des_demandes';
+  }
+  isLearnMorePage():boolean{
+    return this.router.url === '/en_savoir_plus/association'
+  }
+  isPwdForgotten():boolean{
+    return this.router.url === '/mot_de_passe_oublie'
+  }
   // SCROLL TO TOP
   constructor ( 
     private router: Router, 

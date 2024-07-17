@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Outing } from '../../models/outing.model';
 import { Elderly } from '../../models/elderly.model';
+import { Coordinator } from '../../models/coordinator.model';
 import { SchedulerService } from '../../services/schedulerService/scheduler.service';
 import { ElderlyService } from '../../services/elderly/elderly.service';
 import { OutingService } from '../../services/outing/outing.service';
-import { ContentManagementService } from '../../services/contentManagement/content-management.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-content-management',
@@ -55,6 +56,8 @@ export class ContentManagementComponent implements OnInit {
   selectedElderly: Elderly | null = null;
   // 🟡 OUTING PART
   outings: Outing[] = [];
+  // COORDINATOR
+  coordinator!: Coordinator;
   // 🟢 MOBILE PART
   activeTab: string = 'calendarArticle'; // tab par défaut
   isMobile: boolean = false;
@@ -71,32 +74,78 @@ export class ContentManagementComponent implements OnInit {
     // HOURS DROPDOWN
     this.initializeHours();
     // 🟣 ELDERLY PART
-    this.fetchElderlies();
+      this.fetchElderlies();
+     
+
+
     // 🟢 MOBILE PART
     this.setupTabButtons(); // tabs mngmt
     // 🟦 PERSISTENCE LS
-    this.loadStoredData(); // ALL DATA
-    this.fetchOutings(this.selectedElderly!.id); // OUTINGS
-    const confirmClicked = localStorage.getItem('confirmClicked'); // CLIC ON CONFIRM BTN
-    if (confirmClicked === 'true') {
-      this.confirmClicked = true;
-    } else {
-      this.confirmClicked = false;
-    }
+   this.loadStoredData(); // ALL DATA
+   // OUTINGS
+    // const confirmClicked = localStorage.getItem('confirmClicked'); // CLIC ON CONFIRM BTN
+    // // if (confirmClicked === 'true') {
+    // //   this.confirmClicked = true;
+    // // } else {
+    // //   this.confirmClicked = false;
+    // // }
   }
 
+  
   //////////////////////////////////////// 🟦 PERSISTENCE /////////////////////////////////////////
   // load all data from LS
-  loadStoredData(): void {
-    const storedElderly = localStorage.getItem('selectedElderly');
-    if (storedElderly) {
-      this.selectedElderly = JSON.parse(storedElderly);
-    }
-    const storedOutings = localStorage.getItem('outings');
-    if (storedOutings) {
+//   loadStoredData(): void {
+    
+//     const storedElderly = localStorage.getItem('selectedElderly');
+//     if (storedElderly) {
+//       this.selectedElderly = JSON.parse(storedElderly);
+//     }
+//     else if (storedElderly === null || storedElderly === undefined) {
+//       console.warn('No selectedElderly data found in localStorage.');
+//       return;
+//     }
+//     const storedOutings = localStorage.getItem('outings');
+//     if (storedOutings) {
+//       this.outings = JSON.parse(storedOutings);
+//     }
+// }
+loadStoredData(): void {
+  // Récupérer les données stockées pour selectedElderly
+  const storedElderly = localStorage.getItem('selectedElderly');
+
+  // Vérifier si storedElderly est null ou undefined
+  if (storedElderly === null || storedElderly === undefined) {
+    console.warn('No selectedElderly data found in localStorage.');
+    return;
+  }
+
+  let parsedElderly;
+  try {
+    parsedElderly = JSON.parse(storedElderly);
+  } catch (error) {
+    console.warn('Error parsing selectedElderly data from localStorage:', error);
+    return;
+  }
+
+  // Vérifier si parsedElderly est bien un objet
+  if (typeof parsedElderly === 'object') {
+    this.selectedElderly = parsedElderly;
+  } else {
+    console.warn('Invalid elderly data found in localStorage.');
+    return;
+  }
+
+  // Charger les sorties (outings) s'il y en a dans le localStorage
+  const storedOutings = localStorage.getItem('outings');
+  if (storedOutings) {
+    try {
       this.outings = JSON.parse(storedOutings);
+    } catch (error) {
+      console.warn('Error parsing outings data from localStorage:', error);
     }
   }
+}
+
 
   storeOutings(): void {
     localStorage.setItem('outings', JSON.stringify(this.outings));
@@ -279,11 +328,13 @@ export class ContentManagementComponent implements OnInit {
   fetchElderlies(): void {
     // 🟦 LS
     this.elderlyService.getAllElderlies().subscribe((elderlies) => {
-      this.elderlies = elderlies;
+      // sort pseudo by alphabetic order
+      this.elderlies = elderlies.sort((a, b) => a.pseudo.localeCompare(b.pseudo));
+      
       if (this.elderlies.length > 0) {
-        this.selectedElderly = this.elderlies[0];
-        this.storeSelectedElderly(); // Sauvegarder le premier personne âgée par défaut sélectionnée
-      }
+        this.selectedElderly = this.elderlies[-1];
+        this.storeSelectedElderly(); // Save by defaut (-1 => select a pseudo)
+        }
     });
   }
 
@@ -300,37 +351,44 @@ export class ContentManagementComponent implements OnInit {
 
   onSelected(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
+    console.log("selectELEMENT " , selectElement) //si je selectionne ''; j'ai ce que je veux !!
     const selectedId = selectElement.value;
-    this.selectedElderly =
-      this.elderlies.find((elderly) => elderly.id === selectedId) || null;
-    if (this.selectedElderly) {
-      localStorage.setItem(
-        'selectedElderly',
-        JSON.stringify({ Elderly: this.selectedElderly })
-      );
+    console.log("selectID " , selectedId) 
+    
+
+    if (selectedId === '') {
+        // 🟦 clear LS
+        localStorage.removeItem('selectedElderly');
+        localStorage.removeItem('outings');
+        localStorage.removeItem('confirmClicked');
+        this.selectedElderly = null;
+        this.confirmClicked = false;
+        console.log('LocalStorage a été réinitialisé');
+    } 
+    else {
+        this.selectedElderly = this.elderlies.find((elderly) => elderly.id === selectedId) || null;
+        if (this.selectedElderly) {
+            localStorage.setItem('selectedElderly', JSON.stringify(this.selectedElderly));
+            this.confirmClicked= false;
+        }
     }
-    const storedElderly = localStorage.getItem('selectedElderly');
-    if (storedElderly) {
-      const elderly = JSON.parse(storedElderly);
-      console.log('Elderly stored in localStorage:', elderly);
-    }
-  }
+}
 
   confirmClicked = false; // sinon le outings se déclenchent avec la condition "outing.elderly.id === selectedElderly.id"
 
   // 🟦 LS
   confirmSelection(): void {
     if (this.selectedElderly) {
-      this.fetchOutings(this.selectedElderly.id);
-      this.confirmClicked = true;
-      localStorage.setItem('confirmClicked', 'true');
+        this.fetchOutings(this.selectedElderly.id);
+        this.confirmClicked = true;
+       // localStorage.setItem('confirmClicked', 'true');
     }
-  }
-  // 🟦 LS
-  cancelConfirmation(): void {
-    this.confirmClicked = false;
-    localStorage.setItem('confirmClicked', 'false');
-  }
+}
+  // // 🟦 LS
+  // cancelConfirmation(): void {
+  //   this.confirmClicked = false;
+  //   localStorage.setItem('confirmClicked', 'false');
+  // }
 
   //////////////////////////////////////// 🟡 OUTING PART  ////////////////////////////////////////
   // GET ALL OUTINGS
@@ -400,13 +458,21 @@ export class ContentManagementComponent implements OnInit {
 
   selectTime(hour: string): void {
     this.selectedTime = hour; // 🙏
+    console.log(" 0 - selectedTime :", this.selectedTime)
+
     if (this.selectedDate) {
       const [hourPart, minutePart] = hour
         .split(':')
         .map((part) => parseInt(part, 10));
       this.selectedDate.setHours(hourPart, minutePart);
+      console.log(" 1 - this.selectedDate before .sethours :", this.selectedDate)
+      console.log(" 1bis - this.selectedDate after .sethours :", this.selectedDate.setHours(hourPart, minutePart))
+      console.log(" 2 - const [hourPart, minutePart] :", [hourPart, minutePart])
 
       const selectedDateTime = this.toTimestampFormat(this.selectedDate);
+      console.log(" 3 - selectedDateTime :", selectedDateTime)
+
+
       const selectedElderly = localStorage.getItem('selectedElderly');
       if (selectedElderly) {
         const elderly = JSON.parse(selectedElderly);
@@ -455,6 +521,9 @@ export class ContentManagementComponent implements OnInit {
         id: '123e4567-e89b-12d3-a456-426614174000', // histoire de ... sera override par le BACK
         outingDates: [new Date(selectedDateTime)],
         elderly: this.selectedElderly as Elderly,
+        coordinator: {
+          id: 'b1dfe247-27a0-416d-8925-de9bb7608e98' 
+        }
       };
 
       // is duplicate ???

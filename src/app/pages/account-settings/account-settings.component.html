@@ -156,7 +156,7 @@
     <h2>Changement de mot de passe</h2>
     <p class="pwdInstructions">
       Votre mot de passe doit contenir<br />
-      au moins 8 caractères combinaison <br />
+      au moins 12 caractères combinaison <br />
       de chiffres, lettres, caractères spéciaux.
     </p>
     <form class="pwdForm" [formGroup]="userForm">
@@ -268,12 +268,12 @@
         <span
           class="block"
           [ngClass]="{
-            valid: passwordFormField?.value?.match('.{8,}'),
-            invalid: !passwordFormField?.value?.match('.{8,}')
+            valid: passwordFormField?.value?.match('.{12,}'),
+            invalid: !passwordFormField?.value?.match('.{12,}')
           }"
         >
-          {{ passwordFormField?.value?.match(".{8,}") ? "✔️" : "❌" }} Au moins
-          8 caractères
+          {{ passwordFormField?.value?.match(".{12,}") ? "✔️" : "❌" }} Au moins
+          12 caractères
         </span>
       </div>
 
@@ -317,13 +317,6 @@
     </form>
   </section>
 
-  <!-- Partie “DECONNEXION” -->
-  <!-- <section id="deconnexion">
-    <h1 class="deconnexionh1">DECONNEXION</h1>
-    <button class="signOutBtn" routerLink="/login">
-      Déconnexion &nbsp;<i class="fas fa-sign-out-alt"></i>
-    </button>
-  </section> -->
 
   <!-- Partie “SUPPRESSION” -->
   <section class="deleteAccountSection">
@@ -334,7 +327,7 @@
         compte bénévole, vous ne pourrez plus récupérer le contenu. Votre profil
         sera également effacé des bases de données de “Marche avec Éliane”.
       </p>
-      <button class="deleteBTN">Continuer</button>
+      <button class="deleteBTN" routerLink="/bienvenue">Continuer</button>
       <!-- modal -->
     </div>
   </section>

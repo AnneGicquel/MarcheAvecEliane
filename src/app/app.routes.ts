@@ -14,15 +14,29 @@ import { PasswordResetRequestComponent } from './pages/password-reset-request/pa
 import { PasswordSetUpComponent } from './pages/password-set-up/password-set-up.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SiteMapComponent } from './pages/site-map/site-map.component';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
+import { LearnMorePageComponent } from './pages/learn-more-page/learn-more-page.component';
 
 export const routes: Routes = [
+
   { path: "", 
-    redirectTo: '/connexion',
+    redirectTo: '/bienvenue',
     pathMatch: 'full' 
   },
   {
+    path: "bienvenue",
+    title:'Bienvenue | MaÉ ♡',
+    component: WelcomePageComponent
+  },
+  {
+    path: "en_savoir_plus/:subtitle",
+    title:'En savoir plus | MaÉ ♡',
+    component: LearnMorePageComponent 
+  },
+
+  {
     path: "connexion",
-    // title:'Connexion | MaÉ ♡',
+    title:'Connexion | MaÉ ♡',
     component: LoginComponent
   },
   {
@@ -55,7 +69,8 @@ export const routes: Routes = [
     component: ContentManagementComponent
   },
   {
-    path: "legalNotice",
+    path: "mentions_legales/:subtitle",
+    title:'À propos | MaÉ ♡',
     component: LegalNoticeComponent
   },
   {
@@ -64,18 +79,29 @@ export const routes: Routes = [
     component: MutualAidComponent
   },
   {
+    path: "politique_de_confidentialite/:subtitle",
+    title:'Politique de confidentialité | MaÉ ♡',
+    component: LegalNoticeComponent
+  },
+  {
+    path: "plan_du_site/:subtitle",
+    title: 'Plan du site | MaÉ ♡', 
+    component: SiteMapComponent
+  },
+  {
     path: "notFound",
-    // title:'404 | MaÉ ♡',
+    title:'Page non trouvée | MaÉ ♡',
     component: NotFoundComponent
+  }, 
+  {
+    path: "mot_de_passe_oublie",
+    component: PasswordResetInstructionsComponent
   },
   { 
     path: '**', 
     redirectTo: '/notFound' 
   },
-  {
-    path: "passwordResetInstructions",
-    component: PasswordResetInstructionsComponent
-  },
+ 
   {
     path: "passwordResetRequest",
     component: PasswordResetRequestComponent
@@ -84,13 +110,5 @@ export const routes: Routes = [
     path: "passwordSetUp",
     component: PasswordSetUpComponent
   },
-  {
-    path: "privacyPolicy",
-    component: PrivacyPolicyComponent
-  },
-  {
-    path: "siteMap",
-    component: SiteMapComponent
-  }
 ];
 

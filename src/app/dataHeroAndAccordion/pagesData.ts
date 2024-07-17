@@ -298,4 +298,48 @@ export const PAGESDATA: IpagesData[] = [
       alt: "charte de bienveillance test",
     },
   },
+
+  // LEARNMOREPAGE
+  {
+    id: 7,
+    category: "en_savoir_plus",
+    subtitle: "association",
+    heroPicture: {
+      src: "assets/images/LearnMorePage/learnMorePage.jpeg",
+      alt: "à propos test",
+    },
+  },
+
+  // mentions_legales
+  {
+    id: 8,
+    category: "mentions_legales",
+    subtitle: "mentions legales",
+    heroPicture: {
+      src: "assets/images/legalNotice/legalNotice.jpeg",
+      alt: "à propos test",
+    },
+  },
+  // politique de confidentialite
+  {
+    id: 9,
+    category: "politique_de_confidentialite",
+    subtitle: "politique de confidentialite",
+    heroPicture: {
+      src: "assets/images/privacyPolicy/privacyPolicy.png",
+      alt: "à propos test",
+    },
+  },
+  // plan_du_site
+  {
+    id: 10,
+    category: "plan_du_site",
+    subtitle: "plan du site",
+    heroPicture: {
+      src: "assets/images/siteMap/siteMap.jpeg",
+      alt: "à propos test",
+    },
+  },
+
+  
 ];

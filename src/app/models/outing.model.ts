@@ -1,3 +1,4 @@
+import { Coordinator } from "./coordinator.model";
 import { Elderly } from "./elderly.model";
 import { Volunteer } from "./volunteer.model";
 
@@ -6,4 +7,6 @@ export interface Outing {
     outingDates: Date[]; // Timestamp[] => Date[] in ts
     elderly: Elderly; // many to one
     volunteer?: Volunteer; // many to one
+    coordinator: Coordinator; // many to one
+
 }
