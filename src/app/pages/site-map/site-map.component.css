@@ -1,0 +1,20 @@
+.sectionSiteMap{
+    font-size: clamp(12px, 3vw, 18px);
+    padding: 2% 20%;
+    line-height: 35px;
+}
+
+h1{
+    margin-bottom: 35px;
+}
+h2{
+    margin: 15px 0;
+}
+li, .linked{
+    margin-left: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.linked{
+    margin-left: 0;
+}

@@ -25,7 +25,6 @@ export class AuthService {
     );
   }
 
-  
 
   // Méthode pour récupérer le jeton JWT stocké
   getToken(): string | null {
@@ -36,10 +35,7 @@ export class AuthService {
   }
 
   logout(): void {
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('volunteer');
     localStorage.clear();
-
     this.router.navigate(['/connexion']);
   }
   

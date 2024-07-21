@@ -12,10 +12,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PasswordResetInstructionsComponent } from './pages/password-reset-instructions/password-reset-instructions.component';
 import { PasswordResetRequestComponent } from './pages/password-reset-request/password-reset-request.component';
 import { PasswordSetUpComponent } from './pages/password-set-up/password-set-up.component';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SiteMapComponent } from './pages/site-map/site-map.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { LearnMorePageComponent } from './pages/learn-more-page/learn-more-page.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
 
@@ -81,7 +81,7 @@ export const routes: Routes = [
   {
     path: "politique_de_confidentialite/:subtitle",
     title:'Politique de confidentialité | MaÉ ♡',
-    component: LegalNoticeComponent
+    component: PrivacyPolicyComponent
   },
   {
     path: "plan_du_site/:subtitle",

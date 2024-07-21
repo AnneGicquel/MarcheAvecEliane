@@ -107,7 +107,7 @@
       }
 
       <!-- DIRECTION -->
-      @if(!selectedTime && !selectedElderly){
+      @if(!selectedTime ){
       <div class="direction">
         <button class="goToTodayBtn" (click)="goToToday()">aujourd'hui</button>
       </div>
@@ -244,7 +244,7 @@
 
             <div class="add-outing-info">
               <span class="info">{{
-                selectedOutingForDelete?.outingDates | date : "EEE MM-dd"
+                selectedOutingForDelete?.outingDates | date : "'EEE d MMMM"
               }}</span>
             </div>
 

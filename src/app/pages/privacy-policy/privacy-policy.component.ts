@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { HeroComponent } from '../../components/hero/hero.component';
 
 @Component({
   selector: 'app-privacy-policy',
   standalone: true,
-  imports: [HeroComponent],
+  imports: [HeroComponent, RouterLink],
   templateUrl: './privacy-policy.component.html',
   styleUrl: './privacy-policy.component.css',
 })

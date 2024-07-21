@@ -1,5 +1,5 @@
 <section>
-    <img class="logo" src="assets/images/logo/Marche_avec_Eliane_Logo.png" alt="">
+    <img class="logo" src="assets/images/logo/Marche_avec_Eliane_Logo.png" alt="Logo de Marche avec Éliane. Marche avec Éliane en toutes lettres avec le M t le V qui s'il se rejoignent, forme un cœur rouge.">
     <div class="login-container">
         <h2>Accès à votre espace bénévole</h2>
         <form (ngSubmit)="login()">
@@ -23,6 +23,13 @@
                 <a routerLink="/mot_de_passe_oublie" class="forgot-password">Mot de passe oublié ?</a>
             </div>
             <button type="submit">SE CONNECTER</button>
+            <button class="return">
+                <a
+                  routerLink="/bienvenue"
+                >
+                  RETOUR
+                </a>
+              </button>
         </form>
     </div>
 </section>

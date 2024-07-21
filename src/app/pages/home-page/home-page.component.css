@@ -168,20 +168,20 @@ img {
   align-items: center;
 }
 .cardTitle {
-  font-size: 20px;
+  font-size: clamp(18px, 1vw, 20px);
   font-weight: bold;
   font-family: var(--secondaryFont);
   text-transform: uppercase;
 }
 .cardDescription {
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   font-family: var(--secondaryFont);
   text-align: center;
 }
 
 /* VOLUNTEERS */
 .unitedVolunteer{
-  font-size: 30px;
+  font-size: clamp(24px, 1vw, 30px);
   font-weight: var(--semiBold);
 }
 .sectionVolunteers {
@@ -194,9 +194,9 @@ img {
 }
 .volunteersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 62px;
-  border: 2px solid green;
+  /* gap:2%; */
 }
 .volunteersGridItem {
   border: 1px solid var(--black);
@@ -226,19 +226,21 @@ img {
   width: 300px;
 }
 .volunteersGridFirstname {
-  font-size: 20px;
+  font-size: clamp(18px, 3vw, 20px);
   font-family: var(--secondaryFont);
   font-weight: var(--semiBold);
   text-transform: capitalize;
 }
 .volunteersGridLocation {
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   text-transform: capitalize;
 }
 .volunteersGridInterest {
   height: 40px;
   width: 160px;
+  font-size: clamp(14px, 1vw, 18px);
   text-align: center;
+  padding-bottom: 15px;
 }
 
 /* RESPONSIVE */
@@ -271,22 +273,16 @@ display: none;
     margin-bottom: 50px;
   }
   .card {
-    height: 380px;
+    height: 400px;
     width: 350px;
   }
   img {
     height: 270px;
-    width: 295px;
+    width: 350px;
   }
   .cardContent {
     height: 68px;
     width: 70px;
-  }
-  .cardTitle {
-    font-size: 16px;
-  }
-  .cardDescription {
-    font-size: 16px
   }
 
 }

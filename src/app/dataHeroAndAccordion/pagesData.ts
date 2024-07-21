@@ -28,7 +28,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "communication",
     heroPicture: {
       src: "assets/images/mutualAid/communication.jpeg",
-      alt: "test",
+      alt: "Deux mains qui tiennent un cœur afin de symboliser la communication",
     },
     intro:"Ces conseils visent à créer une expérience d'accompagnement enrichissante, centrée sur le respect mutuel et la compréhension. \nLa communication ouverte, la flexibilité et la sensibilité aux besoins individuels sont des éléments clés pour établir des relations positives entre les bénévoles et les personnes âgées.",
     accordionItem: [
@@ -99,7 +99,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "bien-etre",
     heroPicture: {
       src: "assets/images/mutualAid/securiteSante.jpg",
-      alt: "test",
+      alt: "La main d'une dame agée en fauteuil roulant, sur la main d'une personne qui s'occupe d'elle pour symboliser la protection, le bien-être.",
     },
     intro:
       "L'objectif de cette section est de fournir des conseils pratiques aux bénévoles pour les aider à gérer diverses situations tout en garantissant la sécurité et le bien-être des personnes âgées accompagnées.",
@@ -161,7 +161,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "comportement",
     heroPicture: {
       src: "assets/images/mutualAid/comportement.jpeg",
-      alt: "test",
+      alt: "De galets empilés sur du sable fin pour symboliser l'équilibre, l'harmonie",
     },
     intro:
       "La gestion de ces situations nécessite une approche équilibrée, où l'empathie et la fermeté contribuent à maintenir une relation bénévole professionnelle et respectueuse. Les limites doivent être maintenues, mais les sentiments de la personne âgée doivent également être traités avec compassion.",
@@ -266,7 +266,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "aide",
     heroPicture: {
       src: "assets/images/mutualAid/aide.jpeg",
-      alt: "besoin d'aide test",
+      alt: "Des mains l'une dans l'autre pour symboliser l'aide.",
     },
     accordionItem: [
       {
@@ -286,7 +286,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "histoire",
     heroPicture: {
       src: "assets/images/aboutUs/histoire.jpeg",
-      alt: "à propos test",
+      alt: "Une fleur blanche, une grande ombelle composée de nombreuses petites fleurs blanches.",
     },
   },
   {
@@ -295,7 +295,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "charte",
     heroPicture: {
       src: "assets/images/aboutUs/charte.jpeg",
-      alt: "charte de bienveillance test",
+      alt: "Deux mains qui tiennent un fil en boule avec de petites lumières allumées.",
     },
   },
 
@@ -306,7 +306,7 @@ export const PAGESDATA: IpagesData[] = [
     subtitle: "association",
     heroPicture: {
       src: "assets/images/LearnMorePage/learnMorePage.jpeg",
-      alt: "à propos test",
+      alt: "Des mains d'une personne âgées dans les mains d'une personne plus jeune. Avec de doux tons roses.",
     },
   },
 
@@ -314,30 +314,30 @@ export const PAGESDATA: IpagesData[] = [
   {
     id: 8,
     category: "mentions_legales",
-    subtitle: "mentions legales",
+    subtitle: "mentions_legales",
     heroPicture: {
       src: "assets/images/legalNotice/legalNotice.jpeg",
-      alt: "à propos test",
+      alt: "Une pile de livres blancs",
     },
   },
   // politique de confidentialite
   {
     id: 9,
     category: "politique_de_confidentialite",
-    subtitle: "politique de confidentialite",
+    subtitle: "politique_de_confidentialite",
     heroPicture: {
       src: "assets/images/privacyPolicy/privacyPolicy.png",
-      alt: "à propos test",
+      alt: "Deux mains en protégeant une autre entre les siennes.",
     },
   },
   // plan_du_site
   {
     id: 10,
     category: "plan_du_site",
-    subtitle: "plan du site",
+    subtitle: "plan_du_site",
     heroPicture: {
       src: "assets/images/siteMap/siteMap.jpeg",
-      alt: "à propos test",
+      alt: "Paris vu d'en haut avec un coucher de soleil au tons roses et bleus magiques",
     },
   },
 

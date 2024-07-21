@@ -1,0 +1,5 @@
+.legalSection{
+    font-size: clamp(12px, 3vw, 18px);
+    padding: 2% 20%;
+    line-height: 35px;
+}

@@ -160,7 +160,7 @@ nav ul li a{
 @media (max-width: 900px) {
     footer{
         height: auto;
-        border:2px solid red;
+        /* border:2px solid red; */
     }
     .footerMenu {
         flex-direction: column;
@@ -178,8 +178,11 @@ nav ul li a{
     .logoContainer img {
         width:220px;
     }
+    .logoContainer img {
+      width: 190px;
+    }
 .contactContainer{
-    width: 400px;
+    width: 370px;
     margin-bottom: 20px; 
 }
 nav ul li a{

@@ -113,7 +113,7 @@ button {
 .instructionCalendar {
   padding: 20px;
   color: var(--black);
-  width: 380px;
+  width: 330px;
   display: flex;
   justify-content: space-between;
 }
@@ -122,4 +122,47 @@ button {
 }
 .instructionCalendar {
   margin-bottom: 50px;
+}
+
+@media (max-width: 950px) {
+  .calendar {
+    width: 280px;
+  }
+  .wrapper {
+    width: 330px;
+    padding: 10px;
+  }
+  header i {
+    padding: 10px 30px;
+  }
+  .calendar {
+    padding: 10px;
+  }
+  .calendar ul {
+    padding: 0;
+    margin: 0;
+  }
+  .calendar ul li {
+    height: 30px;
+    line-height: 30px;
+  }
+  .dayLi {
+    margin-top: 10px;
+  }
+  .days .dayLi::before {
+    height: 35px;
+    width: 35px;
+  }
+  .direction {
+    margin-top: 10px;
+  }
+  button {
+    margin-top: 0;
+  }
+  .dropdown ul li {
+    padding: 5px 10px;
+  }
+  .searchBar .instructionCalendar{
+    width: 300px;
+  }
 }

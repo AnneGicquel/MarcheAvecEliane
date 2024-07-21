@@ -46,6 +46,5 @@ export class LearnMorePageComponent implements OnInit {
     this.currentLearnMoreSubtitle = currentLearnMoreSubtitle;
   }
     
-  
   }
   

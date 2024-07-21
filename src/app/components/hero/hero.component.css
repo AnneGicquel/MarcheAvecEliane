@@ -8,6 +8,9 @@ h1{
     font-family: var(--secondaryFont);
     padding-top: 20px;
     padding-bottom: 40px;
+    font-size: clamp(18px, 4vw, 26px);
+    text-align: center;
+    flex-wrap: wrap;
 }
 img{
     height: 510px;   

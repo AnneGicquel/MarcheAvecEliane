@@ -3,7 +3,7 @@
     {{ intro }}
   </p>
   <div class="container">
-    @for (item of items; track item; let $index = $index) {
+    @for (item of items; track item;) {
     <ul
       class="item"
       [ngClass]="{ active: item.isActive }"
@@ -11,7 +11,11 @@
     >
       <li class="heading">
         <h4>{{ item.heading }}</h4>
-        <span><i class="{{ item.isActive ? 'fas fa-times close' : 'fas fa-plus' }}"></i></span>
+        <span
+          ><i
+            class="{{ item.isActive ? 'fas fa-times close' : 'fas fa-plus' }}"
+          ></i
+        ></span>
       </li>
 
       <li class="content">
