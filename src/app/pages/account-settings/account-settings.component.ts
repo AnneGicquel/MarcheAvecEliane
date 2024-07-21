@@ -94,5 +94,8 @@ export class AccountSettingsComponent implements OnInit {
     return this.userForm.get('newPassword');
   }
 
+  deleteAccountSection() : void{
+    localStorage.clear();
+  }
 }
 

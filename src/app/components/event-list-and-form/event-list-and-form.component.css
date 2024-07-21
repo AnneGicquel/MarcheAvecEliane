@@ -26,7 +26,7 @@
   width: 100%;
   /* height + title => 100vh */
   /* max-height: 90vh; */
-  max-height: 77.9vh; 
+  max-height: 77.9vh;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
@@ -173,11 +173,7 @@
   transition: border 0.3s ease;
 }
 .allTheEvents .event:hover {
-  background: linear-gradient(
-    0deg,
-    var(--lightPink) 23.8%,
-    var(--white) 92%
-  );
+  background: linear-gradient(0deg, var(--lightPink) 23.8%, var(--white) 92%);
 }
 /* ICON */
 .fa-plus:hover,
@@ -193,4 +189,13 @@
 .add-event-wrapper .add-event-footer .add-event-btn:hover {
   color: var(--white);
   text-shadow: 1px 1px 2px var(--black);
+}
+@media (max-width: 900px) {
+
+  .eventListAndFormSection .event {
+  width: 350px;
+}
+.add-event-wrapper{
+  width: 350px;
+}
 }

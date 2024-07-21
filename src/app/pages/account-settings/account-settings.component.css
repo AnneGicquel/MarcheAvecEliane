@@ -141,6 +141,9 @@ p {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .accountSettingsMain {
+    width: 80%;
+  }
   .twoColumnForm {
     flex-direction: column;
   }
@@ -152,18 +155,18 @@ p {
   input {
     margin-right: 0px;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
   }
   p {
-    width: 400px;
+    width: 300px;
   }
   .inputPlusEyeContainer {
-    width: 400px;
+    width: 300px;
     /* margin-top: 30px; */
   }
   .leftFormPart,
   .rightFormPart {
-    width: 400px;
+    width: 300px;
   }
 
   label {
@@ -174,7 +177,7 @@ p {
     margin-top: 50px;
   }
   section {
-    padding: 40px 60px;
+    padding: 20px 20px;
   }
   .deconnexionh1 {
     margin-bottom: 0;

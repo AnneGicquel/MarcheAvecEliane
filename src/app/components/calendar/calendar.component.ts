@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.css'
+  styleUrl: './calendar.component.css',
 })
 export class CalendarComponent implements OnInit {
   // CALENDAR
@@ -111,12 +111,10 @@ export class CalendarComponent implements OnInit {
     // 🛑 Nettoyer le tableau
     daysArray.length = 0;
 
-  
     // Last DAY ON PREV MONTH
     for (let i = this.firstDayofMonth; i > 0; i--) {
-      daysArray.push((this.lastDayofPrevMonth - i + 1).toString()); 
-       // 🛑
-     
+      daysArray.push((this.lastDayofPrevMonth - i + 1).toString());
+      // 🛑
     } //cette boucle ajoute les jours du mois précédent à daysArray dans l'ordre décroissant, en commençant par le dernier jour du mois précédent et en remontant jusqu'au premier jour de la semaine du mois actuel. Cela permet de remplir les cases du calendrier qui correspondent aux jours du mois précédent avant le premier jour du mois actuel.
 
     // ALL DAYS OF CURRENT MONTH
@@ -131,7 +129,6 @@ export class CalendarComponent implements OnInit {
     }
     return daysArray;
   }
-    
 
   getPREVMonthAndDays() {
     this.currMonthNumber -= 1;
@@ -170,7 +167,6 @@ export class CalendarComponent implements OnInit {
     return typeof day == 'string';
   }
 
-
   // DIRECTION
   goToToday() {
     this.currMonthNumber = this.date.getMonth();
@@ -180,5 +176,3 @@ export class CalendarComponent implements OnInit {
     this.updateActiveDate(this.date.getDate());
   }
 }
-
-

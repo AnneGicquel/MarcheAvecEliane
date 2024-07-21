@@ -1,21 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { IaccordionItem, IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
+import {
+  IaccordionItem,
+  IpagesData,
+  PAGESDATA,
+} from '../../dataHeroAndAccordion/pagesData';
 
 @Component({
   selector: 'app-accordion',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './accordion.component.html',
-  styleUrl: './accordion.component.css'
+  styleUrl: './accordion.component.css',
 })
 export class AccordionComponent {
-
   data: IpagesData[] = PAGESDATA;
 
   @Input() intro!: string;
   @Input() items!: IaccordionItem[];
-
 
   ngOnInit() {
     console.log('intro:', this.intro);

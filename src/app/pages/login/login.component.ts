@@ -35,6 +35,9 @@ import { CommonModule } from '@angular/common';
         const role = response.role;
         console.log('ROLE EST ', role)
         localStorage.setItem('access_token', token);
+        // track token expiration
+        // const currentTime = new Date().getTime();
+        // localStorage.setItem('login_time', currentTime.toString());
 
         if (role === 'VOLUNTEER') {
           // Récupérer les détails du volontaire

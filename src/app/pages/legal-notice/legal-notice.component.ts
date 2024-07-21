@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { HeroComponent } from '../../components/hero/hero.component';
@@ -46,6 +45,7 @@ export class LegalNoticeComponent implements OnInit {
    
      this.currentLegalNoticeSubtitle = currentLegalNoticeSubtitle;
    }
-     
+    
+   
    
 }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params, RouterLink } from '@angular/router';
 import { IpagesData, PAGESDATA } from '../../dataHeroAndAccordion/pagesData';
 import { HeroComponent } from '../../components/hero/hero.component';
 
 @Component({
   selector: 'app-site-map',
   standalone: true,
-  imports: [HeroComponent],
+  imports: [HeroComponent, RouterLink],
   templateUrl: './site-map.component.html',
   styleUrl: './site-map.component.css'
 })

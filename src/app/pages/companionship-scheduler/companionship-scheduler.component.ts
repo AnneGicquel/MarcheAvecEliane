@@ -40,30 +40,30 @@ export class CompanionshipSchedulerComponent  {
 
   // OUTINGS
   outings = [
-    { name: 'Stanislas Petrov', time: '11:00' },
-    { name: 'Yves Lambert', time: '13:00' },
-    { name: 'Éliane Sanchez', time: '10:00' },
-    { name: 'Marguerite Duteil', time: '11:00' },
-    { name: 'Suzanne Duremberger', time: '16:00' },
-    { name: 'Stanislas Petrov', time: '11:00' },
-    { name: 'Yves Lambert', time: '13:00' },
-    { name: 'Éliane Sanchez', time: '10:00' },
-    { name: 'Marguerite Duteil', time: '11:00' },
-    { name: 'Suzanne Duremberger', time: '16:00' },
+    { name: 'Jasmin-4108', time: '11:00' },
+    { name: 'Cactus-1261', time: '13:00' },
+    { name: 'Chlorophytum-2387', time: '10:00' },
+    { name: 'Bambou-7142', time: '11:00' },
+    { name: 'Hibiscus-2776', time: '16:00' },
+    { name: 'Lavande-2645', time: '11:00' },
+    { name: 'Pépéromia-4233', time: '13:00' },
+    { name: 'Narcisse-1234', time: '10:00' },
+    { name: 'Citronnelle-8928', time: '11:00' },
+    { name: 'Aloe-3397', time: '16:00' },
   ];
 
   // UPCOMINGS
   upcomings = [
-    { name: 'Éliane Sanchez', time: '10:00', date: 'Lun 22/04' },
-    { name: 'Stanislas Petrov', time: '11:00', date: 'Ven 26/04' },
-    { name: 'Suzanne Duremberger', time: '16:00', date: 'Sam 27/04' },
-    { name: 'Yves Lambert', time: '13:00', date: 'Jeu 16/05' },
-    { name: 'Marguerite Duteil', time: '11:00', date: 'Mar 28/05' },
-    { name: 'Éliane Sanchez', time: '10:00', date: 'Lun 22/04' },
-    { name: 'Stanislas Petrov', time: '11:00', date: 'Ven 26/04' },
-    { name: 'Suzanne Duremberger', time: '16:00', date: 'Sam 27/04' },
-    { name: 'Yves Lambert', time: '13:00', date: 'Jeu 16/05' },
-    { name: 'Marguerite Duteil', time: '11:00', date: 'Mar 28/05' },
+    { name: 'Jasmin-4108', time: '10:00', date: 'Lun 22/04' },
+    { name: 'Cactus-1261', time: '11:00', date: 'Ven 26/04' },
+    { name: 'Chlorophytum-2387', time: '16:00', date: 'Sam 27/04' },
+    { name: 'Bambou-7142', time: '13:00', date: 'Jeu 16/05' },
+    { name: 'Hibiscus-2776', time: '11:00', date: 'Mar 28/05' },
+    { name: 'Lavande-2645', time: '10:00', date: 'Lun 22/04' },
+    { name: 'Pépéromia-4233', time: '11:00', date: 'Ven 26/04' },
+    { name: 'SNarcisse-1234', time: '16:00', date: 'Sam 27/04' },
+    { name: 'Citronnelle-8928', time: '13:00', date: 'Jeu 16/05' },
+    { name: 'Aloe-3397', time: '11:00', date: 'Mar 28/05' },
   ];
 
   // GESTION DU FORM DYNAMIQUE DELETE or EDIT
